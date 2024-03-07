@@ -8,10 +8,14 @@
 import UIKit
 import FSCalendar
 import SnapKit
+import Then
 
-class CalendarViewController: BaseViewController {
+final class CalendarViewController: BaseViewController {
     
-    let calendar = FSCalendar()
+    private lazy var calendar = FSCalendar().then {_ in
+//        $0.delegate = self
+//        $0.dataSource = self
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,5 +38,15 @@ class CalendarViewController: BaseViewController {
     
     override func configureView() {
         view.setBackgroundColor()
+        setCalendarUI()
+    }
+    
+    private func setCalendarUI() {
+        NumberFormatManager.shared.calenderFormat()
+        self.calendar.appearance.headerDateFormat = "MMMM"
     }
 }
+
+//extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
+//    
+//}
