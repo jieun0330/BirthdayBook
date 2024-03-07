@@ -6,24 +6,33 @@
 //
 
 import UIKit
+import FSCalendar
+import SnapKit
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: BaseViewController {
+    
+    let calendar = FSCalendar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func configureHierarchy() {
+        [calendar].forEach {
+            view.addSubview($0)
+        }
     }
-    */
-
+    
+    override func configureConstraints() {
+        calendar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(300)
+        }
+    }
+    
+    override func configureView() {
+        view.setBackgroundColor()
+    }
 }
