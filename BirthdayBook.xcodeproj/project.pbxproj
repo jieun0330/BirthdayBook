@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */; };
+		C27A578E2B9C542A00CF956A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */; };
 		C29545D92B998395001A391B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545D82B998395001A391B /* AppDelegate.swift */; };
 		C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545DA2B998395001A391B /* SceneDelegate.swift */; };
 		C29545E22B998398001A391B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29545E12B998398001A391B /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C29545D52B998395001A391B /* BirthdayBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29545D82B998395001A391B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C29545DA2B998395001A391B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				C29545EE2B999A2D001A391B /* CalendarViewController.swift */,
+				C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				C29545F22B999A5D001A391B /* BaseViewController.swift */,
+				C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -210,6 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29545EF2B999A2D001A391B /* CalendarViewController.swift in Sources */,
+				C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */,
+				C27A578E2B9C542A00CF956A /* BaseCollectionViewCell.swift in Sources */,
 				C29545F32B999A5D001A391B /* BaseViewController.swift in Sources */,
 				C29545D92B998395001A391B /* AppDelegate.swift in Sources */,
 				C29546092B99BBF9001A391B /* Colors.swift in Sources */,

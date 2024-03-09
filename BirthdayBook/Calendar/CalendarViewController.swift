@@ -23,14 +23,25 @@ final class CalendarViewController: BaseViewController {
         $0.setImage(UIImage(systemName: "calendar"), for: .normal)
         $0.addTarget(self, action: #selector(calendarButtonClicked), for: .touchUpInside)
     }
-
+    
+    private let birthdayBookLabel = UILabel().then {
+        $0.text = "3월 4일과 생일이 똑같은 책이에요"
+    }
+    
+    private let collectionView = UICollectionView(frame: .zero,
+                                                  collectionViewLayout: configureCollectionViewLayout()).then {
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.brown.cgColor
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
-        [calendar, calendarButton].forEach {
+        [calendar, calendarButton, birthdayBookLabel, collectionView].forEach {
             view.addSubview($0)
         }
     }
@@ -39,18 +50,42 @@ final class CalendarViewController: BaseViewController {
         calendar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview().inset(20)
-                $0.height.equalTo(300)
+            $0.height.equalTo(300)
         }
         
         calendarButton.snp.makeConstraints {
             $0.centerY.equalTo(calendar.calendarHeaderView)
             $0.trailing.equalToSuperview().offset(-20)
         }
+        
+        birthdayBookLabel.snp.makeConstraints {
+            $0.top.equalTo(calendar.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(birthdayBookLabel.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview()
+            $0.size.equalTo(500)
+        }
     }
     
     override func configureView() {
         view.setBackgroundColor()
         setCalendarUI()
+    }
+    
+    private static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 10
+        let width = UIScreen.main.bounds.width - (spacing * 2)
+        layout.itemSize = CGSize(width: width / 2, height: width / 2)
+        layout.minimumLineSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumInteritemSpacing = spacing
+        layout.scrollDirection = .horizontal
+        
+        return layout
     }
     
     @objc private func calendarButtonClicked() {
