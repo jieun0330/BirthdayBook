@@ -32,7 +32,7 @@ final class CalendarViewController: BaseViewController {
                                                   collectionViewLayout: configureCollectionViewLayout()).then {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.brown.cgColor
-    
+        $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: <#T##String#>)
     }
     
     override func viewDidLoad() {
