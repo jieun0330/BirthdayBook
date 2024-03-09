@@ -15,6 +15,8 @@ final class CalendarViewController: BaseViewController {
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
         $0.dataSource = self
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.red.cgColor
     }
     
     private lazy var calendarButton = UIButton().then {
@@ -37,7 +39,7 @@ final class CalendarViewController: BaseViewController {
         calendar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(300)
+                $0.height.equalTo(300)
         }
         
         calendarButton.snp.makeConstraints {
@@ -51,8 +53,16 @@ final class CalendarViewController: BaseViewController {
         setCalendarUI()
     }
     
-    @objc func calendarButtonClicked() {
-        print(#function)
+    @objc private func calendarButtonClicked() {
+        if calendar.scope == .month {
+            changeCalendar(month: false)
+        } else {
+            changeCalendar(month: true)
+        }
+    }
+    
+    private func changeCalendar(month: Bool) {
+        calendar.setScope(month ? .month : .week, animated: true)
     }
     
     private func setCalendarUI() {
@@ -73,11 +83,11 @@ final class CalendarViewController: BaseViewController {
         // 달에 유효하지 않은 날짜 지우기
         calendar.placeholderType = .none
         // Today에 표시되는 선택 전 동그라미 색
-        calendar.appearance.todayColor = DesignSystemColor.pink.color
+        calendar.appearance.todayColor = DesignSystemColor.red.color
+        calendar.appearance.titleTodayColor = .white
         // 선택된 날의 동그라미 색
-        calendar.appearance.selectionColor = .brown
-        // M, T, W처럼 나오게 하기
-        calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
+        calendar.appearance.selectionColor = DesignSystemColor.pink.color
+        calendar.appearance.todaySelectionColor = DesignSystemColor.red.color
         // 요일 UI (평일 검정색)
         calendar.appearance.weekdayTextColor = .black
         // 요일 UI (일요일 빨간색)
@@ -85,6 +95,8 @@ final class CalendarViewController: BaseViewController {
         print(calendar.calendarWeekdayView.weekdayLabels.first?.text)
         // 요일 UI (토요일 파란색)
         calendar.calendarWeekdayView.weekdayLabels.last?.textColor = .blue
+        // M, T, W처럼 나오게 하기
+        calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
     }
 }
 
@@ -101,5 +113,12 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         } else {
             return .label
         }
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calendar.snp.updateConstraints {
+            $0.height.equalTo(bounds.height)
+        }
+        self.view.layoutIfNeeded()
     }
 }
