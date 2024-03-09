@@ -9,6 +9,14 @@ import Foundation
 
 final class CalendarViewModel {
     
+    var inpuDate = Observable("")
     
+    var outputBookAPIResult: Observable<[Book]> = Observable([])
+    
+    init() {
+        self.inpuDate.bind { value in
+            APIManager.shared.callRequest(date: value)
+        }
+    }
     
 }

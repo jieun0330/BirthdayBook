@@ -11,6 +11,8 @@ import SnapKit
 import Then
 
 final class CalendarViewController: BaseViewController {
+    
+    private let viewModel = CalendarViewModel()
 
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
@@ -176,6 +178,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let stringDate = DateFormatManager.shared.calenderString(date: date)
         
+        viewModel.inpuDate.value = stringDate
     }
     
 }
