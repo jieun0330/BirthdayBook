@@ -103,7 +103,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     private func setCalendarUI() {
-        NumberFormatManager.shared.calenderFormat()
+//        DateFormatManager.shared.calenderFormat()
         // Header DateFormat - March
         calendar.appearance.headerDateFormat = "MMMM"
         // 양옆 년도, 월 지우기
@@ -171,6 +171,11 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 //        cell.backgroundColor = .green
         
         return cell
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let stringDate = DateFormatManager.shared.calenderString(date: date)
+        
     }
     
 }
