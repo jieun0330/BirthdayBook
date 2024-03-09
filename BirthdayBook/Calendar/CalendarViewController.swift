@@ -11,12 +11,12 @@ import SnapKit
 import Then
 
 final class CalendarViewController: BaseViewController {
-    
+
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
         $0.dataSource = self
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.red.cgColor
+//        $0.layer.borderWidth = 1
+//        $0.layer.borderColor = UIColor.red.cgColor
     }
     
     private lazy var calendarButton = UIButton().then {
@@ -28,11 +28,13 @@ final class CalendarViewController: BaseViewController {
         $0.text = "3월 4일과 생일이 똑같은 책이에요"
     }
     
-    private let collectionView = UICollectionView(frame: .zero,
-                                                  collectionViewLayout: configureCollectionViewLayout()).then {
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.brown.cgColor
-        $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: <#T##String#>)
+    private lazy var collectionView = UICollectionView(frame: .zero,
+                                                       collectionViewLayout: CalendarViewController.configureCollectionViewLayout()).then {
+//        $0.layer.borderWidth = 1
+//        $0.layer.borderColor = UIColor.brown.cgColor
+        $0.delegate = self
+        $0.dataSource = self
+        $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -66,7 +68,7 @@ final class CalendarViewController: BaseViewController {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(birthdayBookLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview()
-            $0.size.equalTo(500)
+            $0.size.equalTo(400)
         }
     }
     
@@ -79,7 +81,7 @@ final class CalendarViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let width = UIScreen.main.bounds.width - (spacing * 2)
-        layout.itemSize = CGSize(width: width / 2, height: width / 2)
+        layout.itemSize = CGSize(width: width / 1.5, height: width / 1.0)
         layout.minimumLineSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumInteritemSpacing = spacing
@@ -156,4 +158,19 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         }
         self.view.layoutIfNeeded()
     }
+}
+
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath)
+        
+//        cell.backgroundColor = .green
+        
+        return cell
+    }
+    
 }

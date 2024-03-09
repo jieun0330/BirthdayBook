@@ -9,31 +9,52 @@ import UIKit
 import Then
 import SnapKit
 
-final class BookCollectionViewCell: BaseCollectionViewCell {
+final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-//    private let coverImage = UIImageView().then { <#UIImageView#> in
-//        <#code#>
-//    }
+    private let coverImage = UIImageView().then {_ in
+//        $0.backgroundColor = .yellow
+    }
+     
+    private let bookTitle = UILabel().then {
+        $0.text = "이처럼 사소한 것들"
+    }
+    
+    private let author = UILabel().then {
+        $0.text = "클레어"
+    }
     
     override init(frame: CGRect) {
         super .init(frame: frame)
     }
     
     override func configureHierarchy() {
-//        [coverImage].forEach {
-//            contentView.addSubview($0)
-//        }
+        [coverImage, bookTitle, author].forEach {
+            contentView.addSubview($0)
+        }
     }
     
     override func configureConstraints() {
-//        coverImage.snp.makeConstraints {
-//            $0.top.leading.equalTo(contentView).offset(20)
-//        }
+        coverImage.snp.makeConstraints {
+            $0.top.equalTo(contentView).offset(5)
+            $0.horizontalEdges.equalTo(contentView).inset(5)
+            $0.height.equalTo(300)
+        }
+        
+        bookTitle.snp.makeConstraints {
+            $0.leading.equalTo(coverImage.snp.leading)
+            $0.top.equalTo(coverImage.snp.bottom).offset(5)
+        }
+        
+        author.snp.makeConstraints {
+            $0.leading.equalTo(bookTitle.snp.leading)
+            $0.top.equalTo(bookTitle.snp.bottom).offset(5)
+        }
+        
     }
     
-    override func configureView() {
-        <#code#>
-    }
+//    override func configureView() {
+//        <#code#>
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
