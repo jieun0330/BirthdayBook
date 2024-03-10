@@ -182,8 +182,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
+        cell.layer.borderColor = UIColor.brown.cgColor
+        cell.layer.borderWidth = 1
+        
         if !self.book.isEmpty {
             let data = self.book[indexPath.item]
+//            cell.coverImage
             cell.author.text = data.author
         }
         

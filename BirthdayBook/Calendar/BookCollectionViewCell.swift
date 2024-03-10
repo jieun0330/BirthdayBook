@@ -48,6 +48,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         author.snp.makeConstraints {
             $0.leading.equalTo(bookTitle.snp.leading)
             $0.top.equalTo(bookTitle.snp.bottom).offset(5)
+            $0.trailing.equalTo(contentView).offset(-5)
         }
         
     }
