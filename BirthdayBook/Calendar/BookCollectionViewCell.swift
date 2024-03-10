@@ -14,6 +14,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     let coverImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.backgroundColor = .yellow
+        $0.clipsToBounds = true
     }
      
     let bookTitle = UILabel().then {
@@ -44,6 +45,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         bookTitle.snp.makeConstraints {
             $0.leading.equalTo(coverImage.snp.leading)
             $0.top.equalTo(coverImage.snp.bottom).offset(5)
+            $0.trailing.equalTo(contentView).offset(-5)
         }
         
         author.snp.makeConstraints {
