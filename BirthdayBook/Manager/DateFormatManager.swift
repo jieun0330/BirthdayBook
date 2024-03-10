@@ -19,4 +19,11 @@ final class DateFormatManager {
         
         return dateFormatter.string(from: date)
     }
+    
+    func birthdayLabel(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월 d일"
+        
+        return dateFormatter.string(from: date)
+    }
 }

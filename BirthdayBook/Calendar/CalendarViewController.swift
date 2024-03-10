@@ -15,6 +15,7 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     var book: [Doc] = []
+    var test = ""
 
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
@@ -28,8 +29,9 @@ final class CalendarViewController: BaseViewController {
         $0.addTarget(self, action: #selector(calendarButtonClicked), for: .touchUpInside)
     }
     
-    private let birthdayBookLabel = UILabel().then {
-        $0.text = "3월 4일과 생일이 똑같은 책이에요"
+    private let birthdayBookLabel = UILabel().then {_ in
+        
+//        $0.text = "\(test)과 생일이 똑같은 책이에요"
     }
     
     private lazy var collectionView = UICollectionView(frame: .zero,
@@ -45,6 +47,7 @@ final class CalendarViewController: BaseViewController {
         viewModel.outputBookAPIResult.bind { data in
             
             self.book = data
+//            print("data", data)
             self.collectionView.reloadData()
         }
         
@@ -194,8 +197,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let stringDate = DateFormatManager.shared.calenderString(date: date)
-        
         viewModel.inpuDate.value = stringDate
+
+        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
+        birthdayBookLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+
+        
 //        print("stringDate", stringDate)
     }
     
