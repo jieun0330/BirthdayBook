@@ -11,8 +11,9 @@ import SnapKit
 
 final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    let coverImage = UIImageView().then {_ in
-//        $0.backgroundColor = .yellow
+    let coverImage = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.backgroundColor = .yellow
     }
      
     let bookTitle = UILabel().then {

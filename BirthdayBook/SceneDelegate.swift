@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         window?.rootViewController = tabBarController
         
-        let calendarView = UINavigationController(rootViewController: CalendarViewController())
+        let calendarView = UINavigationController(rootViewController: NewCalendarViewController())
         tabBarController.setViewControllers([calendarView], animated: false)
         
         calendarView.tabBarItem = UITabBarItem(title: "홈",
