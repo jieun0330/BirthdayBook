@@ -32,7 +32,7 @@ struct Doc: Decodable {
     let subject: String // 주제 (KDC 대분류)
     let title: String // 표제
     let publishPredate: String // 출판예정일
-    let setAddCode: SetAddCode // 세트 ISBN 부가기호
+    let setAddCode: String // 세트 ISBN 부가기호
 
     enum CodingKeys: String, CodingKey {
         case eaAddCode = "EA_ADD_CODE"
@@ -49,16 +49,4 @@ struct Doc: Decodable {
         case publishPredate = "PUBLISH_PREDATE"
         case setAddCode = "SET_ADD_CODE"
     }
-}
-
-enum SetAddCode: String, Codable {
-    case empty = ""
-    case the05300 = "05300 "
-    case the05810 = "05810 "
-    case the07650 = "07650 "
-    case the07810 = "07810 "
-    case the15820 = "15820 "
-    case the74830 = "74830 "
-    case the74870 = "74870 "
-    case the95320 = "95320 "
 }

@@ -11,12 +11,15 @@ final class CalendarViewModel {
     
     var inpuDate = Observable("")
     
-    var outputBookAPIResult: Observable<[Book]> = Observable([])
+    var outputBookAPIResult: Observable<[Doc]> = Observable([])
     
     init() {
         self.inpuDate.bind { value in
-            APIManager.shared.callRequest(date: value)
+//            print("value", value)
+            APIManager.shared.callRequest(date: value) { data in
+//                print("data", data.totalCount)
+                self.outputBookAPIResult.value = data.docs
+            }
         }
     }
-    
 }

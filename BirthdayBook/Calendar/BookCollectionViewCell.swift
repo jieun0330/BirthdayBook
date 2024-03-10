@@ -11,15 +11,15 @@ import SnapKit
 
 final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    private let coverImage = UIImageView().then {_ in
+    let coverImage = UIImageView().then {_ in
 //        $0.backgroundColor = .yellow
     }
      
-    private let bookTitle = UILabel().then {
+    let bookTitle = UILabel().then {
         $0.text = "이처럼 사소한 것들"
     }
     
-    private let author = UILabel().then {
+    let author = UILabel().then {
         $0.text = "클레어"
     }
     

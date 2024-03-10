@@ -13,6 +13,7 @@ import Then
 final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
+    var book: [Doc] = []
 
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
@@ -31,9 +32,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     private lazy var collectionView = UICollectionView(frame: .zero,
-                                                       collectionViewLayout: CalendarViewController.configureCollectionViewLayout()).then {
-//        $0.layer.borderWidth = 1
-//        $0.layer.borderColor = UIColor.brown.cgColor
+                                                       collectionViewLayout: CalendarViewController.createLayout()).then {
         $0.delegate = self
         $0.dataSource = self
         $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
@@ -41,6 +40,16 @@ final class CalendarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.outputBookAPIResult.bind { data in
+            
+            self.book = data
+//            self.book[0].self = data
+//            self.book = data
+            self.collectionView.reloadData()
+//            print("book", self.book)
+//            print("data", data)
+        }
         
     }
     
@@ -70,7 +79,7 @@ final class CalendarViewController: BaseViewController {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(birthdayBookLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview()
-            $0.size.equalTo(400)
+            $0.height.equalTo(400)
         }
     }
     
@@ -79,7 +88,11 @@ final class CalendarViewController: BaseViewController {
         setCalendarUI()
     }
     
-    private static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
+    private static func createLayout() -> UICollectionViewFlowLayout {
+        
+//        var configuration = UICollectionViewCompositionalLayoutConfiguration()
+//        configuration.backgroundColor = .white
+        
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let width = UIScreen.main.bounds.width - (spacing * 2)
@@ -131,7 +144,6 @@ final class CalendarViewController: BaseViewController {
         calendar.appearance.weekdayTextColor = .black
         // 요일 UI (일요일 빨간색)
         calendar.calendarWeekdayView.weekdayLabels.first?.textColor = .red
-        print(calendar.calendarWeekdayView.weekdayLabels.first?.text)
         // 요일 UI (토요일 파란색)
         calendar.calendarWeekdayView.weekdayLabels.last?.textColor = .blue
         // M, T, W처럼 나오게 하기
@@ -168,9 +180,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
-//        cell.backgroundColor = .green
+        if !self.book.isEmpty {
+            let data = self.book[indexPath.item]
+            cell.author.text = data.author
+        }
         
         return cell
     }
@@ -179,6 +194,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let stringDate = DateFormatManager.shared.calenderString(date: date)
         
         viewModel.inpuDate.value = stringDate
+//        print("stringDate", stringDate)
     }
     
 }
