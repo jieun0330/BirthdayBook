@@ -41,6 +41,8 @@
 		C29BDAD52B9F19B1007898E3 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */; };
 		C29BDAD72B9F1A94007898E3 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAD62B9F1A94007898E3 /* Images.swift */; };
 		C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */; };
+		C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADB2B9F28E9007898E3 /* BookRealm.swift */; };
+		C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADD2B9F297B007898E3 /* BookRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		C29BDAD62B9F1A94007898E3 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
+		C29BDADB2B9F28E9007898E3 /* BookRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRealm.swift; sourceTree = "<group>"; };
+		C29BDADD2B9F297B007898E3 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 		C29545D72B998395001A391B /* BirthdayBook */ = {
 			isa = PBXGroup;
 			children = (
+				C29BDADA2B9F28E1007898E3 /* Realm */,
 				C27E06412B9C860D003EC2D5 /* Network */,
 				C27E063E2B9C8215003EC2D5 /* Observable */,
 				C29546072B99BBF3001A391B /* DesignSystem */,
@@ -212,6 +217,15 @@
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
 			);
 			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		C29BDADA2B9F28E1007898E3 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				C29BDADB2B9F28E9007898E3 /* BookRealm.swift */,
+				C29BDADD2B9F297B007898E3 /* BookRepository.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +320,7 @@
 			files = (
 				C29545EF2B999A2D001A391B /* CalendarViewController.swift in Sources */,
 				C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */,
+				C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */,
 				C27A578E2B9C542A00CF956A /* BaseCollectionViewCell.swift in Sources */,
 				C27E063D2B9C81D1003EC2D5 /* CalendarViewModel.swift in Sources */,
 				C29BDAD52B9F19B1007898E3 /* BookmarkViewController.swift in Sources */,
@@ -326,6 +341,7 @@
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,
 				C29BDAC82B9EEE03007898E3 /* NaverBook.swift in Sources */,
+				C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

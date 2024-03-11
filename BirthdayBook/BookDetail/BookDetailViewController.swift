@@ -9,10 +9,12 @@ import UIKit
 import Then
 import SnapKit
 import Kingfisher
+import RealmSwift
 
 final class BookDetailViewController: BaseViewController {
     
     var libraryBook: Doc!
+    private let repository = BookRepository()
     
     private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),
                                                       style: .plain,
@@ -107,6 +109,9 @@ final class BookDetailViewController: BaseViewController {
     
     @objc private func bookMarkButtonClicked() {
         
+        let bookRealm = BookRealm(id: libraryBook.title)
+        
+        repository.createRealm(bookRealm)
     }
     
 }
