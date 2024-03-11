@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum DesignSystemColor {
     case pink
     case red

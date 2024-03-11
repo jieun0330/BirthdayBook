@@ -58,7 +58,7 @@ final class CalendarViewController: BaseViewController {
         super.viewDidLoad()
         
         let today = DateFormatManager.shared.calenderString(date: Date())
-        viewModel.inpuDate.value = today
+        viewModel.inputDate.value = today
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: Date())
         birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
         
@@ -226,7 +226,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let stringDate = DateFormatManager.shared.calenderString(date: date)
-        viewModel.inpuDate.value = stringDate
+        viewModel.inputDate.value = stringDate
         
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
         birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
