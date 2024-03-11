@@ -13,16 +13,17 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let coverImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
-//        $0.backgroundColor = .yellow
         $0.clipsToBounds = true
     }
      
     let bookTitle = UILabel().then {
-        $0.text = "이처럼 사소한 것들"
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.textColor = DesignSystemColor.red.color
     }
     
     let author = UILabel().then {
-        $0.text = "클레어"
+        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.textColor = DesignSystemColor.red.color
     }
     
     override init(frame: CGRect) {
@@ -39,7 +40,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         coverImage.snp.makeConstraints {
             $0.top.equalTo(contentView).offset(5)
             $0.horizontalEdges.equalTo(contentView).inset(5)
-            $0.height.equalTo(300)
+            $0.height.equalTo(340)
         }
         
         bookTitle.snp.makeConstraints {

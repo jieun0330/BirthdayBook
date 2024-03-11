@@ -17,6 +17,14 @@ final class CalendarViewController: BaseViewController {
     var libraryBook: [Doc] = []
     var naverBook: [Item] = []
     
+    private lazy var leftBarButtonItem = UIBarButtonItem(image: .logo,
+                                                         style: .plain,
+                                                         target: self,
+                                                         action: #selector(leftBarButtonItemClicked)).then {_ in
+//        $0.layer?.borderColor = UIColor.brown.cgColor
+//        $0.layer?.borderWidth = 1
+    }
+    
     private let background = UIView().then {
         $0.backgroundColor = DesignSystemColor.pink.color
     }
@@ -29,9 +37,8 @@ final class CalendarViewController: BaseViewController {
     }
     
     private lazy var calendarButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "calendar"), for: .normal)
+        $0.setImage(.calendarIcon.withTintColor(DesignSystemColor.red.color), for: .normal)
         $0.addTarget(self, action: #selector(calendarButtonClicked), for: .touchUpInside)
-        $0.tintColor = DesignSystemColor.red.color
     }
     
     private let birthdayDateLabel = UILabel().then {
@@ -60,10 +67,10 @@ final class CalendarViewController: BaseViewController {
             self.collectionView.reloadData()
         }
         
-//        viewModel.outputNaverBookAPIResult.bind { data in
-//            self.naverBook = data
-//            print("data", data)
-//        }
+        //        viewModel.outputNaverBookAPIResult.bind { data in
+        //            self.naverBook = data
+        //            print("data", data)
+        //        }
     }
     
     override func configureHierarchy() {
@@ -74,14 +81,15 @@ final class CalendarViewController: BaseViewController {
     
     override func configureConstraints() {
         calendar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(5)
+            $0.horizontalEdges.equalToSuperview().inset(10)
             $0.height.equalTo(300)
         }
         
         calendarButton.snp.makeConstraints {
             $0.centerY.equalTo(calendar.calendarHeaderView)
-            $0.trailing.equalToSuperview().offset(-35)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.size.equalTo(15)
         }
         
         birthdayDateLabel.snp.makeConstraints {
@@ -90,9 +98,10 @@ final class CalendarViewController: BaseViewController {
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(20)
+            $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(400)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+//            $0.height.equalTo(400)
         }
         
         background.snp.makeConstraints {
@@ -105,6 +114,11 @@ final class CalendarViewController: BaseViewController {
     override func configureView() {
         view.setBackgroundColor()
         setCalendarUI()
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
+    @objc func leftBarButtonItemClicked() {
+        
     }
     
     private static func createLayout() -> UICollectionViewFlowLayout {
@@ -143,7 +157,7 @@ final class CalendarViewController: BaseViewController {
         // 헤더 정렬 설정
         calendar.appearance.headerTitleAlignment = .left
         // 헤더 정렬 left로 줬는데 많이 안가서 offset 설정
-        calendar.appearance.headerTitleOffset = CGPoint(x: -70, y: 0)
+        calendar.appearance.headerTitleOffset = CGPoint(x: -75, y: 0)
         
         // 주간 달력
         calendar.scope = .week
@@ -152,6 +166,7 @@ final class CalendarViewController: BaseViewController {
         // Today에 표시되는 선택 전 동그라미 색
         calendar.appearance.todayColor = DesignSystemColor.red.color
         calendar.appearance.titleTodayColor = .white
+        calendar.appearance.borderRadius = 0.5
         // 선택된 날의 동그라미 색
         calendar.appearance.selectionColor = DesignSystemColor.pink.color
         calendar.appearance.todaySelectionColor = DesignSystemColor.red.color
@@ -196,11 +211,11 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
-
+        
         if !self.libraryBook.isEmpty {
             let libraryData = self.libraryBook[indexPath.item]
-//            let naverData = self.naverBook[indexPath.item]
-//            print("naverData", naverData)
+            //            let naverData = self.naverBook[indexPath.item]
+            //            print("naverData", naverData)
             cell.coverImage.kf.setImage(with: URL(string: libraryData.titleURL), placeholder: UIImage(named: "placeholder"))
             cell.author.text = libraryData.author
             cell.bookTitle.text = libraryData.title
