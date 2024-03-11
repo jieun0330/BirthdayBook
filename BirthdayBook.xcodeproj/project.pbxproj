@@ -18,8 +18,6 @@
 		C27E06462B9C8BBD003EC2D5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C27E06452B9C8BBD003EC2D5 /* Alamofire */; };
 		C27E06482B9C8BBD003EC2D5 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C27E06472B9C8BBD003EC2D5 /* AlamofireDynamic */; };
 		C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C27E064A2B9D55C3003EC2D5 /* Kingfisher */; };
-		C27E064D2B9D5693003EC2D5 /* NewCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E064C2B9D5693003EC2D5 /* NewCalendarViewController.swift */; };
-		C27E064F2B9D8265003EC2D5 /* NewCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E064E2B9D8265003EC2D5 /* NewCalendarTableViewCell.swift */; };
 		C27E06512B9D8273003EC2D5 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */; };
 		C29545D92B998395001A391B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545D82B998395001A391B /* AppDelegate.swift */; };
 		C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545DA2B998395001A391B /* SceneDelegate.swift */; };
@@ -46,8 +44,6 @@
 		C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		C27E063F2B9C8223003EC2D5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C27E06422B9C861A003EC2D5 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		C27E064C2B9D5693003EC2D5 /* NewCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalendarViewController.swift; sourceTree = "<group>"; };
-		C27E064E2B9D8265003EC2D5 /* NewCalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C29545D52B998395001A391B /* BirthdayBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29545D82B998395001A391B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,8 +137,6 @@
 				C29545EE2B999A2D001A391B /* CalendarViewController.swift */,
 				C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */,
 				C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */,
-				C27E064C2B9D5693003EC2D5 /* NewCalendarViewController.swift */,
-				C27E064E2B9D8265003EC2D5 /* NewCalendarTableViewCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -283,8 +277,6 @@
 				C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */,
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
 				C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */,
-				C27E064D2B9D5693003EC2D5 /* NewCalendarViewController.swift in Sources */,
-				C27E064F2B9D8265003EC2D5 /* NewCalendarTableViewCell.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 			);

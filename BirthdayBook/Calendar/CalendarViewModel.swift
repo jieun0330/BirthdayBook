@@ -15,9 +15,8 @@ final class CalendarViewModel {
     
     init() {
         self.inpuDate.bind { value in
-//            print("value", value)
+            
             APIManager.shared.callRequest(date: value) { data in
-//                print("data", data.totalCount)
                 self.outputBookAPIResult.value = data.docs
             }
         }

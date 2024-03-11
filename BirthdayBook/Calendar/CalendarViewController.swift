@@ -15,23 +15,23 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     var book: [Doc] = []
-    var test = ""
-
+    
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
         $0.dataSource = self
-//        $0.layer.borderWidth = 1
-//        $0.layer.borderColor = UIColor.red.cgColor
+        //        $0.layer.borderWidth = 1
+        //        $0.layer.borderColor = UIColor.red.cgColor
     }
     
     private lazy var calendarButton = UIButton().then {
         $0.setImage(UIImage(systemName: "calendar"), for: .normal)
         $0.addTarget(self, action: #selector(calendarButtonClicked), for: .touchUpInside)
+        $0.tintColor = DesignSystemColor.red.color
     }
     
-    private let birthdayBookLabel = UILabel().then {_ in
-        
-//        $0.text = "\(test)과 생일이 똑같은 책이에요"
+    private let birthdayDateLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.textColor = DesignSystemColor.red.color
     }
     
     private lazy var collectionView = UICollectionView(frame: .zero,
@@ -44,17 +44,19 @@ final class CalendarViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let today = DateFormatManager.shared.calenderString(date: Date())
+        viewModel.inpuDate.value = today
+        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: Date())
+        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+        
         viewModel.outputBookAPIResult.bind { data in
-            
             self.book = data
-//            print("data", data)
             self.collectionView.reloadData()
         }
-        
     }
     
     override func configureHierarchy() {
-        [calendar, calendarButton, birthdayBookLabel, collectionView].forEach {
+        [calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
             view.addSubview($0)
         }
     }
@@ -68,16 +70,16 @@ final class CalendarViewController: BaseViewController {
         
         calendarButton.snp.makeConstraints {
             $0.centerY.equalTo(calendar.calendarHeaderView)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.trailing.equalToSuperview().offset(-35)
         }
         
-        birthdayBookLabel.snp.makeConstraints {
-            $0.top.equalTo(calendar.snp.bottom).offset(20)
+        birthdayDateLabel.snp.makeConstraints {
+            $0.top.equalTo(calendar.snp.bottom).offset(60)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(birthdayBookLabel.snp.bottom).offset(20)
+            $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(400)
         }
@@ -89,9 +91,6 @@ final class CalendarViewController: BaseViewController {
     }
     
     private static func createLayout() -> UICollectionViewFlowLayout {
-        
-//        var configuration = UICollectionViewCompositionalLayoutConfiguration()
-//        configuration.backgroundColor = .white
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -118,7 +117,6 @@ final class CalendarViewController: BaseViewController {
     }
     
     private func setCalendarUI() {
-//        DateFormatManager.shared.calenderFormat()
         // Header DateFormat - March
         calendar.appearance.headerDateFormat = "MMMM"
         // 양옆 년도, 월 지우기
@@ -128,7 +126,7 @@ final class CalendarViewController: BaseViewController {
         // 헤더 정렬 설정
         calendar.appearance.headerTitleAlignment = .left
         // 헤더 정렬 left로 줬는데 많이 안가서 offset 설정
-        calendar.appearance.headerTitleOffset = CGPoint(x: -85, y: 0)
+        calendar.appearance.headerTitleOffset = CGPoint(x: -70, y: 0)
         
         // 주간 달력
         calendar.scope = .week
@@ -198,12 +196,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let stringDate = DateFormatManager.shared.calenderString(date: date)
         viewModel.inpuDate.value = stringDate
-
-        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
-        birthdayBookLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
-
         
-//        print("stringDate", stringDate)
+        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
+        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+        
     }
-    
 }
