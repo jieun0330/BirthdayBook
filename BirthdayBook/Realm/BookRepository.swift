@@ -12,15 +12,22 @@ final class BookRepository {
     
     private let realm = try! Realm()
     
+    // Create
     func createRealm(_ data: BookRealm) {
         do {
             try realm.write {
                 realm.add(data)
-                print(realm.configuration.fileURL)
+//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
         }
+    }
+    
+    // Read
+    func fetchAllItem() -> [BookRealm] {
+        let result = realm.objects(BookRealm.self)
+        return Array(result)
     }
     
 }

@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 final class BookmarkViewController: BaseViewController {
+    
+    private let repository = BookRepository()
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: BookmarkViewController.configureCollectionViewLayout()).then {
         $0.delegate = self
@@ -22,6 +24,12 @@ final class BookmarkViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
     }
     
     override func configureHierarchy() {
@@ -58,7 +66,7 @@ final class BookmarkViewController: BaseViewController {
 
 extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return repository.fetchAllItem().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

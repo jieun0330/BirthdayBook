@@ -10,10 +10,10 @@ import RealmSwift
 
 final class BookRealm: Object {
     
-    @Persisted(primaryKey: true)var id: String
+    @Persisted(primaryKey: true)var bookTitle: String
     
-    convenience init(id: String) {
+    convenience init(bookTitle: String) {
         self.init()
-        self.id = id
+        self.bookTitle = bookTitle
     }
 }

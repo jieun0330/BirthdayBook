@@ -109,7 +109,7 @@ final class BookDetailViewController: BaseViewController {
     
     @objc private func bookMarkButtonClicked() {
         
-        let bookRealm = BookRealm(id: libraryBook.title)
+        let bookRealm = BookRealm(bookTitle: libraryBook.title)
         
         repository.createRealm(bookRealm)
     }
