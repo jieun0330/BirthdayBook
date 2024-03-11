@@ -14,7 +14,8 @@ import Kingfisher
 final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
-    var book: [Doc] = []
+    var libraryBook: [Doc] = []
+    var naverBook: [Item] = []
     
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
@@ -49,10 +50,15 @@ final class CalendarViewController: BaseViewController {
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: Date())
         birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
         
-        viewModel.outputBookAPIResult.bind { data in
-            self.book = data
+        viewModel.outputLibraryBookAPIResult.bind { data in
+            self.libraryBook = data
             self.collectionView.reloadData()
         }
+        
+//        viewModel.outputNaverBookAPIResult.bind { data in
+//            self.naverBook = data
+//            print("data", data)
+//        }
     }
     
     override func configureHierarchy() {
@@ -174,7 +180,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return book.count
+        return libraryBook.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -183,11 +189,13 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.borderColor = UIColor.brown.cgColor
         cell.layer.borderWidth = 1
         
-        if !self.book.isEmpty {
-            let data = self.book[indexPath.item]
-            cell.coverImage.kf.setImage(with: URL(string: data.titleURL))
-            cell.author.text = data.author
-            cell.bookTitle.text = data.title
+        if !self.libraryBook.isEmpty {
+            let libraryData = self.libraryBook[indexPath.item]
+//            let naverData = self.naverBook[indexPath.item]
+//            print("naverData", naverData)
+            cell.coverImage.kf.setImage(with: URL(string: libraryData.titleURL), placeholder: UIImage(named: "placeholder"))
+            cell.author.text = libraryData.author
+            cell.bookTitle.text = libraryData.title
         }
         
         return cell
