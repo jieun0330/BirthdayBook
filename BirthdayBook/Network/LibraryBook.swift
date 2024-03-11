@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Book: Decodable {
+struct LibraryBook: Decodable {
     let totalCount: String // 전체 출력수
     let docs: [Doc]
     let pageNo: String // 현재 쪽번호
