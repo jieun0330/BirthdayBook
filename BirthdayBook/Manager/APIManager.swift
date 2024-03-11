@@ -22,7 +22,6 @@ final class APIManager {
         
         let url = "https://www.nl.go.kr/seoji/SearchApi.do?cert_key=\(key)&result_style=json&page_no=1&page_size=100&start_publish_date=2023\(date)&end_publish_date=2023\(date)"
         
-        
         AF
             .request(url)
             .responseDecodable(of: LibraryBook.self) { response in

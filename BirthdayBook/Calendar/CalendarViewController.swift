@@ -208,5 +208,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
         birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
         
+        collectionView.isPagingEnabled = false
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
