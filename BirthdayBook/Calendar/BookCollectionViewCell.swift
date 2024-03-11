@@ -17,12 +17,12 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
      
     let bookTitle = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.font = DesignSystemFont.bookTitle.font
         $0.textColor = DesignSystemColor.red.color
     }
     
     let author = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.font = DesignSystemFont.author.font
         $0.textColor = DesignSystemColor.red.color
     }
     

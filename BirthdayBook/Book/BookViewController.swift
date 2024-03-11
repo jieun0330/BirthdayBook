@@ -29,7 +29,7 @@ final class BookViewController: BaseViewController {
     }
     
     private let bookTitle = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.font = DesignSystemFont.bookTitle.font
     }
     
     override func viewDidLoad() {
