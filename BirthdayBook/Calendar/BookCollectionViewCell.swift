@@ -13,7 +13,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let coverImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
-        $0.backgroundColor = .yellow
+//        $0.backgroundColor = .yellow
         $0.clipsToBounds = true
     }
      

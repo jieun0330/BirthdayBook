@@ -17,6 +17,10 @@ final class CalendarViewController: BaseViewController {
     var libraryBook: [Doc] = []
     var naverBook: [Item] = []
     
+    private let background = UIView().then {
+        $0.backgroundColor = DesignSystemColor.pink.color
+    }
+    
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
         $0.dataSource = self
@@ -37,6 +41,7 @@ final class CalendarViewController: BaseViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: CalendarViewController.createLayout()).then {
+        $0.backgroundColor = DesignSystemColor.pink.color
         $0.delegate = self
         $0.dataSource = self
         $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
@@ -62,7 +67,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
+        [background, calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
             view.addSubview($0)
         }
     }
@@ -88,6 +93,12 @@ final class CalendarViewController: BaseViewController {
             $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(400)
+        }
+        
+        background.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(300)
+            $0.horizontalEdges.equalToSuperview()
         }
     }
     
@@ -185,10 +196,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
-        
-        cell.layer.borderColor = UIColor.brown.cgColor
-        cell.layer.borderWidth = 1
-        
+
         if !self.libraryBook.isEmpty {
             let libraryData = self.libraryBook[indexPath.item]
 //            let naverData = self.naverBook[indexPath.item]
