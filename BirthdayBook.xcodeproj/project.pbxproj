@@ -34,6 +34,7 @@
 		C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546052B99B86D001A391B /* DateFormatManager.swift */; };
 		C29546092B99BBF9001A391B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546082B99BBF9001A391B /* Colors.swift */; };
 		C29BDAC82B9EEE03007898E3 /* NaverBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAC72B9EEE03007898E3 /* NaverBook.swift */; };
+		C29BDACB2B9F0AB2007898E3 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDACA2B9F0AB2007898E3 /* BookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		C29546052B99B86D001A391B /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
 		C29546082B99BBF9001A391B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C29BDAC72B9EEE03007898E3 /* NaverBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverBook.swift; sourceTree = "<group>"; };
+		C29BDACA2B9F0AB2007898E3 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				C29545FF2B99AE66001A391B /* Extension */,
 				C29545F12B999A56001A391B /* Base */,
 				C29545F02B999A4B001A391B /* Calendar */,
+				C29BDAC92B9F0AA8007898E3 /* Book */,
 				C29545D82B998395001A391B /* AppDelegate.swift */,
 				C29545DA2B998395001A391B /* SceneDelegate.swift */,
 				C29545E12B998398001A391B /* Assets.xcassets */,
@@ -177,6 +180,14 @@
 				C29546082B99BBF9001A391B /* Colors.swift */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		C29BDAC92B9F0AA8007898E3 /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				C29BDACA2B9F0AB2007898E3 /* BookViewController.swift */,
+			);
+			path = Book;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
 				C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
+				C29BDACB2B9F0AB2007898E3 /* BookViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 				C29BDAC82B9EEE03007898E3 /* NaverBook.swift in Sources */,
 			);

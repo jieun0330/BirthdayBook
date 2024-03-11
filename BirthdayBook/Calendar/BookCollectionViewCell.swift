@@ -11,17 +11,17 @@ import SnapKit
 
 final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    private let coverImage = UIImageView().then {
+    let coverImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
      
-    private let bookTitle = UILabel().then {
+    let bookTitle = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.textColor = DesignSystemColor.red.color
     }
     
-    private let author = UILabel().then {
+    let author = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 12)
         $0.textColor = DesignSystemColor.red.color
     }

@@ -15,7 +15,7 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     var libraryBook: [Doc] = []
-    var naverBook: [Item] = []
+//    var naverBook: [Item] = []
     
     private lazy var leftBarButtonItem = UIBarButtonItem(image: .logo,
                                                          style: .plain,
@@ -202,6 +202,17 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         }
         self.view.layoutIfNeeded()
     }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let stringDate = DateFormatManager.shared.calenderString(date: date)
+        viewModel.inputDate.value = stringDate
+        
+        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
+        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+        
+        collectionView.isPagingEnabled = false
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+    }
 }
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -224,14 +235,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let stringDate = DateFormatManager.shared.calenderString(date: date)
-        viewModel.inputDate.value = stringDate
-        
-        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
-        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
-        
-        collectionView.isPagingEnabled = false
-        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = BookViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        vc.libraryBook = libraryBook[indexPath.item]
+//        let nav = UINavigationController(rootViewController: vc)
+//        present(nav, animated: true)
     }
+
 }

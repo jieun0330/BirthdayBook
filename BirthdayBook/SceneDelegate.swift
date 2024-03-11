@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBarController
         
         let calendarView = UINavigationController(rootViewController: CalendarViewController())
+        let bookView = UINavigationController(rootViewController: BookViewController())
         tabBarController.setViewControllers([calendarView], animated: false)
         
         calendarView.tabBarItem = UITabBarItem(title: "홈",
