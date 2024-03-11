@@ -30,6 +30,21 @@ final class BookViewController: BaseViewController {
     
     private let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.bookTitle.font
+        $0.textColor = DesignSystemColor.red.color
+    }
+    
+    private let author = UILabel().then {
+        $0.font = DesignSystemFont.author.font
+        $0.textColor = DesignSystemColor.red.color
+    }
+    
+    private let introductionTitle = UILabel().then {
+        $0.text = "책 소개"
+    }
+    
+    private let bookDescription = UITextView().then {
+        $0.layer.borderColor = UIColor.brown.cgColor
+        $0.layer.borderWidth = 1
     }
     
     override func viewDidLoad() {
@@ -38,7 +53,7 @@ final class BookViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [bookBackgroundImg, bookCoverImg, bookTitle].forEach {
+        [bookBackgroundImg, bookCoverImg, bookTitle, author, introductionTitle, bookDescription].forEach {
             view.addSubview($0)
         }
     }
@@ -61,6 +76,23 @@ final class BookViewController: BaseViewController {
             $0.top.equalTo(bookCoverImg.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
         }
+        
+        author.snp.makeConstraints {
+            $0.top.equalTo(bookTitle.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
+        
+        introductionTitle.snp.makeConstraints {
+            $0.top.equalTo(bookBackgroundImg.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        bookDescription.snp.makeConstraints {
+            $0.top.equalTo(introductionTitle.snp.bottom).offset(20)
+            $0.leading.equalTo(introductionTitle.snp.leading)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     override func configureView() {
@@ -69,6 +101,8 @@ final class BookViewController: BaseViewController {
         bookBackgroundImg.kf.setImage(with: URL(string: libraryBook.titleURL))
         bookCoverImg.kf.setImage(with: URL(string: libraryBook.titleURL))
         bookTitle.text = libraryBook.title
+        author.text = libraryBook.author
+//        bookDescription.text = libraryBook.debugDescription
     }
     
     @objc private func bookMarkButtonClicked() {
