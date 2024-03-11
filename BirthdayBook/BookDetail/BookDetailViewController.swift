@@ -10,7 +10,7 @@ import Then
 import SnapKit
 import Kingfisher
 
-final class BookViewController: BaseViewController {
+final class BookDetailViewController: BaseViewController {
     
     var libraryBook: Doc!
     

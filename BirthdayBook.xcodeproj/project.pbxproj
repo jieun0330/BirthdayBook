@@ -34,7 +34,7 @@
 		C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546052B99B86D001A391B /* DateFormatManager.swift */; };
 		C29546092B99BBF9001A391B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546082B99BBF9001A391B /* Colors.swift */; };
 		C29BDAC82B9EEE03007898E3 /* NaverBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAC72B9EEE03007898E3 /* NaverBook.swift */; };
-		C29BDACB2B9F0AB2007898E3 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDACA2B9F0AB2007898E3 /* BookViewController.swift */; };
+		C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */; };
 		C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDACC2B9F135B007898E3 /* Fonts.swift */; };
 		C29BDAD02B9F18CF007898E3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C29BDACF2B9F18CF007898E3 /* Realm */; };
 		C29BDAD22B9F18CF007898E3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C29BDAD12B9F18CF007898E3 /* RealmSwift */; };
@@ -63,7 +63,7 @@
 		C29546052B99B86D001A391B /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
 		C29546082B99BBF9001A391B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C29BDAC72B9EEE03007898E3 /* NaverBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverBook.swift; sourceTree = "<group>"; };
-		C29BDACA2B9F0AB2007898E3 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C29BDACC2B9F135B007898E3 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +125,7 @@
 		C29545D72B998395001A391B /* BirthdayBook */ = {
 			isa = PBXGroup;
 			children = (
+				C29BDAD32B9F190A007898E3 /* BookMark */,
 				C27E06412B9C860D003EC2D5 /* Network */,
 				C27E063E2B9C8215003EC2D5 /* Observable */,
 				C29546072B99BBF3001A391B /* DesignSystem */,
@@ -132,7 +133,7 @@
 				C29545FF2B99AE66001A391B /* Extension */,
 				C29545F12B999A56001A391B /* Base */,
 				C29545F02B999A4B001A391B /* Calendar */,
-				C29BDAC92B9F0AA8007898E3 /* Book */,
+				C29BDAC92B9F0AA8007898E3 /* BookDetail */,
 				C29545D82B998395001A391B /* AppDelegate.swift */,
 				C29545DA2B998395001A391B /* SceneDelegate.swift */,
 				C29545E12B998398001A391B /* Assets.xcassets */,
@@ -189,12 +190,19 @@
 			path = DesignSystem;
 			sourceTree = "<group>";
 		};
-		C29BDAC92B9F0AA8007898E3 /* Book */ = {
+		C29BDAC92B9F0AA8007898E3 /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C29BDACA2B9F0AB2007898E3 /* BookViewController.swift */,
+				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
 			);
-			path = Book;
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
+		C29BDAD32B9F190A007898E3 /* BookMark */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BookMark;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +310,7 @@
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
 				C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
-				C29BDACB2B9F0AB2007898E3 /* BookViewController.swift in Sources */,
+				C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,
 				C29BDAC82B9EEE03007898E3 /* NaverBook.swift in Sources */,

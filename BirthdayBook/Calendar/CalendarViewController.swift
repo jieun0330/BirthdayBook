@@ -236,7 +236,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = BookViewController()
+        let vc = BookDetailViewController()
         navigationController?.pushViewController(vc, animated: true)
         vc.libraryBook = libraryBook[indexPath.item]
 //        let nav = UINavigationController(rootViewController: vc)
