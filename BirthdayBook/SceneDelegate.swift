@@ -21,12 +21,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBarController
         
         let calendarView = UINavigationController(rootViewController: CalendarViewController())
-        let bookView = UINavigationController(rootViewController: BookDetailViewController())
-        tabBarController.setViewControllers([calendarView], animated: false)
+        let bookDetailView = UINavigationController(rootViewController: BookDetailViewController())
+        let bookmarkView = UINavigationController(rootViewController: BookmarkViewController())
+        tabBarController.setViewControllers([calendarView, bookmarkView], animated: false)
         
         calendarView.tabBarItem = UITabBarItem(title: "홈",
                                                image: UIImage(systemName: "birthday.cake"),
                                                selectedImage: UIImage(systemName: "birthday.cake.fill"))
+        
+        bookmarkView.tabBarItem = UITabBarItem(title: "북마크",
+                                               image: .bookmarkIconInactive,
+                                               selectedImage: .bookmarkIcon)
+        
         window?.makeKeyAndVisible()
         
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.

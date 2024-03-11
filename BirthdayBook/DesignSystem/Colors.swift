@@ -10,6 +10,7 @@ import UIKit
 enum DesignSystemColor {
     case pink
     case red
+    case random
 }
 
 extension DesignSystemColor {
@@ -19,6 +20,8 @@ extension DesignSystemColor {
             return .init(red: 243, green: 193, blue: 200)
         case .red:
             return .init(red: 192, green: 50, blue: 60)
+        case .random:
+            return .init(red: .random(in: 0...255), green: .random(in: 0...255), blue: .random(in: 0...255))
         }
     }
 }

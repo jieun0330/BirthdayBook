@@ -15,15 +15,13 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     var libraryBook: [Doc] = []
-//    var naverBook: [Item] = []
     
-    private lazy var leftBarButtonItem = UIBarButtonItem(image: .logo,
+    private lazy var logo = UIBarButtonItem(image: .logo,
                                                          style: .plain,
                                                          target: self,
                                                          action: #selector(leftBarButtonItemClicked)).then {_ in
-//        $0.layer?.borderColor = UIColor.brown.cgColor
-//        $0.layer?.borderWidth = 1
     }
+    
     
     private let background = UIView().then {
         $0.backgroundColor = DesignSystemColor.pink.color
@@ -114,7 +112,7 @@ final class CalendarViewController: BaseViewController {
     override func configureView() {
         view.setBackgroundColor()
         setCalendarUI()
-        navigationItem.leftBarButtonItem = leftBarButtonItem
+        navigationItem.leftBarButtonItem = logo
     }
     
     @objc func leftBarButtonItemClicked() {
