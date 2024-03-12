@@ -67,7 +67,7 @@ final class APIManager {
 //            }
 //        }
     
-    func daumBookcallRequest() {
+    func aladinBookcallRequest() {
         
         
         

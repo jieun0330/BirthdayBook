@@ -261,7 +261,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         vc.libraryBook = libraryBook[indexPath.item]
         
         // 1. didSelect했을 때 해당 책 이름으로 네이버 api를 쏜다
-//        print("title", libraryBook[indexPath.item].title)
+        print("title", libraryBook[indexPath.item].title)
 //        let test = libraryBook[indexPath.item].title
 //        APIManager.shared.naverRequest(text: test) { data in
 //            if !data.items.isEmpty {
@@ -274,6 +274,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         // 2. 책 이름으로 검색하면 안나오니까 ISBN으로 검색해야 한다
         // 네이버는 입력값에 ISBN이 없어서 카카오로 바꿔야 할 것 같다
         // query랑 isbn 둘중 하나만 맞으면 으로 해 야되나 
+        // 가 아니라 알라딘으로 써야함 ^ㅡ^
         print("isbn", libraryBook[indexPath.item].eaIsbn)
         
         
