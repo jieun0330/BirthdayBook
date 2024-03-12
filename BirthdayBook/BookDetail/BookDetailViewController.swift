@@ -14,7 +14,10 @@ import RealmSwift
 final class BookDetailViewController: BaseViewController {
     
     var libraryBook: Doc!
+    
     private let repository = BookRepository()
+    private let viewModel = CalendarViewModel()
+    private var bookDescriptionFromNaver: [Item] = []
     
     private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),
                                                       style: .plain,
@@ -44,14 +47,14 @@ final class BookDetailViewController: BaseViewController {
         $0.text = "책 소개"
     }
     
-    private let bookDescription = UITextView().then {
+    let bookDescription = UITextView().then {
         $0.layer.borderColor = UIColor.brown.cgColor
         $0.layer.borderWidth = 1
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     override func configureHierarchy() {
@@ -102,9 +105,9 @@ final class BookDetailViewController: BaseViewController {
         view.setBackgroundColor()
         bookBackgroundImg.kf.setImage(with: URL(string: libraryBook.titleURL))
         bookCoverImg.kf.setImage(with: URL(string: libraryBook.titleURL))
-        bookTitle.text = libraryBook.title
+        bookTitle.text = libraryBook.title        
         author.text = libraryBook.author
-//        bookDescription.text = libraryBook.debugDescription
+
     }
     
     @objc private func bookMarkButtonClicked() {

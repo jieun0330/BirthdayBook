@@ -27,7 +27,7 @@ final class APIManager {
             .responseDecodable(of: LibraryBook.self) { response in
                 switch response.result {
                 case .success(let success):
-                    print(success)
+                    print("success")
                     
                     // 이미지가 있을 경우
                     for image in success.docs {
@@ -38,30 +38,40 @@ final class APIManager {
                     completionHandler(self.emptyArray)
                     
                 case .failure(let failure):
-                    dump(failure)
+                    print(failure)
                 }
             }
     }
     
-    //    func naverRequest(query: String, completionHandler: @escaping ([Item]) -> Void) {
-    //
-    //        let header: HTTPHeaders = [
-    //            "X-Naver-Client-Id": APIKey.naverClientID,
-    //            "X-Naver-Client-Secret": APIKey.naverSecret
-    //        ]
-    //
-    //        let url = "https://openapi.naver.com/v1/search/book?query=\(query)&display=100&start=1"
-    //
-    //        AF
-    //            .request(url, headers: header)
-    //            .responseDecodable(of: [Item].self) { response in
-    //            switch response.result {
-    //            case .success(let success):
-    //                print(success)
-    //                completionHandler(success)
-    //            case .failure(let failure):
-    //                print(failure)
-    //            }
-    //        }
-    //    }
+//        func naverRequest(text: String, completionHandler: @escaping (NaverBook) -> Void) {
+//            
+//            let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+//            
+//            let header: HTTPHeaders = [
+//                "X-Naver-Client-Id": APIKey.naverClientID,
+//                "X-Naver-Client-Secret": APIKey.naverSecret
+//            ]
+//    
+//            let url = "https://openapi.naver.com/v1/search/book?query=\(query)&display=100&start=1"
+//    
+//            AF
+//                .request(url, headers: header)
+//                .responseDecodable(of: NaverBook.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    print("success")
+//                    completionHandler(success)
+//                case .failure(let failure):
+//                    dump(failure)
+//                }
+//            }
+//        }
+    
+    func daumBookcallRequest() {
+        
+        
+        
+    }
+    
+    
 }

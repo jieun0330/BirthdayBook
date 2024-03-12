@@ -40,7 +40,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         coverImage.snp.makeConstraints {
             $0.top.equalTo(contentView).offset(5)
             $0.horizontalEdges.equalTo(contentView).inset(5)
-            $0.height.equalTo(350)
+            $0.height.equalTo(345)
         }
         
         bookTitle.snp.makeConstraints {

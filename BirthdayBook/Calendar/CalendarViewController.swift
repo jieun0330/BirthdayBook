@@ -14,8 +14,9 @@ import Kingfisher
 final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
-    var libraryBook: [Doc] = []
-    
+    private var libraryBook: [Doc] = []
+    private var naverBook: [Item] = []
+
     private lazy var logo = UIBarButtonItem(image: .logo,
                                             style: .plain,
                                             target: self,
@@ -52,6 +53,12 @@ final class CalendarViewController: BaseViewController {
         $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
     }
     
+//    private let indicatorView = UIActivityIndicatorView().then {
+//        $0.hidesWhenStopped = false
+//        $0.startAnimating()
+//        $0.backgroundColor = DesignSystemColor.pink.color
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,10 +67,22 @@ final class CalendarViewController: BaseViewController {
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: Date())
         birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
         
-        viewModel.outputLibraryBookAPIResult.bind { data in
-            self.libraryBook = data
-            self.collectionView.reloadData()
-        }
+//        DispatchQueue.main.async {
+            viewModel.outputLibraryBookAPIResult.bind { data in
+                self.libraryBook = data
+                self.collectionView.reloadData()
+//                self.indicatorView.stopAnimating()
+//                self.indicatorView.isHidden = true
+            }
+        
+//        viewModel.outputNaverAPIResult.bind { data in
+//            self.naverBook = data
+//            print("data", data)
+//        }
+        
+
+        
+//        self.view.bringSubviewToFront(self.indicatorView)
     }
     
     override func configureHierarchy() {
@@ -73,6 +92,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configureConstraints() {
+
         calendar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(5)
             $0.horizontalEdges.equalToSuperview().inset(10)
@@ -101,6 +121,13 @@ final class CalendarViewController: BaseViewController {
             $0.height.equalTo(300)
             $0.horizontalEdges.equalToSuperview()
         }
+        
+//        indicatorView.snp.makeConstraints {
+//            $0.top.equalTo(calendar.snp.bottom)
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+//            $0.horizontalEdges.equalToSuperview()
+//        }
+        
     }
     
     override func configureView() {
@@ -109,7 +136,7 @@ final class CalendarViewController: BaseViewController {
         navigationItem.leftBarButtonItem = logo
     }
     
-    @objc func leftBarButtonItemClicked() {
+    @objc private func leftBarButtonItemClicked() {
         
     }
     
@@ -197,6 +224,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
+//        self.indicatorView.startAnimating()
         APIManager.shared.emptyArray.removeAll()
         let stringDate = DateFormatManager.shared.calenderString(date: date)
         viewModel.inputDate.value = stringDate
@@ -218,7 +246,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
         let libraryData = self.libraryBook[indexPath.item]
-        cell.coverImage.kf.setImage(with: URL(string: libraryData.titleURL), placeholder: UIImage(named: "placeholder"))
+        cell.coverImage.kf.setImage(with: URL(string: libraryData.titleURL))
+//        , placeholder: UIImage(named: "placeholder")
         cell.author.text = libraryData.author
         cell.bookTitle.text = libraryData.title
         
@@ -228,6 +257,26 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = BookDetailViewController()
         navigationController?.pushViewController(vc, animated: true)
+
         vc.libraryBook = libraryBook[indexPath.item]
+        
+        // 1. didSelect했을 때 해당 책 이름으로 네이버 api를 쏜다
+//        print("title", libraryBook[indexPath.item].title)
+//        let test = libraryBook[indexPath.item].title
+//        APIManager.shared.naverRequest(text: test) { data in
+//            if !data.items.isEmpty {
+//                vc.bookDescription.text = data.items[0].description
+//
+//            } 
+//            
+//        }
+        
+        // 2. 책 이름으로 검색하면 안나오니까 ISBN으로 검색해야 한다
+        // 네이버는 입력값에 ISBN이 없어서 카카오로 바꿔야 할 것 같다
+        // query랑 isbn 둘중 하나만 맞으면 으로 해 야되나 
+        print("isbn", libraryBook[indexPath.item].eaIsbn)
+        
+        
+
     }
 }
