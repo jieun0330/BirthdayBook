@@ -27,7 +27,7 @@ final class APIManager {
             .responseDecodable(of: LibraryBook.self) { response in
                 switch response.result {
                 case .success(let success):
-                    print("success")
+                    print(success)
                     
                     // 이미지가 있을 경우
                     for image in success.docs {

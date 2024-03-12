@@ -196,6 +196,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        APIManager.shared.emptyArray.removeAll()
         let stringDate = DateFormatManager.shared.calenderString(date: date)
         viewModel.inputDate.value = stringDate
         
