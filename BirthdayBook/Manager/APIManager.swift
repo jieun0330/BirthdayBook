@@ -14,9 +14,9 @@ final class APIManager {
     
     private init() { }
     
-    var emptyArray: [String] = []
+    var emptyArray: [Doc] = []
     
-    func callRequest(date: String, completionHandler: @escaping (LibraryBook) -> Void) {
+    func callRequest(date: String, completionHandler: @escaping ([Doc]) -> Void) {
         
         let key = APIKey.libraryKey
         
@@ -30,18 +30,12 @@ final class APIManager {
                     print("success")
                     
                     // 이미지가 있을 경우
-//                    for i in success.docs {
-//                        if i.titleURL.count != 0 {
-//                            self.emptyArray.append(i.titleURL)
-//                            print("self.emptyArray", self.emptyArray)
-//                            if self.emptyArray.count == 10 {
-//                                break
-//                            }
-//                            print("self.emptyArray", self.emptyArray)
-//                        }
-//                    }
-                    
-                    completionHandler(success)
+                    for image in success.docs {
+                        if image.titleURL.count != 0 {
+                            self.emptyArray.append(image)
+                        }
+                    }
+                    completionHandler(self.emptyArray)
                     
                 case .failure(let failure):
                     dump(failure)

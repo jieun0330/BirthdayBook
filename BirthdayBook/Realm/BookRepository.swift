@@ -30,4 +30,10 @@ final class BookRepository {
         return Array(result)
     }
     
+    func fetchItemTitle(bookTitle: String) -> Results<BookRealm> {
+        return realm.objects(BookRealm.self).where {
+            $0.bookTitle == bookTitle
+        }
+    }
+    
 }

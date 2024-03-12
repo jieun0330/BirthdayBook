@@ -17,9 +17,9 @@ final class CalendarViewController: BaseViewController {
     var libraryBook: [Doc] = []
     
     private lazy var logo = UIBarButtonItem(image: .logo,
-                                                         style: .plain,
-                                                         target: self,
-                                                         action: #selector(leftBarButtonItemClicked)).then {_ in
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(leftBarButtonItemClicked)).then {_ in
     }
     
     
@@ -64,11 +64,6 @@ final class CalendarViewController: BaseViewController {
             self.libraryBook = data
             self.collectionView.reloadData()
         }
-        
-        //        viewModel.outputNaverBookAPIResult.bind { data in
-        //            self.naverBook = data
-        //            print("data", data)
-        //        }
     }
     
     override func configureHierarchy() {
@@ -99,7 +94,6 @@ final class CalendarViewController: BaseViewController {
             $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
-//            $0.height.equalTo(400)
         }
         
         background.snp.makeConstraints {
@@ -221,14 +215,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
-        if !self.libraryBook.isEmpty {
-            let libraryData = self.libraryBook[indexPath.item]
-            //            let naverData = self.naverBook[indexPath.item]
-            //            print("naverData", naverData)
-            cell.coverImage.kf.setImage(with: URL(string: libraryData.titleURL), placeholder: UIImage(named: "placeholder"))
-            cell.author.text = libraryData.author
-            cell.bookTitle.text = libraryData.title
-        }
+        let libraryData = self.libraryBook[indexPath.item]
+        cell.coverImage.kf.setImage(with: URL(string: libraryData.titleURL), placeholder: UIImage(named: "placeholder"))
+        cell.author.text = libraryData.author
+        cell.bookTitle.text = libraryData.title
         
         return cell
     }
@@ -237,8 +227,5 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let vc = BookDetailViewController()
         navigationController?.pushViewController(vc, animated: true)
         vc.libraryBook = libraryBook[indexPath.item]
-//        let nav = UINavigationController(rootViewController: vc)
-//        present(nav, animated: true)
     }
-
 }

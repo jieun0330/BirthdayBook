@@ -10,7 +10,7 @@ import SnapKit
 
 final class BookmarkCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    private let bookTitle = UILabel()
+    let bookTitle = UILabel()
     
     override init(frame: CGRect) {
         super .init(frame: frame)

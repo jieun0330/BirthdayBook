@@ -12,6 +12,7 @@ import Then
 final class BookmarkViewController: BaseViewController {
     
     private let repository = BookRepository()
+    private var bookRealm: BookRealm!
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: BookmarkViewController.configureCollectionViewLayout()).then {
         $0.delegate = self
@@ -66,6 +67,7 @@ final class BookmarkViewController: BaseViewController {
 
 extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        print("repository", repository.fetchAllItem())
         return repository.fetchAllItem().count
     }
     
@@ -74,12 +76,22 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         
         cell.layer.cornerRadius = 15
         cell.backgroundColor = DesignSystemColor.random.color
+        
+        
+        
+//        print("test", repository.fetchItemTitle(bookTitle: "지은"))
+//        print("test", bookRealm.bookTitle) // nil
+        
+//        let bookTitle = repository.fetchItemTitle(bookTitle: bookRealm.bookTitle)
+//        cell.bookTitle.text = bookTitle
+//        print("bookTitle", bookTitle)
 
         return cell
     }
     
     
 }
+
 
 
 

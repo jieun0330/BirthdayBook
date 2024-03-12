@@ -12,19 +12,11 @@ final class CalendarViewModel {
     var inputDate = Observable("")
     
     var outputLibraryBookAPIResult: Observable<[Doc]> = Observable([])
-//    var outputNaverBookAPIResult: Observable<[Item]> = Observable([])
     
     init() {
         self.inputDate.bind { value in
             APIManager.shared.callRequest(date: value) { data in
-                self.outputLibraryBookAPIResult.value = data.docs
-                
-//                print("data", data.docs[0].title)
-                
-//                APIManager.shared.naverRequest(query: data.docs[0].title) { naverData in
-//                    self.outputNaverBookAPIResult.value = naverData
-//                    print("naverData", naverData)
-//                }
+                self.outputLibraryBookAPIResult.value = data
             }
         }
     }
