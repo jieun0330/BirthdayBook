@@ -10,10 +10,10 @@ import Foundation
 final class CalendarViewModel {
     
     var inputDate = Observable("")
-    var inputBookTitle = Observable("")
+    var inputISBN = Observable("")
     
     var outputLibraryBookAPIResult: Observable<[Doc]> = Observable([])
-    var outputNaverAPIResult: Observable<Item>!
+    var outputAladinAPIResult: Observable<[Item]> = Observable([])
     
     init() {
         self.inputDate.bind { value in
@@ -22,12 +22,10 @@ final class CalendarViewModel {
             }
         }
         
-//        inputBookTitle.bind { bookTitle in
-//            print("bookTitle", bookTitle)
-//            APIManager.shared.naverRequest(query: bookTitle) { data in
-//                print("data", data)
-//            }
-//        }
-        
+        self.inputISBN.bind { ISBN in
+            APIManager.shared.aladinBookcallRequest(isbn: ISBN) { data in
+                self.outputAladinAPIResult.value = data.item
+            }
+        }
     }
 }

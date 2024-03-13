@@ -24,7 +24,7 @@ final class APIManager {
         
         AF
             .request(url)
-            .responseDecodable(of: LibraryBook.self) { response in
+            .responseDecodable(of: NationalLibrary.self) { response in
                 switch response.result {
                 case .success(let success):
                     print("success")
@@ -43,35 +43,21 @@ final class APIManager {
             }
     }
     
-//        func naverRequest(text: String, completionHandler: @escaping (NaverBook) -> Void) {
-//            
-//            let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-//            
-//            let header: HTTPHeaders = [
-//                "X-Naver-Client-Id": APIKey.naverClientID,
-//                "X-Naver-Client-Secret": APIKey.naverSecret
-//            ]
-//    
-//            let url = "https://openapi.naver.com/v1/search/book?query=\(query)&display=100&start=1"
-//    
-//            AF
-//                .request(url, headers: header)
-//                .responseDecodable(of: NaverBook.self) { response in
-//                switch response.result {
-//                case .success(let success):
-//                    print("success")
-//                    completionHandler(success)
-//                case .failure(let failure):
-//                    dump(failure)
-//                }
-//            }
-//        }
-    
-    func aladinBookcallRequest() {
+    func aladinBookcallRequest(isbn: String, completionHandler: @escaping (Aladin) -> Void) {
         
+        let apiKey = APIKey.aladinKey
+        let url = "https://www.aladin.co.kr/ttb/api/ItemLookUp.aspx?ttbkey=\(apiKey)&ItemIdType=ISBN13&ItemId=\(isbn)&Output=js&Version=20131101&OptResult=ebookList,usedList,reviewList.js"
         
-        
+        AF
+            .request(url)
+            .responseDecodable(of: Aladin.self) { response in
+                switch response.result {
+                case .success(let success):
+                    print(success)
+                    completionHandler(success)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
     }
-    
-    
 }

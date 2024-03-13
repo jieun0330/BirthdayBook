@@ -47,9 +47,9 @@ final class BookDetailViewController: BaseViewController {
         $0.text = "책 소개"
     }
     
-    let bookDescription = UITextView().then {
-        $0.layer.borderColor = UIColor.brown.cgColor
-        $0.layer.borderWidth = 1
+    let bookDescription = UITextView().then {_ in
+//        $0.layer.borderColor = UIColor.brown.cgColor
+//        $0.layer.borderWidth = 1
     }
     
     override func viewDidLoad() {
@@ -116,5 +116,4 @@ final class BookDetailViewController: BaseViewController {
         
         repository.createRealm(bookRealm)
     }
-    
 }

@@ -14,7 +14,7 @@
 		C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E063A2B9C75FD003EC2D5 /* APIKey.swift */; };
 		C27E063D2B9C81D1003EC2D5 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */; };
 		C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E063F2B9C8223003EC2D5 /* Observable.swift */; };
-		C27E06432B9C861A003EC2D5 /* LibraryBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E06422B9C861A003EC2D5 /* LibraryBook.swift */; };
+		C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */; };
 		C27E06462B9C8BBD003EC2D5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C27E06452B9C8BBD003EC2D5 /* Alamofire */; };
 		C27E06482B9C8BBD003EC2D5 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C27E06472B9C8BBD003EC2D5 /* AlamofireDynamic */; };
 		C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C27E064A2B9D55C3003EC2D5 /* Kingfisher */; };
@@ -44,6 +44,7 @@
 		C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADB2B9F28E9007898E3 /* BookRealm.swift */; };
 		C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADD2B9F297B007898E3 /* BookRepository.swift */; };
 		C29BDAE52BA0305E007898E3 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE42BA0305E007898E3 /* BookDetailViewModel.swift */; };
+		C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE62BA07DDA007898E3 /* Aladin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +55,7 @@
 		C27E063A2B9C75FD003EC2D5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		C27E063F2B9C8223003EC2D5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		C27E06422B9C861A003EC2D5 /* LibraryBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBook.swift; sourceTree = "<group>"; };
+		C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalLibrary.swift; sourceTree = "<group>"; };
 		C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C29545D52B998395001A391B /* BirthdayBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29545D82B998395001A391B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		C29BDADB2B9F28E9007898E3 /* BookRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRealm.swift; sourceTree = "<group>"; };
 		C29BDADD2B9F297B007898E3 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
 		C29BDAE42BA0305E007898E3 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		C29BDAE62BA07DDA007898E3 /* Aladin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aladin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +112,9 @@
 		C27E06412B9C860D003EC2D5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				C27E06422B9C861A003EC2D5 /* LibraryBook.swift */,
+				C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */,
 				C29BDAC72B9EEE03007898E3 /* NaverBook.swift */,
+				C29BDAE62BA07DDA007898E3 /* Aladin.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -335,7 +338,8 @@
 				C29545D92B998395001A391B /* AppDelegate.swift in Sources */,
 				C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */,
 				C29546092B99BBF9001A391B /* Colors.swift in Sources */,
-				C27E06432B9C861A003EC2D5 /* LibraryBook.swift in Sources */,
+				C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */,
+				C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */,
 				C29546012B99AE76001A391B /* UIViewController+Extension.swift in Sources */,
 				C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */,
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
