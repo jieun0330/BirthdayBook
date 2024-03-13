@@ -35,7 +35,7 @@ final class BookDetailViewController: BaseViewController {
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.5
     }
-
+    
     private let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.bookTitle.font
         $0.textColor = DesignSystemColor.red.color
@@ -51,13 +51,13 @@ final class BookDetailViewController: BaseViewController {
     }
     
     let bookDescription = UITextView().then {_ in
-//        $0.layer.borderColor = UIColor.brown.cgColor
-//        $0.layer.borderWidth = 1
+        //        $0.layer.borderColor = UIColor.brown.cgColor
+        //        $0.layer.borderWidth = 1
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
@@ -84,7 +84,7 @@ final class BookDetailViewController: BaseViewController {
             $0.top.equalTo(bookCoverImg.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
         }
-
+        
         author.snp.makeConstraints {
             $0.top.equalTo(bookTitle.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
@@ -108,14 +108,31 @@ final class BookDetailViewController: BaseViewController {
         view.setBackgroundColor()
         bookBackgroundImg.kf.setImage(with: URL(string: libraryBook.titleURL))
         bookCoverImg.kf.setImage(with: URL(string: libraryBook.titleURL))
-        bookTitle.text = libraryBook.title        
+        bookTitle.text = libraryBook.title
         author.text = libraryBook.author
+        
+        // realm에 있는지 확인
+        if repository.fetchItemTitle(bookTitle: libraryBook.title).isEmpty {
+            bookMarkButton.image = .bookmarkIconInactive
+        } else {
+            bookMarkButton.image = .bookmarkIcon
+        }
+        
     }
     
     @objc private func bookMarkButtonClicked() {
+        var bookRealm = BookRealm(bookTitle: libraryBook.title)
+        var bookInRepository = repository.fetchItemTitle(bookTitle: libraryBook.title)
         
-        let bookRealm = BookRealm(bookTitle: libraryBook.title)
-        
-        repository.createRealm(bookRealm)
+        if bookInRepository.contains(where: { data in
+            repository.deleteItem(data)
+            bookMarkButton.image = .bookmarkIconInactive
+            return true
+        }) {
+            
+        } else {
+            repository.createRealm(bookRealm)
+            bookMarkButton.image = .bookmarkIcon
+        }
     }
 }

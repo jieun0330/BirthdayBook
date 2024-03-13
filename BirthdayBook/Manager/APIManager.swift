@@ -38,7 +38,7 @@ final class APIManager {
                     completionHandler(self.emptyArray)
                     
                 case .failure(let failure):
-                    print(failure)
+                    print("failure")
                 }
             }
     }
@@ -53,10 +53,10 @@ final class APIManager {
             .responseDecodable(of: Aladin.self) { response in
                 switch response.result {
                 case .success(let success):
-                    print(success)
+                    print("success")
                     completionHandler(success)
                 case .failure(let failure):
-                    print(failure)
+                    print("failure")
                 }
             }
     }
