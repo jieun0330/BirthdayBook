@@ -17,14 +17,14 @@ final class CalendarViewModel {
     
     init() {
         self.inputDate.bind { value in
-            APIManager.shared.callRequest(date: value) { data in
+            APIManager.shared.dateLibraryCall(api: .library(date: value)) { data in
                 self.outputLibraryBookAPIResult.value = data
             }
         }
         
         self.inputISBN.bind { ISBN in
-            APIManager.shared.aladinBookcallRequest(isbn: ISBN) { data in
-                self.outputAladinAPIResult.value = data.item
+            APIManager.shared.aladinBookcallRequest(api: .aladin(isbn: ISBN)) { data in
+                self.outputAladinAPIResult.value = data
             }
         }
     }

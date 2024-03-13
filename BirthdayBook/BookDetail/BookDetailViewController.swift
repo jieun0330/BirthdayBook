@@ -121,8 +121,8 @@ final class BookDetailViewController: BaseViewController {
     }
     
     @objc private func bookMarkButtonClicked() {
-        var bookRealm = BookRealm(bookTitle: libraryBook.title)
-        var bookInRepository = repository.fetchItemTitle(bookTitle: libraryBook.title)
+        let bookRealm = BookRealm(bookTitle: libraryBook.title)
+        let bookInRepository = repository.fetchItemTitle(bookTitle: libraryBook.title)
         
         if bookInRepository.contains(where: { data in
             repository.deleteItem(data)
