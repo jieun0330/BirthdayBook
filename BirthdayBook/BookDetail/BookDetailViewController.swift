@@ -31,8 +31,11 @@ final class BookDetailViewController: BaseViewController {
     
     private let bookCoverImg = UIImageView().then {
         $0.contentMode = .scaleAspectFill
+        $0.layer.shadowOffset = CGSize(width: 2, height: 2)
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.5
     }
-    
+
     private let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.bookTitle.font
         $0.textColor = DesignSystemColor.red.color
@@ -81,7 +84,7 @@ final class BookDetailViewController: BaseViewController {
             $0.top.equalTo(bookCoverImg.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
         }
-        
+
         author.snp.makeConstraints {
             $0.top.equalTo(bookTitle.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
@@ -107,7 +110,6 @@ final class BookDetailViewController: BaseViewController {
         bookCoverImg.kf.setImage(with: URL(string: libraryBook.titleURL))
         bookTitle.text = libraryBook.title        
         author.text = libraryBook.author
-
     }
     
     @objc private func bookMarkButtonClicked() {
