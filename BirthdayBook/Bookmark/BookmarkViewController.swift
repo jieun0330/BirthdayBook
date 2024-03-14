@@ -79,4 +79,10 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = repository.fetchAllItem()
+        
+    }
 }

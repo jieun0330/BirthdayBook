@@ -67,7 +67,7 @@ final class CalendarViewController: BaseViewController {
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: Date())
         birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
         
-        viewModel.outputLibraryBookAPIResult.bind { data in
+        viewModel.outputNationalLibraryAPIResult.bind { data in
             self.libraryBook = data
             self.collectionView.reloadData()
         }

@@ -16,7 +16,7 @@ final class APIManager {
     
     var emptyArray: [Doc] = []
     
-    func dateLibraryCall(api: BookAPI, completionHandler: @escaping ([Doc]) -> Void) {
+    func nationalLibraryCallRequest(api: BookAPI, completionHandler: @escaping ([Doc]) -> Void) {
         
         AF
             .request(api.url)
@@ -39,21 +39,7 @@ final class APIManager {
             }
     }
     
-    func isbnLibraryCall(api: BookAPI, completionHandler: @escaping ([Doc]) -> Void) {
-        AF
-            .request(api.url)
-            .responseDecodable(of: NationalLibrary.self) { response in
-                switch response.result {
-                case .success(let success):
-                    print(success)
-                    completionHandler(success.docs)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-    }
-    
-    func aladinBookcallRequest(api: BookAPI, completionHandler: @escaping ([Item]) -> Void) {
+    func aladinCallRequest(api: BookAPI, completionHandler: @escaping ([Item]) -> Void) {
         
         AF
             .request(api.url)
