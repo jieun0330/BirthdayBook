@@ -15,7 +15,6 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     private var libraryBook: [Doc] = []
-    private var aladinBook: Aladin!
     
     private lazy var logo = UIBarButtonItem(image: .logo,
                                             style: .plain,
@@ -242,16 +241,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = BookDetailViewController()
-        navigationController?.pushViewController(vc, animated: true)
         
+        let vc = BookDetailViewController()
         vc.libraryBook = libraryBook[indexPath.item]
         
-        // ISBN으로 알라딘 API 검색
-        viewModel.inputISBN.value = libraryBook[indexPath.item].eaIsbn
-        
-        viewModel.outputAladinAPIResult.bind { data in
-            vc.bookDescription.text = data.first?.description
-        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

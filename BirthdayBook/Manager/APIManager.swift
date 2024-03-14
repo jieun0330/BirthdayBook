@@ -39,7 +39,7 @@ final class APIManager {
             }
     }
     
-    func aladinCallRequest(api: BookAPI, completionHandler: @escaping ([Item]) -> Void) {
+    func aladinCallRequest(api: BookAPI, completionHandler: @escaping (Aladin) -> Void) {
         
         AF
             .request(api.url)
@@ -47,7 +47,7 @@ final class APIManager {
                 switch response.result {
                 case .success(let success):
                     print("success")
-                    completionHandler(success.item)
+                    completionHandler(success)
                 case .failure(let failure):
                     print(failure)
                 }

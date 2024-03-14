@@ -33,7 +33,6 @@
 		C29546012B99AE76001A391B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546002B99AE76001A391B /* UIViewController+Extension.swift */; };
 		C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546052B99B86D001A391B /* DateFormatManager.swift */; };
 		C29546092B99BBF9001A391B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546082B99BBF9001A391B /* Colors.swift */; };
-		C29BDAC82B9EEE03007898E3 /* NaverBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAC72B9EEE03007898E3 /* NaverBook.swift */; };
 		C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */; };
 		C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDACC2B9F135B007898E3 /* Fonts.swift */; };
 		C29BDAD02B9F18CF007898E3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C29BDACF2B9F18CF007898E3 /* Realm */; };
@@ -45,6 +44,8 @@
 		C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADD2B9F297B007898E3 /* BookRepository.swift */; };
 		C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE62BA07DDA007898E3 /* Aladin.swift */; };
 		C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAEF2BA1AFE1007898E3 /* API.swift */; };
+		C29BDAF42BA30638007898E3 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAF32BA30638007898E3 /* BookmarkViewModel.swift */; };
+		C2B22ADB2BA322D200D384B9 /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22ADA2BA322D200D384B9 /* DescriptionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +70,6 @@
 		C29546002B99AE76001A391B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C29546052B99B86D001A391B /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
 		C29546082B99BBF9001A391B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		C29BDAC72B9EEE03007898E3 /* NaverBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverBook.swift; sourceTree = "<group>"; };
 		C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C29BDACC2B9F135B007898E3 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +79,8 @@
 		C29BDADD2B9F297B007898E3 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
 		C29BDAE62BA07DDA007898E3 /* Aladin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aladin.swift; sourceTree = "<group>"; };
 		C29BDAEF2BA1AFE1007898E3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C29BDAF32BA30638007898E3 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		C2B22ADA2BA322D200D384B9 /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */,
-				C29BDAC72B9EEE03007898E3 /* NaverBook.swift */,
 				C29BDAE62BA07DDA007898E3 /* Aladin.swift */,
 			);
 			path = Network;
@@ -140,6 +141,7 @@
 		C29545D72B998395001A391B /* BirthdayBook */ = {
 			isa = PBXGroup;
 			children = (
+				C2B22AD92BA322BA00D384B9 /* ViewModel */,
 				C29BDADA2B9F28E1007898E3 /* Realm */,
 				C27E06412B9C860D003EC2D5 /* Network */,
 				C27E063E2B9C8215003EC2D5 /* Observable */,
@@ -221,6 +223,7 @@
 			children = (
 				C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */,
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
+				C29BDAF32BA30638007898E3 /* BookmarkViewModel.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -232,6 +235,14 @@
 				C29BDADD2B9F297B007898E3 /* BookRepository.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		C2B22AD92BA322BA00D384B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2B22ADA2BA322D200D384B9 /* DescriptionViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +349,7 @@
 				C29545D92B998395001A391B /* AppDelegate.swift in Sources */,
 				C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */,
 				C29546092B99BBF9001A391B /* Colors.swift in Sources */,
+				C2B22ADB2BA322D200D384B9 /* DescriptionViewModel.swift in Sources */,
 				C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */,
 				C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */,
 				C29546012B99AE76001A391B /* UIViewController+Extension.swift in Sources */,
@@ -345,10 +357,10 @@
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
 				C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
+				C29BDAF42BA30638007898E3 /* BookmarkViewModel.swift in Sources */,
 				C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,
-				C29BDAC82B9EEE03007898E3 /* NaverBook.swift in Sources */,
 				C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@ import RealmSwift
 
 final class BookRepository {
     
+
     private let realm = try! Realm()
     
     // Create
@@ -17,7 +18,7 @@ final class BookRepository {
         do {
             try realm.write {
                 realm.add(data)
-                //                print(realm.configuration.fileURL)
+//                                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -32,7 +33,7 @@ final class BookRepository {
     
     func fetchItemTitle(bookTitle: String) -> Results<BookRealm> {
         return realm.objects(BookRealm.self).where {
-            $0.bookTitle == bookTitle
+            $0.title == bookTitle
         }
     }
     

@@ -23,11 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let calendarView = UINavigationController(rootViewController: CalendarViewController())
         let bookDetailView = UINavigationController(rootViewController: BookDetailViewController())
         let bookmarkView = UINavigationController(rootViewController: BookmarkViewController())
-        tabBarController.setViewControllers([calendarView, bookmarkView], animated: false)
+        tabBarController.setViewControllers([calendarView, bookDetailView, bookmarkView], animated: false)
         
         calendarView.tabBarItem = UITabBarItem(title: "홈",
                                                image: UIImage(systemName: "birthday.cake"),
                                                selectedImage: UIImage(systemName: "birthday.cake.fill"))
+        
+        bookDetailView.tabBarItem = UITabBarItem(title: "?",
+                                                 image: UIImage(systemName: "pencil"),
+                                                 selectedImage: UIImage(systemName: "pencil"))
         
         bookmarkView.tabBarItem = UITabBarItem(title: "북마크",
                                                image: .bookmarkIconInactive,

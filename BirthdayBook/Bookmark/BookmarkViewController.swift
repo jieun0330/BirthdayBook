@@ -74,15 +74,17 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         cell.backgroundColor = DesignSystemColor.random.color
         
         let repoAll = repository.fetchAllItem()
-        cell.bookTitle.text = repoAll[indexPath.item].bookTitle
-        cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].bookImgURL))
+        cell.bookTitle.text = repoAll[indexPath.item].title
+        cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].imgURL))
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let item = repository.fetchAllItem()
+        let vc = BookDetailViewController()
+        
+        
         
     }
 }

@@ -14,7 +14,7 @@ import RealmSwift
 final class BookDetailViewController: BaseViewController {
     
     private let repository = BookRepository()
-    private let viewModel = CalendarViewModel()
+    private let viewModel = DescriptionViewModel()
     var libraryBook: Doc!
     
     private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),
@@ -27,14 +27,14 @@ final class BookDetailViewController: BaseViewController {
         $0.contentMode = .scaleAspectFill
     }
     
-    private let bookCoverImg = UIImageView().then {
+    let bookCoverImg = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.layer.shadowOffset = CGSize(width: 2, height: 2)
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.5
     }
     
-    private let bookTitle = UILabel().then {
+    let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.bookTitle.font
         $0.textColor = DesignSystemColor.red.color
     }
@@ -59,6 +59,9 @@ final class BookDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.inputISBN.value = libraryBook.eaIsbn
+        
         
     }
     
@@ -108,10 +111,15 @@ final class BookDetailViewController: BaseViewController {
     override func configureView() {
         navigationItem.rightBarButtonItem = bookMarkButton
         view.setBackgroundColor()
+        
         bookBackgroundImg.kf.setImage(with: URL(string: libraryBook.titleURL))
         bookCoverImg.kf.setImage(with: URL(string: libraryBook.titleURL))
         bookTitle.text = libraryBook.title
         author.text = libraryBook.author
+        
+        viewModel.outputAladinAPIResult.bind { data in
+            self.bookDescription.text = data.first?.description
+        }
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: libraryBook.title).isEmpty {
@@ -122,7 +130,7 @@ final class BookDetailViewController: BaseViewController {
     }
     
     @objc private func bookMarkButtonClicked() {
-        let bookRealm = BookRealm(bookTitle: libraryBook.title, bookImgURL: libraryBook.titleURL)
+        let bookRealm = BookRealm(title: libraryBook.title, imgURL: libraryBook.titleURL, isbn: libraryBook.eaIsbn, bookDescription: bookDescription.text!)
         let bookInRepository = repository.fetchItemTitle(bookTitle: libraryBook.title)
         
         if bookInRepository.contains(where: { data in
