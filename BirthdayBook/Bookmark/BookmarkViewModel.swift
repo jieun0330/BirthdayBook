@@ -11,12 +11,12 @@ final class BookmarkViewModel {
     
     var inputBookISBN = Observable("")
     
-    var outputBookInfo: Observable<[Item]> = Observable([])
+    var outputBookInfo: Observable<[Doc]> = Observable([])
     
     init() {
         
         self.inputBookISBN.bind { ISBN in
-            APIManager.shared.aladinBookcallRequest(isbn: ISBN) { data in
+            APIManager.shared.isbnLibraryCall(api: .isbnLibrary(isbn: ISBN)) { data in
                 self.outputBookInfo.value = data
             }
         }

@@ -14,18 +14,18 @@ final class BookmarkViewController: BaseViewController {
     private let repository = BookRepository()
     private var bookRealm: BookRealm!
     private var viewModel = BookmarkViewModel()
-
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: BookmarkViewController.configureCollectionViewLayout()).then {
+    
+    private lazy var collectionView = UICollectionView(frame: .zero,
+                                                       collectionViewLayout: configureCollectionViewLayout()).then {
         $0.delegate = self
         $0.dataSource = self
         $0.register(BookmarkCollectionViewCell.self,
                     forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
-//        $0.backgroundColor = .green
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +50,7 @@ final class BookmarkViewController: BaseViewController {
         view.setBackgroundColor()
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let width = UIScreen.main.bounds.width - (spacing * 3)
@@ -60,10 +60,8 @@ final class BookmarkViewController: BaseViewController {
         layout.scrollDirection = .vertical
         layout.sectionInset = ConstraintInsets(top: spacing, left: 15, bottom: spacing, right: 15)
         
-                
         return layout
     }
-
 }
 
 extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -77,13 +75,10 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.cornerRadius = 15
         cell.backgroundColor = DesignSystemColor.random.color
         
-//        viewModel.inputBookISBN.value =
-
+        let repoAll = repository.fetchAllItem()
+        viewModel.inputBookISBN.value = repoAll[indexPath.item].bookTitle
+        
         return cell
     }
-    
-    
 }
-
-
 

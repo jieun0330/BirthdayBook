@@ -13,11 +13,9 @@ import RealmSwift
 
 final class BookDetailViewController: BaseViewController {
     
-    var libraryBook: Doc!
-    
     private let repository = BookRepository()
     private let viewModel = CalendarViewModel()
-    private var bookDescriptionFromNaver: [Item] = []
+    var libraryBook: Doc!
     
     private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),
                                                       style: .plain,
@@ -117,11 +115,10 @@ final class BookDetailViewController: BaseViewController {
         } else {
             bookMarkButton.image = .bookmarkIcon
         }
-        
     }
     
     @objc private func bookMarkButtonClicked() {
-        let bookRealm = BookRealm(bookTitle: libraryBook.title)
+        let bookRealm = BookRealm(bookTitle: libraryBook.title, bookImgURL: libraryBook.titleURL)
         let bookInRepository = repository.fetchItemTitle(bookTitle: libraryBook.title)
         
         if bookInRepository.contains(where: { data in

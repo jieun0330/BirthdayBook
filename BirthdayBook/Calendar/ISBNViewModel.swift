@@ -17,7 +17,7 @@ final class CalendarViewModel {
     
     init() {
         self.inputDate.bind { value in
-            APIManager.shared.dateLibraryCall(api: .library(date: value)) { data in
+            APIManager.shared.dateLibraryCall(api: .dateLibrary(date: value)) { data in
                 self.outputLibraryBookAPIResult.value = data
             }
         }
