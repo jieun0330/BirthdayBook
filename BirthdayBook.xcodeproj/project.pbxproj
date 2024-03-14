@@ -43,7 +43,6 @@
 		C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */; };
 		C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADB2B9F28E9007898E3 /* BookRealm.swift */; };
 		C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADD2B9F297B007898E3 /* BookRepository.swift */; };
-		C29BDAE52BA0305E007898E3 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE42BA0305E007898E3 /* BookDetailViewModel.swift */; };
 		C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE62BA07DDA007898E3 /* Aladin.swift */; };
 		C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAEF2BA1AFE1007898E3 /* API.swift */; };
 /* End PBXBuildFile section */
@@ -78,7 +77,6 @@
 		C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		C29BDADB2B9F28E9007898E3 /* BookRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRealm.swift; sourceTree = "<group>"; };
 		C29BDADD2B9F297B007898E3 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
-		C29BDAE42BA0305E007898E3 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		C29BDAE62BA07DDA007898E3 /* Aladin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aladin.swift; sourceTree = "<group>"; };
 		C29BDAEF2BA1AFE1007898E3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
-				C29BDAE42BA0305E007898E3 /* BookDetailViewModel.swift */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";
@@ -334,7 +331,6 @@
 				C27E063D2B9C81D1003EC2D5 /* ISBNViewModel.swift in Sources */,
 				C29BDAD52B9F19B1007898E3 /* BookmarkViewController.swift in Sources */,
 				C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */,
-				C29BDAE52BA0305E007898E3 /* BookDetailViewModel.swift in Sources */,
 				C27E06512B9D8273003EC2D5 /* BaseTableViewCell.swift in Sources */,
 				C29545F32B999A5D001A391B /* BaseViewController.swift in Sources */,
 				C29BDAD72B9F1A94007898E3 /* Images.swift in Sources */,

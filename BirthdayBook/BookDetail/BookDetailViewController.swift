@@ -46,10 +46,14 @@ final class BookDetailViewController: BaseViewController {
     
     private let introductionTitle = UILabel().then {
         $0.text = "책 소개"
+        //        $0.layer.borderColor = UIColor.brown.cgColor
+        //        $0.layer.borderWidth = 1
     }
     
-    let bookDescription = UITextView().then {_ in
-        //        $0.layer.borderColor = UIColor.brown.cgColor
+    let bookDescription = UILabel().then {
+        $0.numberOfLines = 0
+        $0.font = .systemFont(ofSize: 12)
+        //        $0.layer.borderColor = UIColor.blue.cgColor
         //        $0.layer.borderWidth = 1
     }
     
@@ -89,15 +93,15 @@ final class BookDetailViewController: BaseViewController {
         }
         
         introductionTitle.snp.makeConstraints {
-            $0.top.equalTo(bookBackgroundImg.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(30)
+            $0.top.equalTo(bookBackgroundImg.snp.bottom).offset(30)
+            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.height.equalTo(20)
         }
         
         bookDescription.snp.makeConstraints {
-            $0.top.equalTo(introductionTitle.snp.bottom).offset(20)
-            $0.leading.equalTo(introductionTitle.snp.leading)
-            $0.trailing.equalToSuperview().offset(-30)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(introductionTitle.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
     }
     
