@@ -45,7 +45,6 @@
 		C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADD2B9F297B007898E3 /* BookRepository.swift */; };
 		C29BDAE52BA0305E007898E3 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE42BA0305E007898E3 /* BookDetailViewModel.swift */; };
 		C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE62BA07DDA007898E3 /* Aladin.swift */; };
-		C29BDAEB2BA1A57D007898E3 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAEA2BA1A57D007898E3 /* BookmarkViewModel.swift */; };
 		C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAEF2BA1AFE1007898E3 /* API.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +80,6 @@
 		C29BDADD2B9F297B007898E3 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
 		C29BDAE42BA0305E007898E3 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		C29BDAE62BA07DDA007898E3 /* Aladin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aladin.swift; sourceTree = "<group>"; };
-		C29BDAEA2BA1A57D007898E3 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		C29BDAEF2BA1AFE1007898E3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,7 +224,6 @@
 			children = (
 				C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */,
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
-				C29BDAEA2BA1A57D007898E3 /* BookmarkViewModel.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -352,7 +349,6 @@
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
 				C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
-				C29BDAEB2BA1A57D007898E3 /* BookmarkViewModel.swift in Sources */,
 				C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,

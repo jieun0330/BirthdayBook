@@ -16,8 +16,9 @@ final class BookmarkCollectionViewCell: BaseCollectionViewCell, ReusableProtocol
         $0.textAlignment = .center
     }
     
-    let bookImage = UIImageView().then {_ in
-
+    let bookImage = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     override init(frame: CGRect) {
@@ -41,19 +42,17 @@ final class BookmarkCollectionViewCell: BaseCollectionViewCell, ReusableProtocol
         
         bookImage.snp.makeConstraints {
             $0.centerX.equalTo(contentView)
-            $0.top.equalTo(bookTitle.snp.bottom).offset(15)
-            $0.bottom.equalTo(contentView).offset(15)
+            $0.top.equalTo(bookTitle.snp.bottom).offset(10)
+            $0.bottom.equalTo(contentView).offset(-15)
+            $0.horizontalEdges.equalTo(contentView).inset(30)
         }
     }
     
     override func configureView() {
-
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
 }

@@ -12,8 +12,6 @@ import Then
 final class BookmarkViewController: BaseViewController {
     
     private let repository = BookRepository()
-    private var bookRealm: BookRealm!
-    private var viewModel = BookmarkViewModel()
     
     private lazy var collectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: configureCollectionViewLayout()).then {
@@ -76,9 +74,9 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         cell.backgroundColor = DesignSystemColor.random.color
         
         let repoAll = repository.fetchAllItem()
-        viewModel.inputBookISBN.value = repoAll[indexPath.item].bookTitle
+        cell.bookTitle.text = repoAll[indexPath.item].bookTitle
+        cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].bookImgURL))
         
         return cell
     }
 }
-
