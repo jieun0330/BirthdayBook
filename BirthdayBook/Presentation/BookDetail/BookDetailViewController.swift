@@ -14,7 +14,7 @@ import RealmSwift
 final class BookDetailViewController: BaseViewController {
     
     private let repository = BookRepository()
-    private let viewModel = DescriptionViewModel()
+    private let viewModel = BookDetailViewModel()
     var libraryBook: Doc!
     
     private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),

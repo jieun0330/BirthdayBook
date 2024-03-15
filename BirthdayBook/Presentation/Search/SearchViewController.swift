@@ -10,9 +10,12 @@ import Then
 import SnapKit
 
 final class SearchViewController: BaseViewController {
+    
+    private let viewModel = SearchViewModel()
 
-    private let searchBar = UISearchBar().then {
+    private lazy var searchBar = UISearchBar().then {
         $0.placeholder = "책 검색"
+        $0.delegate = self
     }
     
     private lazy var tableView = UITableView().then {
@@ -59,11 +62,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
                                                  for: indexPath) as! SearchTableViewCell
-                
+        
+        cell.selectionStyle = .none
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.inputBookTitle.value = searchBar.text ?? ""
     }
 }

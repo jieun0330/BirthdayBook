@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DescriptionViewModel {
+final class BookDetailViewModel {
     
     var inputISBN = Observable("")
 

@@ -44,9 +44,10 @@
 		C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADD2B9F297B007898E3 /* BookRepository.swift */; };
 		C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE62BA07DDA007898E3 /* Aladin.swift */; };
 		C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAEF2BA1AFE1007898E3 /* API.swift */; };
-		C2B22ADB2BA322D200D384B9 /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22ADA2BA322D200D384B9 /* DescriptionViewModel.swift */; };
+		C2B22ADB2BA322D200D384B9 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22ADA2BA322D200D384B9 /* BookDetailViewModel.swift */; };
 		C2B22AE32BA41D7B00D384B9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE22BA41D7B00D384B9 /* SearchViewController.swift */; };
 		C2B22AE52BA4217000D384B9 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */; };
+		C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,9 +81,10 @@
 		C29BDADD2B9F297B007898E3 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
 		C29BDAE62BA07DDA007898E3 /* Aladin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aladin.swift; sourceTree = "<group>"; };
 		C29BDAEF2BA1AFE1007898E3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		C2B22ADA2BA322D200D384B9 /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
+		C2B22ADA2BA322D200D384B9 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		C2B22AE22BA41D7B00D384B9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +163,7 @@
 			children = (
 				C29545EE2B999A2D001A391B /* CalendarViewController.swift */,
 				C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */,
-				C2B22ADE2BA41D2200D384B9 /* ViewModel */,
+				C2B22AE92BA4365100D384B9 /* ViewModel */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
+				C2B22AE82BA4362300D384B9 /* ViewModel */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";
@@ -230,14 +233,6 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
-		C2B22AD92BA322BA00D384B9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C2B22ADA2BA322D200D384B9 /* DescriptionViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		C2B22ADC2BA3D0A100D384B9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,7 +242,6 @@
 				C29BDAD32B9F190A007898E3 /* Bookmark */,
 				C29545F12B999A56001A391B /* Base */,
 				C29545FF2B99AE66001A391B /* Extension */,
-				C2B22AD92BA322BA00D384B9 /* ViewModel */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -260,14 +254,6 @@
 				C29BDADA2B9F28E1007898E3 /* Realm */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		C2B22ADE2BA41D2200D384B9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C2B22AE02BA41D4500D384B9 /* ETC */ = {
@@ -284,8 +270,33 @@
 			children = (
 				C2B22AE22BA41D7B00D384B9 /* SearchViewController.swift */,
 				C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */,
+				C2B22AEA2BA4365B00D384B9 /* ViewModel */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		C2B22AE82BA4362300D384B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2B22ADA2BA322D200D384B9 /* BookDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C2B22AE92BA4365100D384B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C2B22AEA2BA4365B00D384B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,9 +404,10 @@
 				C29545D92B998395001A391B /* AppDelegate.swift in Sources */,
 				C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */,
 				C29546092B99BBF9001A391B /* Colors.swift in Sources */,
-				C2B22ADB2BA322D200D384B9 /* DescriptionViewModel.swift in Sources */,
+				C2B22ADB2BA322D200D384B9 /* BookDetailViewModel.swift in Sources */,
 				C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */,
 				C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */,
+				C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */,
 				C29546012B99AE76001A391B /* UIViewController+Extension.swift in Sources */,
 				C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */,
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
