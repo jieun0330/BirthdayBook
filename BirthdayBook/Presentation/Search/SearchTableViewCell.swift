@@ -11,7 +11,7 @@ import SnapKit
 
 final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    private let bookImage = UIImageView().then {
+    let bookImage = UIImageView().then {
         $0.backgroundColor = .green
     }
     
@@ -21,8 +21,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.alignment = .leading
     }
     
-    private let title = UILabel().then {
-        $0.text = "이처럼 사소한 것들"
+    let title = UILabel().then {
         $0.font = DesignSystemFont.author.font
     }
     
@@ -74,7 +73,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.centerY.equalTo(contentView)
             $0.verticalEdges.equalTo(contentView).inset(40)
             $0.leading.equalTo(contentView).offset(30)
-            $0.size.equalTo(80)
+            $0.width.equalTo(80)
         }
         
         bookInfoStackView.snp.makeConstraints {

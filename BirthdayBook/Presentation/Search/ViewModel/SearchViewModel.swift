@@ -11,11 +11,14 @@ final class SearchViewModel {
     
     var inputBookTitle = Observable("")
     
-    var outputNationalLibraryAPIResult = ""
+    var outputNationalLibraryAPIResult: Observable<[Doc]> = Observable([])
     
     init() {
-        self.inputBookTitle.bind { <#String#> in
-            
-        }
+//        self.inputBookTitle.bind { bookTitle in
+//            APIManager.shared.nationalLibraryCallRequest(api: .titleLbirary(title: bookTitle)) { data in
+//                print("data", data)
+//                self.outputNationalLibraryAPIResult.value = data
+//            }
+//        }
     }
 }

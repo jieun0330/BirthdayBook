@@ -236,8 +236,8 @@
 		C2B22ADC2BA3D0A100D384B9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C2B22AE12BA41D6300D384B9 /* Search */,
 				C29545F02B999A4B001A391B /* Calendar */,
+				C2B22AE12BA41D6300D384B9 /* Search */,
 				C29BDAC92B9F0AA8007898E3 /* BookDetail */,
 				C29BDAD32B9F190A007898E3 /* Bookmark */,
 				C29545F12B999A56001A391B /* Base */,

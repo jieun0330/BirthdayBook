@@ -16,7 +16,7 @@ final class BookDetailViewModel {
     init() {
         self.inputISBN.bind { ISBN in
             APIManager.shared.aladinCallRequest(api: .aladin(isbn: ISBN)) { data in
-                self.outputAladinAPIResult.value = data.item
+                self.outputAladinAPIResult.value = data
             }
         }
     }

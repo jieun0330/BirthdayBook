@@ -11,12 +11,18 @@ final class CalendarViewModel {
     
     var inputDate = Observable("")
     
-    var outputNationalLibraryAPIResult: Observable<[Doc]> = Observable([])
+    var outputAladinAPIResult: Observable<[Item]> = Observable([])
     
     init() {
         self.inputDate.bind { value in
             APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) { data in
-                self.outputNationalLibraryAPIResult.value = data
+                data.forEach { isbn in
+                    APIManager.shared.aladinCallRequest(api: .aladin(isbn: isbn)) { data in
+                        for book in data {
+                            self.outputAladinAPIResult.value.append(book)
+                        }
+                    }
+                }
             }
         }
     }

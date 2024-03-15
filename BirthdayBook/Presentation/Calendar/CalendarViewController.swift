@@ -15,6 +15,7 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     private var libraryBook: [Doc] = []
+    private var aladinBook: [Item] = []
     
     private lazy var logo = UIBarButtonItem(image: .logo,
                                             style: .plain,
@@ -63,12 +64,15 @@ final class CalendarViewController: BaseViewController {
         
         let today = DateFormatManager.shared.calenderString(date: Date())
         viewModel.inputDate.value = today
+        
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: Date())
         birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
         
-        viewModel.outputNationalLibraryAPIResult.bind { data in
-            self.libraryBook = data
-            self.collectionView.reloadData()
+        viewModel.outputAladinAPIResult.bind { data in
+            if data.count > 1 {
+                self.aladinBook = data
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -210,8 +214,9 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        //        self.indicatorView.startAnimating()
-        APIManager.shared.emptyArray.removeAll()
+        APIManager.shared.bookISBNArray.removeAll()
+        viewModel.outputAladinAPIResult.value.removeAll()
+        
         let stringDate = DateFormatManager.shared.calenderString(date: date)
         viewModel.inputDate.value = stringDate
         
@@ -225,17 +230,18 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return libraryBook.count
+        return aladinBook.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
-        let libraryData = self.libraryBook[indexPath.item]
-        cell.coverImage.kf.setImage(with: URL(string: libraryData.titleURL))
-        cell.author.text = libraryData.author
-        cell.bookTitle.text = libraryData.title
-        
+        if self.aladinBook.count > 1 {
+            let aladinData = self.aladinBook[indexPath.item]
+            cell.bookTitle.text = aladinData.title
+            cell.author.text = aladinData.author
+            cell.coverImage.kf.setImage(with: URL(string: aladinData.cover))
+        }
         return cell
     }
     

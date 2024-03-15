@@ -12,6 +12,7 @@ import SnapKit
 final class SearchViewController: BaseViewController {
     
     private let viewModel = SearchViewModel()
+    private var bookAPIResult: [Doc] = []
 
     private lazy var searchBar = UISearchBar().then {
         $0.placeholder = "책 검색"
@@ -56,7 +57,7 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return bookAPIResult.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,6 +65,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! SearchTableViewCell
         
         cell.selectionStyle = .none
+        
+        let book = bookAPIResult[indexPath.item]
+        
+        if bookAPIResult.count > 10 {
+            cell.title.text = book.title
+        }
         
         return cell
     }
@@ -76,6 +83,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.inputBookTitle.value = searchBar.text ?? ""
+        
+        guard let searchBarText = searchBar.text else { return }
+        viewModel.inputBookTitle.value = searchBarText
+        
+        viewModel.outputNationalLibraryAPIResult.bind { data in
+            self.bookAPIResult = data
+            self.tableView.reloadData()
+        }
     }
 }

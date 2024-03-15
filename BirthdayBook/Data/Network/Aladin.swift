@@ -15,7 +15,6 @@ struct Aladin: Decodable {
     }
 }
 
-// MARK: - Item
 struct Item: Decodable {
     let title: String // 책 제목
     let link: String // 알라딘 링크 주소
@@ -24,9 +23,10 @@ struct Item: Decodable {
     let description: String // 책 소개
     let isbn, isbn13: String
     let priceSales, priceStandard: Int
+    let cover: String
 
     enum CodingKeys: String, CodingKey {
         case title, link, author, pubDate, description, isbn, isbn13
-        case priceSales, priceStandard
+        case priceSales, priceStandard, cover
     }
 }
