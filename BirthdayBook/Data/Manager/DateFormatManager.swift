@@ -13,17 +13,26 @@ final class DateFormatManager {
     
     private init() { }
     
+    let dateFormatter = DateFormatter()
+    
     func calenderString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMdd"
-        
         return dateFormatter.string(from: date)
     }
     
     func birthdayLabel(date: Date) -> String {
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
-        
         return dateFormatter.string(from: date)
+    }
+    
+    func stringToDate(date: String) -> String {
+        // 2021-12-15(String)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // String -> Date
+        let convertToDate = dateFormatter.date(from: date)
+        let myDateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "M월 d일"
+        return myDateFormatter.string(from: convertToDate!)
     }
 }

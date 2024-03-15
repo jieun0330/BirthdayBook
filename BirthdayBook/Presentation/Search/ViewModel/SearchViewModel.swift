@@ -11,14 +11,13 @@ final class SearchViewModel {
     
     var inputBookTitle = Observable("")
     
-    var outputNationalLibraryAPIResult: Observable<[Doc]> = Observable([])
+    var outputAladinAPIResult: Observable<[Item]> = Observable([])
     
     init() {
-//        self.inputBookTitle.bind { bookTitle in
-//            APIManager.shared.nationalLibraryCallRequest(api: .titleLbirary(title: bookTitle)) { data in
-//                print("data", data)
-//                self.outputNationalLibraryAPIResult.value = data
-//            }
-//        }
+        self.inputBookTitle.bind { bookTitle in
+            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { data in
+                self.outputAladinAPIResult.value = data
+            }
+        }
     }
 }

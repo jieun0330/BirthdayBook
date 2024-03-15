@@ -17,7 +17,7 @@ final class CalendarViewModel {
         self.inputDate.bind { value in
             APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) { data in
                 data.forEach { isbn in
-                    APIManager.shared.aladinCallRequest(api: .aladin(isbn: isbn)) { data in
+                    APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) { data in
                         for book in data {
                             self.outputAladinAPIResult.value.append(book)
                         }

@@ -12,7 +12,8 @@ import SnapKit
 final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let bookImage = UIImageView().then {
-        $0.backgroundColor = .green
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private let bookInfoStackView = UIStackView().then {
@@ -25,13 +26,12 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.author.font
     }
     
-    private let author = UILabel().then {
-        $0.text = "박지은"
+    let author = UILabel().then {
         $0.font = DesignSystemFont.author.font
     }
     
     private let price = UILabel().then {
-        $0.text = "17,000원"
+        $0.text = "가격 미정"
         $0.font = DesignSystemFont.author.font
     }
     
@@ -40,8 +40,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.layer.cornerRadius = 15
     }
     
-    private let birthdayBookLabel = UILabel().then {
-        $0.text = "3월 30일에 태어난 책이에요"
+    let birthdayBookLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 10)
     }
     
@@ -65,10 +64,10 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         [birthdayBookLabel].forEach {
             birthdayBox.addSubview($0)
         }
-        
     }
     
     override func configureConstraints() {
+        
         bookImage.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
             $0.verticalEdges.equalTo(contentView).inset(40)
@@ -83,11 +82,13 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         
         title.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
+            $0.trailing.equalTo(birthdayIcon.snp.leading).offset(-30)
         }
         
         author.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.top.equalTo(title.snp.bottom).offset(10)
+            $0.trailing.equalTo(birthdayBox.snp.leading).offset(-5)
         }
         
         price.snp.makeConstraints {

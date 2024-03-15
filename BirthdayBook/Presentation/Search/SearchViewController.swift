@@ -12,7 +12,7 @@ import SnapKit
 final class SearchViewController: BaseViewController {
     
     private let viewModel = SearchViewModel()
-    private var bookAPIResult: [Doc] = []
+    private var aladinAPIResult: [Item] = []
 
     private lazy var searchBar = UISearchBar().then {
         $0.placeholder = "책 검색"
@@ -57,7 +57,7 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookAPIResult.count
+        return aladinAPIResult.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,10 +66,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
-        let book = bookAPIResult[indexPath.item]
+        let book = aladinAPIResult[indexPath.item]
         
-        if bookAPIResult.count > 10 {
+        if aladinAPIResult.count > 1 {
             cell.title.text = book.title
+            cell.bookImage.kf.setImage(with: URL(string: book.cover))
+            cell.author.text = book.author
+            let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
+            cell.birthdayBookLabel.text = "\(date)에 태어난 책이에요"
         }
         
         return cell
@@ -87,8 +91,8 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputBookTitle.value = searchBarText
         
-        viewModel.outputNationalLibraryAPIResult.bind { data in
-            self.bookAPIResult = data
+        viewModel.outputAladinAPIResult.bind { data in
+            self.aladinAPIResult = data
             self.tableView.reloadData()
         }
     }
