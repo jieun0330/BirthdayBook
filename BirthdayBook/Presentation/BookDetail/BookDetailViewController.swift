@@ -135,7 +135,7 @@ final class BookDetailViewController: BaseViewController {
         bookBackgroundImg.kf.setImage(with: URL(string: data.imgURL))
         bookCoverImg.kf.setImage(with: URL(string: data.imgURL))
         bookTitle.text = data.title
-        author.text = data.title
+        author.text = data.author
         
         viewModel.outputAladinAPIResult.bind { item in
             self.bookDescription.text = item.first?.description
@@ -150,7 +150,12 @@ final class BookDetailViewController: BaseViewController {
     }
     
     @objc private func bookMarkButtonClicked() {
-        let bookRealm = BookRealm(title: libraryBook.title, imgURL: libraryBook.titleURL, isbn: libraryBook.eaIsbn, bookDescription: bookDescription.text!)
+        let bookRealm = BookRealm(title: libraryBook.title,
+                                  author: libraryBook.author,
+                                  imgURL: libraryBook.titleURL,
+                                  isbn: libraryBook.eaIsbn,
+                                  
+                                  bookDescription: bookDescription.text!)
         let bookInRepository = repository.fetchItemTitle(bookTitle: libraryBook.title)
         
         if bookInRepository.contains(where: { data in

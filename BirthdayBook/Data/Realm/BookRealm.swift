@@ -11,13 +11,15 @@ import RealmSwift
 final class BookRealm: Object {
     
     @Persisted(primaryKey: true)var title: String
+    @Persisted var author: String
     @Persisted var imgURL: String
     @Persisted var isbn: String
     @Persisted var bookDescription: String
     
-    convenience init(title: String, imgURL: String, isbn: String, bookDescription: String) {
+    convenience init(title: String, author: String, imgURL: String, isbn: String, bookDescription: String) {
         self.init()
         self.title = title
+        self.author = author
         self.imgURL = imgURL
         self.isbn = isbn
         self.bookDescription = bookDescription
