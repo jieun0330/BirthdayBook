@@ -29,10 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                image: UIImage(systemName: "birthday.cake"),
                                                selectedImage: UIImage(systemName: "birthday.cake.fill"))
         
-        bookDetailView.tabBarItem = UITabBarItem(title: "?",
-                                                 image: UIImage(systemName: "pencil"),
-                                                 selectedImage: UIImage(systemName: "pencil"))
-        
         bookmarkView.tabBarItem = UITabBarItem(title: "북마크",
                                                image: .bookmarkIconInactive,
                                                selectedImage: .bookmarkIcon)

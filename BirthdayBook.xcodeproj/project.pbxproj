@@ -141,17 +141,10 @@
 		C29545D72B998395001A391B /* BirthdayBook */ = {
 			isa = PBXGroup;
 			children = (
-				C2B22AD92BA322BA00D384B9 /* ViewModel */,
-				C29BDADA2B9F28E1007898E3 /* Realm */,
-				C27E06412B9C860D003EC2D5 /* Network */,
+				C2B22ADC2BA3D0A100D384B9 /* Presentation */,
+				C2B22ADD2BA3D0AA00D384B9 /* Data */,
 				C27E063E2B9C8215003EC2D5 /* Observable */,
 				C29546072B99BBF3001A391B /* DesignSystem */,
-				C29546042B99B7FE001A391B /* Manager */,
-				C29545FF2B99AE66001A391B /* Extension */,
-				C29545F12B999A56001A391B /* Base */,
-				C29545F02B999A4B001A391B /* Calendar */,
-				C29BDAC92B9F0AA8007898E3 /* BookDetail */,
-				C29BDAD32B9F190A007898E3 /* Bookmark */,
 				C29545D82B998395001A391B /* AppDelegate.swift */,
 				C29545DA2B998395001A391B /* SceneDelegate.swift */,
 				C29545E12B998398001A391B /* Assets.xcassets */,
@@ -243,6 +236,29 @@
 				C2B22ADA2BA322D200D384B9 /* DescriptionViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C2B22ADC2BA3D0A100D384B9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C29545F02B999A4B001A391B /* Calendar */,
+				C29BDAC92B9F0AA8007898E3 /* BookDetail */,
+				C29BDAD32B9F190A007898E3 /* Bookmark */,
+				C29545F12B999A56001A391B /* Base */,
+				C29545FF2B99AE66001A391B /* Extension */,
+				C2B22AD92BA322BA00D384B9 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C2B22ADD2BA3D0AA00D384B9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C29546042B99B7FE001A391B /* Manager */,
+				C27E06412B9C860D003EC2D5 /* Network */,
+				C29BDADA2B9F28E1007898E3 /* Realm */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

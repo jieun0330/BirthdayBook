@@ -60,9 +60,8 @@ final class BookDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let libraryBook else { return }
         viewModel.inputISBN.value = libraryBook.eaIsbn
-        
-        
     }
     
     override func configureHierarchy() {
@@ -111,18 +110,39 @@ final class BookDetailViewController: BaseViewController {
     override func configureView() {
         navigationItem.rightBarButtonItem = bookMarkButton
         view.setBackgroundColor()
+    }
+    
+    func configure(data: Doc) {
         
-        bookBackgroundImg.kf.setImage(with: URL(string: libraryBook.titleURL))
-        bookCoverImg.kf.setImage(with: URL(string: libraryBook.titleURL))
-        bookTitle.text = libraryBook.title
-        author.text = libraryBook.author
+        bookBackgroundImg.kf.setImage(with: URL(string: data.titleURL))
+        bookCoverImg.kf.setImage(with: URL(string: data.titleURL))
+        bookTitle.text = data.title
+        author.text = data.author
         
-        viewModel.outputAladinAPIResult.bind { data in
-            self.bookDescription.text = data.first?.description
+        viewModel.outputAladinAPIResult.bind { item in
+            self.bookDescription.text = item.first?.description
         }
         
         // realm에 있는지 확인
-        if repository.fetchItemTitle(bookTitle: libraryBook.title).isEmpty {
+        if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
+            bookMarkButton.image = .bookmarkIconInactive
+        } else {
+            bookMarkButton.image = .bookmarkIcon
+        }
+    }
+    
+    func configure(data: BookRealm) {
+        bookBackgroundImg.kf.setImage(with: URL(string: data.imgURL))
+        bookCoverImg.kf.setImage(with: URL(string: data.imgURL))
+        bookTitle.text = data.title
+        author.text = data.title
+        
+        viewModel.outputAladinAPIResult.bind { item in
+            self.bookDescription.text = item.first?.description
+        }
+        
+        // realm에 있는지 확인
+        if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
             bookMarkButton.image = .bookmarkIconInactive
         } else {
             bookMarkButton.image = .bookmarkIcon

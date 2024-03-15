@@ -114,7 +114,6 @@ final class CalendarViewController: BaseViewController {
         //            $0.bottom.equalTo(view.safeAreaLayoutGuide)
         //            $0.horizontalEdges.equalToSuperview()
         //        }
-        
     }
     
     override func configureView() {
@@ -244,6 +243,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         
         let vc = BookDetailViewController()
         vc.libraryBook = libraryBook[indexPath.item]
+        vc.configure(data: libraryBook[indexPath.item])
         
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -83,8 +83,9 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let vc = BookDetailViewController()
-        
-        
-        
+        let repoAll = repository.fetchAllItem()
+        let bookRealm = repoAll[indexPath.item]
+        vc.configure(data: bookRealm)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
