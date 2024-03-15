@@ -154,10 +154,9 @@ final class BookDetailViewController: BaseViewController {
                                   author: libraryBook.author,
                                   imgURL: libraryBook.titleURL,
                                   isbn: libraryBook.eaIsbn,
-                                  
-                                  bookDescription: bookDescription.text!)
+                                  bookDescription: bookDescription.text ?? "")
         let bookInRepository = repository.fetchItemTitle(bookTitle: libraryBook.title)
-        
+                
         if bookInRepository.contains(where: { data in
             repository.deleteItem(data)
             bookMarkButton.image = .bookmarkIconInactive
