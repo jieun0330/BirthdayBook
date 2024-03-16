@@ -63,6 +63,7 @@ final class BookDetailViewController: BaseViewController {
         $0.layer.cornerRadius = 10
         $0.backgroundColor = DesignSystemColor.pink.color
         $0.setTitle("구매하러 가기", for: .normal)
+        $0.setTitleColor(DesignSystemColor.red.color, for: .normal)
         $0.addTarget(self, action: #selector(purchaseButtonClicked), for: .touchUpInside)
     }
     
