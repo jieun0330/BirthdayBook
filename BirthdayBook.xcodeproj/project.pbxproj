@@ -48,7 +48,7 @@
 		C2B22AE32BA41D7B00D384B9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE22BA41D7B00D384B9 /* SearchViewController.swift */; };
 		C2B22AE52BA4217000D384B9 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */; };
 		C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */; };
-		C2B22AED2BA5A8DA00D384B9 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = C2B22AEC2BA5A8DA00D384B9 /* PopupView */; };
+		C2B22AF02BA5A9DF00D384B9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = C2B22AEF2BA5A9DF00D384B9 /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,13 +95,13 @@
 			files = (
 				C27E06462B9C8BBD003EC2D5 /* Alamofire in Frameworks */,
 				C27E06482B9C8BBD003EC2D5 /* AlamofireDynamic in Frameworks */,
-				C2B22AED2BA5A8DA00D384B9 /* PopupView in Frameworks */,
 				C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */,
 				C29BDAD22B9F18CF007898E3 /* RealmSwift in Frameworks */,
 				C29545F62B999AEB001A391B /* Then in Frameworks */,
 				C29545FE2B999C0F001A391B /* FSCalendar in Frameworks */,
 				C29545F92B999B1F001A391B /* SnapKit in Frameworks */,
 				C29BDAD02B9F18CF007898E3 /* Realm in Frameworks */,
+				C2B22AF02BA5A9DF00D384B9 /* Toast in Frameworks */,
 				C29545FB2B999B1F001A391B /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,7 +327,7 @@
 				C27E064A2B9D55C3003EC2D5 /* Kingfisher */,
 				C29BDACF2B9F18CF007898E3 /* Realm */,
 				C29BDAD12B9F18CF007898E3 /* RealmSwift */,
-				C2B22AEC2BA5A8DA00D384B9 /* PopupView */,
+				C2B22AEF2BA5A9DF00D384B9 /* Toast */,
 			);
 			productName = BirthdayBook;
 			productReference = C29545D52B998395001A391B /* BirthdayBook.app */;
@@ -364,7 +364,7 @@
 				C27E06442B9C8BBD003EC2D5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C27E06492B9D55C3003EC2D5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C29BDACE2B9F18CF007898E3 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				C2B22AEB2BA5A8DA00D384B9 /* XCRemoteSwiftPackageReference "PopupView" */,
+				C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = C29545D62B998395001A391B /* Products */;
 			projectDirPath = "";
@@ -684,12 +684,12 @@
 				kind = branch;
 			};
 		};
-		C2B22AEB2BA5A8DA00D384B9 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+		C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/exyte/PopupView.git";
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.9.1;
+				minimumVersion = 5.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -740,10 +740,10 @@
 			package = C29BDACE2B9F18CF007898E3 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		C2B22AEC2BA5A8DA00D384B9 /* PopupView */ = {
+		C2B22AEF2BA5A9DF00D384B9 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C2B22AEB2BA5A8DA00D384B9 /* XCRemoteSwiftPackageReference "PopupView" */;
-			productName = PopupView;
+			package = C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
