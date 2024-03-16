@@ -13,7 +13,7 @@ final class SearchViewController: BaseViewController {
     
     private let viewModel = SearchViewModel()
     private var aladinAPIResult: [Item] = []
-
+    
     private lazy var searchBar = UISearchBar().then {
         $0.placeholder = "책 검색"
         $0.delegate = self
@@ -24,10 +24,10 @@ final class SearchViewController: BaseViewController {
         $0.delegate = self
         $0.dataSource = self
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
@@ -75,12 +75,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
             cell.birthdayBookLabel.text = "\(date)에 태어난 책이에요"
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = BookDetailViewController()
+        vc.aladinBook = aladinAPIResult[indexPath.item]
+        vc.configure(data: aladinAPIResult[indexPath.item])
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
