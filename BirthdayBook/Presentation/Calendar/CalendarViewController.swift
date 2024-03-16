@@ -14,7 +14,7 @@ import Kingfisher
 final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
-    private var libraryBook: [Doc] = []
+//    private var libraryBook: [Doc] = []
     private var aladinBook: [Item] = []
     
     private lazy var logo = UIBarButtonItem(image: .logo,
@@ -248,8 +248,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let vc = BookDetailViewController()
-        vc.libraryBook = libraryBook[indexPath.item]
-        vc.configure(data: libraryBook[indexPath.item])
+        vc.aladinBook = aladinBook[indexPath.item]
+        vc.configure(data: aladinBook[indexPath.item])
         
         navigationController?.pushViewController(vc, animated: true)
     }

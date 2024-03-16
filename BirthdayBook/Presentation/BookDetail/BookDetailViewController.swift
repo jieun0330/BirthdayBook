@@ -15,6 +15,7 @@ final class BookDetailViewController: BaseViewController {
     
     private let repository = BookRepository()
     private let viewModel = BookDetailViewModel()
+    var aladinBook: Item!
     var libraryBook: Doc!
     
     private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),
@@ -60,8 +61,10 @@ final class BookDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let libraryBook else { return }
-        viewModel.inputISBN.value = libraryBook.eaIsbn
+        viewModel.inputTitle.value = aladinBook.title
+        
+//        guard let libraryBook else { return }
+//        viewModel.inputISBN.value = libraryBook.eaIsbn
     }
     
     override func configureHierarchy() {
@@ -112,16 +115,16 @@ final class BookDetailViewController: BaseViewController {
         view.setBackgroundColor()
     }
     
-    func configure(data: Doc) {
+    func configure(data: Item) {
         
-        bookBackgroundImg.kf.setImage(with: URL(string: data.titleURL))
-        bookCoverImg.kf.setImage(with: URL(string: data.titleURL))
+        bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
+        bookCoverImg.kf.setImage(with: URL(string: data.cover))
         bookTitle.text = data.title
         author.text = data.author
         
-        viewModel.outputAladinAPIResult.bind { item in
-            self.bookDescription.text = item.first?.description
-        }
+//        viewModel.outputAladinAPIResult.bind { item in
+//            self.bookDescription.text = item.first?.description
+//        }
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
@@ -131,15 +134,34 @@ final class BookDetailViewController: BaseViewController {
         }
     }
     
+//    func configure(data: Doc) {
+//        
+//        bookBackgroundImg.kf.setImage(with: URL(string: data.titleURL))
+//        bookCoverImg.kf.setImage(with: URL(string: data.titleURL))
+//        bookTitle.text = data.title
+//        author.text = data.author
+//        
+//        viewModel.outputAladinAPIResult.bind { item in
+//            self.bookDescription.text = item.first?.description
+//        }
+//        
+//        // realm에 있는지 확인
+//        if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
+//            bookMarkButton.image = .bookmarkIconInactive
+//        } else {
+//            bookMarkButton.image = .bookmarkIcon
+//        }
+//    }
+    
     func configure(data: BookRealm) {
         bookBackgroundImg.kf.setImage(with: URL(string: data.imgURL))
         bookCoverImg.kf.setImage(with: URL(string: data.imgURL))
         bookTitle.text = data.title
         author.text = data.author
         
-        viewModel.outputAladinAPIResult.bind { item in
-            self.bookDescription.text = item.first?.description
-        }
+//        viewModel.outputAladinAPIResult.bind { item in
+//            self.bookDescription.text = item.first?.description
+//        }
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
