@@ -38,6 +38,7 @@ final class BookDetailViewController: BaseViewController {
     let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.font15.font
         $0.textColor = DesignSystemColor.red.color
+        $0.textAlignment = .center
     }
     
     private let author = UILabel().then {
@@ -53,7 +54,7 @@ final class BookDetailViewController: BaseViewController {
     
     let bookDescription = UILabel().then {
         $0.numberOfLines = 0
-        $0.font = .DesignSystemFont.font12.font
+        $0.font = DesignSystemFont.font12.font
         //        $0.layer.borderColor = UIColor.blue.cgColor
         //        $0.layer.borderWidth = 1
     }
