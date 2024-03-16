@@ -90,6 +90,7 @@ final class BookDetailViewController: BaseViewController {
         bookTitle.snp.makeConstraints {
             $0.top.equalTo(bookCoverImg.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
         author.snp.makeConstraints {
