@@ -10,6 +10,7 @@ import Then
 import SnapKit
 import Kingfisher
 import RealmSwift
+import Toast
 
 final class BookDetailViewController: BaseViewController {
     
@@ -184,12 +185,14 @@ final class BookDetailViewController: BaseViewController {
         if bookInRepository.contains(where: { data in
             repository.deleteItem(data)
             bookMarkButton.image = .bookmarkIconInactive
+            view.makeToast("즐겨찾기에서 삭제되었습니다")
             return true
         }) {
             
         } else {
             repository.createRealm(bookRealm)
             bookMarkButton.image = .bookmarkIcon
+            view.makeToast("즐겨찾기에 저장되었습니다")
         }
     }
 }
