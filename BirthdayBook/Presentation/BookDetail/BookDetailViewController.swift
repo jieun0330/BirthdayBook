@@ -64,9 +64,6 @@ final class BookDetailViewController: BaseViewController {
         super.viewDidLoad()
         
         viewModel.inputTitle.value = aladinBook.title
-        
-//        guard let libraryBook else { return }
-//        viewModel.inputISBN.value = libraryBook.eaIsbn
     }
     
     override func configureHierarchy() {
@@ -124,11 +121,8 @@ final class BookDetailViewController: BaseViewController {
         bookCoverImg.kf.setImage(with: URL(string: data.cover))
         bookTitle.text = data.title
         author.text = data.author
-        
-//        viewModel.outputAladinAPIResult.bind { item in
-//            self.bookDescription.text = item.first?.description
-//        }
-        
+        bookDescription.text = String(htmlEncodedString: data.description)
+
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
             bookMarkButton.image = .bookmarkIconInactive
@@ -161,10 +155,7 @@ final class BookDetailViewController: BaseViewController {
         bookCoverImg.kf.setImage(with: URL(string: data.imgURL))
         bookTitle.text = data.title
         author.text = data.author
-        
-//        viewModel.outputAladinAPIResult.bind { item in
-//            self.bookDescription.text = item.first?.description
-//        }
+        bookDescription.text = data.description
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
