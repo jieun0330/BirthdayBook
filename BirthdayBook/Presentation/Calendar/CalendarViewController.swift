@@ -14,7 +14,6 @@ import Kingfisher
 final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
-//    private var libraryBook: [Doc] = []
     private var aladinBook: [Item] = []
     
     private lazy var logo = UIBarButtonItem(image: .logo,
@@ -22,7 +21,6 @@ final class CalendarViewController: BaseViewController {
                                             target: self,
                                             action: #selector(leftBarButtonItemClicked)).then {_ in
     }
-    
     
     private let background = UIView().then {
         $0.backgroundColor = DesignSystemColor.pink.color
@@ -109,7 +107,7 @@ final class CalendarViewController: BaseViewController {
         
         background.snp.makeConstraints {
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(300)
+            $0.height.equalTo(250)
             $0.horizontalEdges.equalToSuperview()
         }
         
@@ -181,12 +179,12 @@ final class CalendarViewController: BaseViewController {
         calendar.appearance.todaySelectionColor = DesignSystemColor.red.color
         // 요일 UI (평일 검정색)
         calendar.appearance.weekdayTextColor = .black
+        // 요일 M, T, W처럼 나오게 하기
+        calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
         // 요일 UI (일요일 빨간색)
         calendar.calendarWeekdayView.weekdayLabels.first?.textColor = .red
         // 요일 UI (토요일 파란색)
         calendar.calendarWeekdayView.weekdayLabels.last?.textColor = .blue
-        // M, T, W처럼 나오게 하기
-        calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
     }
 }
 
@@ -250,7 +248,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let vc = BookDetailViewController()
         vc.aladinBook = aladinBook[indexPath.item]
         vc.configure(data: aladinBook[indexPath.item])
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
