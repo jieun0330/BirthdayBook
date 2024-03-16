@@ -27,7 +27,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     let author = UILabel().then {
-        $0.font = DesignSystemFont.font12.font
+        $0.font = DesignSystemFont.font10.font
     }
     
     private let price = UILabel().then {
@@ -42,6 +42,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let birthdayBookLabel = UILabel().then {
         $0.font = DesignSystemFont.font10.font
+        $0.textColor = DesignSystemColor.red.color
     }
     
     private let birthdayIcon = UIImageView().then {

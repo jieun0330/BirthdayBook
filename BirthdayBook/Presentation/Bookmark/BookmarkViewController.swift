@@ -13,6 +13,12 @@ final class BookmarkViewController: BaseViewController {
     
     private let repository = BookRepository()
     
+    private lazy var logo = UIBarButtonItem(image: .logo,
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(leftBarButtonItemClicked)).then {_ in
+    }
+    
     private lazy var collectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: configureCollectionViewLayout()).then {
         $0.delegate = self
@@ -46,6 +52,11 @@ final class BookmarkViewController: BaseViewController {
     
     override func configureView() {
         view.setBackgroundColor()
+        navigationItem.leftBarButtonItem = logo
+    }
+    
+    @objc private func leftBarButtonItemClicked() {
+
     }
     
     private func configureCollectionViewLayout() -> UICollectionViewLayout {

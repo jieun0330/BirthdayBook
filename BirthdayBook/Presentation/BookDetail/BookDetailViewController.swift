@@ -69,8 +69,7 @@ final class BookDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.inputTitle.value = aladinBook.title
+//        viewModel.inputTitle.value = aladinBook.title
     }
     
     override func configureHierarchy() {
@@ -134,7 +133,7 @@ final class BookDetailViewController: BaseViewController {
         vc.aladinBook = aladinBook
     }
     
-    func configure(data: Item) {        
+    func configure(data: Item) { // Item: aladinBook
         bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
         bookCoverImg.kf.setImage(with: URL(string: data.cover))
         bookTitle.text = data.title
@@ -173,7 +172,7 @@ final class BookDetailViewController: BaseViewController {
         bookCoverImg.kf.setImage(with: URL(string: data.imgURL))
         bookTitle.text = data.title
         author.text = data.author
-        bookDescription.text = data.description
+        bookDescription.text = data.bookDescription
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
