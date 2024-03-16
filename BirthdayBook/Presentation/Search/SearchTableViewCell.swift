@@ -23,16 +23,16 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     let title = UILabel().then {
-        $0.font = DesignSystemFont.author.font
+        $0.font = DesignSystemFont.font12.font
     }
     
     let author = UILabel().then {
-        $0.font = DesignSystemFont.author.font
+        $0.font = DesignSystemFont.font12.font
     }
     
     private let price = UILabel().then {
         $0.text = "가격 미정"
-        $0.font = DesignSystemFont.author.font
+        $0.font = DesignSystemFont.font12.font
     }
     
     private let birthdayBox = UIView().then {
@@ -41,7 +41,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     let birthdayBookLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 10)
+        $0.font = DesignSystemFont.font10.font
     }
     
     private let birthdayIcon = UIImageView().then {

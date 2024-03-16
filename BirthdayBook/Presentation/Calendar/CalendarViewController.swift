@@ -39,7 +39,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     private let birthdayDateLabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.font = DesignSystemFont.font15.font
         $0.textColor = DesignSystemColor.red.color
     }
     

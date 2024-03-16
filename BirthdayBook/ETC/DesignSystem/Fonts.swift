@@ -8,17 +8,20 @@
 import UIKit
 
 enum DesignSystemFont {
-    case bookTitle
-    case author
+    case font15
+    case font12
+    case font10
 }
 
 extension DesignSystemFont {
     var font: UIFont {
         switch self {
-        case .bookTitle:
+        case .font15:
             return .systemFont(ofSize: 15)
-        case .author:
+        case .font12:
             return .systemFont(ofSize: 12)
+        case .font10:
+            return .systemFont(ofSize: 10)
         }
     }
 }

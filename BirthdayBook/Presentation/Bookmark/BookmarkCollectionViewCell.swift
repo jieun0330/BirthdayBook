@@ -12,7 +12,7 @@ import Then
 final class BookmarkCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let bookTitle = UILabel().then {
-        $0.font = .systemFont(ofSize: 12)
+        $0.font = DesignSystemFont.font12.font
         $0.textAlignment = .center
     }
     
