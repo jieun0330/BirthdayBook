@@ -17,7 +17,6 @@ final class BookDetailViewController: BaseViewController {
     private let repository = BookRepository()
     private let viewModel = BookDetailViewModel()
     var aladinBook: Item!
-    var libraryBook: Doc!
     
     private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),
                                                       style: .plain,
@@ -60,6 +59,13 @@ final class BookDetailViewController: BaseViewController {
         //        $0.layer.borderWidth = 1
     }
     
+    private lazy var purchaseButton = UIButton().then {
+        $0.layer.cornerRadius = 10
+        $0.backgroundColor = DesignSystemColor.pink.color
+        $0.setTitle("구매하러 가기", for: .normal)
+        $0.addTarget(self, action: #selector(purchaseButtonClicked), for: .touchUpInside)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,7 +73,7 @@ final class BookDetailViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [bookBackgroundImg, bookCoverImg, bookTitle, author, introductionTitle, bookDescription].forEach {
+        [bookBackgroundImg, bookCoverImg, bookTitle, author, introductionTitle, bookDescription, purchaseButton].forEach {
             view.addSubview($0)
         }
     }
@@ -87,7 +93,7 @@ final class BookDetailViewController: BaseViewController {
         }
         
         bookTitle.snp.makeConstraints {
-            $0.top.equalTo(bookCoverImg.snp.bottom).offset(10)
+            $0.top.equalTo(bookCoverImg.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
@@ -106,13 +112,23 @@ final class BookDetailViewController: BaseViewController {
         bookDescription.snp.makeConstraints {
             $0.top.equalTo(introductionTitle.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.bottom.equalTo(purchaseButton.snp.top).offset(-10)
+        }
+        
+        purchaseButton.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.height.equalTo(50)
         }
     }
     
     override func configureView() {
         navigationItem.rightBarButtonItem = bookMarkButton
         view.setBackgroundColor()
+    }
+    
+    @objc func purchaseButtonClicked() {
+        
     }
     
     func configure(data: Item) {
