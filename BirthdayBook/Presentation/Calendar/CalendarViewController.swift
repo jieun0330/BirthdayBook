@@ -125,7 +125,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     @objc private func leftBarButtonItemClicked() {
-        
+
     }
     
     private static func createLayout() -> UICollectionViewFlowLayout {
@@ -244,7 +244,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let vc = BookDetailViewController()
         vc.aladinBook = aladinBook[indexPath.item]
         vc.configure(data: aladinBook[indexPath.item])

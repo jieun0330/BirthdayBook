@@ -128,17 +128,18 @@ final class BookDetailViewController: BaseViewController {
     }
     
     @objc func purchaseButtonClicked() {
-        
+        let vc = WebViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        vc.aladinBook = aladinBook
     }
     
-    func configure(data: Item) {
-        
+    func configure(data: Item) {        
         bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
         bookCoverImg.kf.setImage(with: URL(string: data.cover))
         bookTitle.text = data.title
         author.text = data.author
         bookDescription.text = String(htmlEncodedString: data.description)
-
+        
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
             bookMarkButton.image = .bookmarkIconInactive

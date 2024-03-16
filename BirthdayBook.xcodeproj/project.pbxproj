@@ -50,6 +50,8 @@
 		C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */; };
 		C2B22AF02BA5A9DF00D384B9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = C2B22AEF2BA5A9DF00D384B9 /* Toast */; };
 		C2B22AF22BA5B2AB00D384B9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */; };
+		C2B22AF42BA5B57C00D384B9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */; };
+		C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
+				C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */,
 				C2B22AE82BA4362300D384B9 /* ViewModel */,
 			);
 			path = BookDetail;
@@ -284,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				C2B22ADA2BA322D200D384B9 /* BookDetailViewModel.swift */,
+				C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -419,11 +425,13 @@
 				C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */,
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
 				C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */,
+				C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
 				C2B22AE32BA41D7B00D384B9 /* SearchViewController.swift in Sources */,
 				C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,
+				C2B22AF42BA5B57C00D384B9 /* WebViewController.swift in Sources */,
 				C2B22AF22BA5B2AB00D384B9 /* String+Extension.swift in Sources */,
 				C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */,
 			);

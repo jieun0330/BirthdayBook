@@ -22,11 +22,12 @@ struct Item: Decodable {
     let pubDate: String // 출판일
     let description: String // 책 소개
     let isbn, isbn13: String
+    let itemId: Int
     let priceSales, priceStandard: Int
     let cover: String
 
     enum CodingKeys: String, CodingKey {
-        case title, link, author, pubDate, description, isbn, isbn13
+        case title, link, author, pubDate, description, isbn, isbn13, itemId
         case priceSales, priceStandard, cover
     }
 }
