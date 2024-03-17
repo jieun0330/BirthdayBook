@@ -50,20 +50,11 @@ final class CalendarViewController: BaseViewController {
         $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
     }
     
-    //    private let indicatorView = UIActivityIndicatorView().then {
-    //        $0.hidesWhenStopped = false
-    //        $0.startAnimating()
-    //        $0.backgroundColor = DesignSystemColor.pink.color
-    //    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let today = DateFormatManager.shared.calenderString(date: Date())
-        viewModel.inputDate.value = today
-        
-        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: Date())
-        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+        let today = Date()
+        birthdayDate(date: today)
         
         viewModel.outputAladinAPIResult.bind { data in
             if data.count > 1 {
@@ -71,6 +62,14 @@ final class CalendarViewController: BaseViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    func birthdayDate(date: Date) {
+        let dateString = DateFormatManager.shared.calenderString(date: date)
+        viewModel.inputDate.value = dateString
+        
+        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
+        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
     }
     
     override func configureHierarchy() {
@@ -109,12 +108,6 @@ final class CalendarViewController: BaseViewController {
         //            $0.height.equalTo(250)
         //            $0.horizontalEdges.equalToSuperview()
         //        }
-        
-        //        indicatorView.snp.makeConstraints {
-        //            $0.top.equalTo(calendar.snp.bottom)
-        //            $0.bottom.equalTo(view.safeAreaLayoutGuide)
-        //            $0.horizontalEdges.equalToSuperview()
-        //        }
     }
     
     override func configureView() {
@@ -123,9 +116,7 @@ final class CalendarViewController: BaseViewController {
         navigationItem.leftBarButtonItem = logo
     }
     
-    @objc private func logoClicked() {
-        
-    }
+    @objc private func logoClicked() { }
     
     private static func createLayout() -> UICollectionViewFlowLayout {
         
@@ -214,11 +205,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         APIManager.shared.bookISBNArray.removeAll()
         viewModel.outputAladinAPIResult.value.removeAll()
         
-        let stringDate = DateFormatManager.shared.calenderString(date: date)
-        viewModel.inputDate.value = stringDate
-        
-        let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
-        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+        birthdayDate(date: date)
         
         collectionView.isPagingEnabled = false
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
