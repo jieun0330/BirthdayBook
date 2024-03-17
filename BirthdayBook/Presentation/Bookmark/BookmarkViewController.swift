@@ -84,7 +84,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         
         let repoAll = viewModel.outputBookRealm.value
         cell.bookTitle.text = repoAll[indexPath.item].title
-        cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].imgURL), options: [.transition(.fade(1))])
+        cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].cover), options: [.transition(.fade(1))])
         
         return cell
     }

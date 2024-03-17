@@ -15,7 +15,6 @@ final class BookmarkViewModel {
     var outputBookRealm: Observable<[BookRealm]> = Observable([])
     
     init() {
-        
         self.outputRepositoryCount.value = repository.fetchAllItem().count
         self.outputBookRealm.value = repository.fetchAllItem()
     }

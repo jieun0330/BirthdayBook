@@ -8,11 +8,11 @@
 import Foundation
 import RealmSwift
 
-final class BookRealm: Object {
+final class BookRealm: Object, BookDataProtocol {
     
     @Persisted(primaryKey: true)var title: String
     @Persisted var author: String
-    @Persisted var imgURL: String
+    @Persisted var cover: String
     @Persisted var isbn: String
     @Persisted var bookDescription: String
     
@@ -20,7 +20,7 @@ final class BookRealm: Object {
         self.init()
         self.title = title
         self.author = author
-        self.imgURL = imgURL
+        self.cover = imgURL
         self.isbn = isbn
         self.bookDescription = bookDescription
     }

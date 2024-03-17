@@ -15,7 +15,6 @@ import Toast
 final class BookDetailViewController: BaseViewController {
     
     private let repository = BookRepository()
-    private let viewModel = BookDetailViewModel()
     var aladinBook: Item!
     
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
@@ -68,7 +67,7 @@ final class BookDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        viewModel.inputTitle.value = aladinBook.title
+
     }
     
     override func configureHierarchy() {
@@ -131,44 +130,10 @@ final class BookDetailViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
         vc.aladinBook = aladinBook
     }
-    
-    func configure(data: Item) { // Item: aladinBook
+
+    func configure<T: BookDataProtocol>(data: T) {
         bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
         bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
-        bookTitle.text = data.title
-        author.text = data.author
-        bookDescription.text = String(htmlEncodedString: data.description)
-        
-        // realm에 있는지 확인
-        if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
-            bookMarkButton.image = .bookmarkIconInactive
-        } else {
-            bookMarkButton.image = .bookmarkIcon
-        }
-    }
-    
-//    func configure(data: Doc) {
-//        
-//        bookBackgroundImg.kf.setImage(with: URL(string: data.titleURL))
-//        bookCoverImg.kf.setImage(with: URL(string: data.titleURL))
-//        bookTitle.text = data.title
-//        author.text = data.author
-//        
-//        viewModel.outputAladinAPIResult.bind { item in
-//            self.bookDescription.text = item.first?.description
-//        }
-//        
-//        // realm에 있는지 확인
-//        if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
-//            bookMarkButton.image = .bookmarkIconInactive
-//        } else {
-//            bookMarkButton.image = .bookmarkIcon
-//        }
-//    }
-    
-    func configure(data: BookRealm) {
-        bookBackgroundImg.kf.setImage(with: URL(string: data.imgURL))
-        bookCoverImg.kf.setImage(with: URL(string: data.imgURL), options: [.transition(.fade(1))])
         bookTitle.text = data.title
         author.text = data.author
         bookDescription.text = data.bookDescription
@@ -180,7 +145,7 @@ final class BookDetailViewController: BaseViewController {
             bookMarkButton.image = .bookmarkIcon
         }
     }
-    
+
     @objc private func bookMarkButtonClicked() {
         let bookRealm = BookRealm(title: aladinBook.title,
                                   author: aladinBook.author,

@@ -15,19 +15,21 @@ struct Aladin: Decodable {
     }
 }
 
-struct Item: Decodable {
+struct Item: Decodable, BookDataProtocol {
     let title: String // 책 제목
     let link: String // 알라딘 링크 주소
     let author: String // 저자
     let pubDate: String // 출판일
-    let description: String // 책 소개
+    let bookDescription: String // 책 소개
     let isbn, isbn13: String
     let itemId: Int
     let priceSales, priceStandard: Int
     let cover: String
 
     enum CodingKeys: String, CodingKey {
-        case title, link, author, pubDate, description, isbn, isbn13, itemId
+        case title, link, author, pubDate
+        case bookDescription = "description"
+        case isbn, isbn13, itemId
         case priceSales, priceStandard, cover
     }
 }
