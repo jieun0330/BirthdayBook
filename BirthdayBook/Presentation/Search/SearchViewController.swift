@@ -12,7 +12,6 @@ import SnapKit
 final class SearchViewController: BaseViewController {
     
     private let viewModel = SearchViewModel()
-    private var aladinAPIResult: [Item] = []
     
     private lazy var searchBar = UISearchBar().then {
         $0.placeholder = "책 검색"
@@ -58,7 +57,7 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return aladinAPIResult.count
+        return viewModel.outputAladinAPIResult.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +76,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! SearchTableViewCell
         
         cell.selectionStyle = .none
-        let book = aladinAPIResult[indexPath.item]
+        let book = viewModel.outputAladinAPIResult.value[indexPath.item]
         cell.title.text = book.title
         cell.bookImage.kf.setImage(with: URL(string: book.cover), options: [.transition(.fade(1))])
         cell.author.text = book.author
@@ -95,8 +94,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = BookDetailViewController()
-        vc.aladinBook = aladinAPIResult[indexPath.item]
-        vc.configure(data: aladinAPIResult[indexPath.item])
+        vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
+        vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -108,8 +107,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputBookTitle.value = searchBarText
         
-        viewModel.outputAladinAPIResult.bind { data in
-            self.aladinAPIResult = data
+        viewModel.outputAladinAPIResult.bind { _ in
             self.tableView.reloadData()
         }
     }
