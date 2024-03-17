@@ -16,7 +16,8 @@ final class BookmarkViewController: BaseViewController {
     private lazy var logo = UIBarButtonItem(image: .logo,
                                             style: .plain,
                                             target: self,
-                                            action: #selector(leftBarButtonItemClicked)).then {_ in
+                                            action: #selector(leftBarButtonItemClicked)).then {
+        $0.tintColor = DesignSystemColor.red.color
     }
     
     private lazy var collectionView = UICollectionView(frame: .zero,

@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         window?.rootViewController = tabBarController
+        tabBarController.tabBar.barTintColor = DesignSystemColor.red.color
         
         let calendarView = UINavigationController(rootViewController: CalendarViewController())
         let searchView = UINavigationController(rootViewController: SearchViewController())

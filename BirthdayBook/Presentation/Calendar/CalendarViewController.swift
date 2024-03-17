@@ -20,12 +20,15 @@ final class CalendarViewController: BaseViewController {
     private lazy var logo = UIBarButtonItem(image: .logo,
                                             style: .plain,
                                             target: self,
-                                            action: #selector(leftBarButtonItemClicked)).then {_ in
+                                            action: #selector(leftBarButtonItemClicked)).then {
+        $0.tintColor = DesignSystemColor.red.color
     }
     
-    private let background = UIView().then {
-        $0.backgroundColor = DesignSystemColor.pink.color
-    }
+//    private let background = UIView().then {
+//        $0.backgroundColor = .green
+//        $0.layer.borderColor = UIColor.purple.cgColor
+//        $0.layer.borderWidth = 1
+//    }
     
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
@@ -76,7 +79,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [background, calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
+        [calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
             view.addSubview($0)
         }
     }
@@ -106,11 +109,11 @@ final class CalendarViewController: BaseViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        background.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(250)
-            $0.horizontalEdges.equalToSuperview()
-        }
+//        background.snp.makeConstraints {
+//            $0.bottom.equalToSuperview()
+//            $0.height.equalTo(250)
+//            $0.horizontalEdges.equalToSuperview()
+//        }
         
         //        indicatorView.snp.makeConstraints {
         //            $0.top.equalTo(calendar.snp.bottom)
