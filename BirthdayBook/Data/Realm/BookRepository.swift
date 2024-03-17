@@ -10,7 +10,6 @@ import RealmSwift
 
 final class BookRepository {
     
-    
     private let realm = try! Realm()
     
     // Create

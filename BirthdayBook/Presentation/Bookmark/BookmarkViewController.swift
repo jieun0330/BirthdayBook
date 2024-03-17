@@ -53,9 +53,7 @@ final class BookmarkViewController: BaseViewController {
         navigationItem.leftBarButtonItem = logo
     }
     
-    @objc private func logoClicked() {
-
-    }
+    @objc private func logoClicked() { }
     
     private func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()

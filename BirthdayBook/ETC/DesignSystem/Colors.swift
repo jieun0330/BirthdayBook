@@ -21,7 +21,9 @@ extension DesignSystemColor {
         case .red:
             return .init(red: 192, green: 50, blue: 60)
         case .random:
-            return .init(red: .random(in: 150...255), green: .random(in: 150...255), blue: .random(in: 150...255))
+            return .init(red: .random(in: 150...255),
+                         green: .random(in: 150...255),
+                         blue: .random(in: 150...255))
         }
     }
 }

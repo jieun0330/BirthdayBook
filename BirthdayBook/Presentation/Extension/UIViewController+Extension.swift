@@ -14,7 +14,9 @@ extension UIView {
 }
 
 extension UIBarButtonItem {
-    static func setBarButtonItem(image: UIImage, target: Any?, action: Selector) -> UIBarButtonItem {
+    static func setBarButtonItem(image: UIImage,
+                                 target: Any?,
+                                 action: Selector) -> UIBarButtonItem {
         let setBarButton = UIBarButtonItem(image: image,
                         style: .plain,
                         target: target,
