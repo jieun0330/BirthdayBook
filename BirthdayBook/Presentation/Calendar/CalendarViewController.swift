@@ -10,14 +10,15 @@ import FSCalendar
 import SnapKit
 import Then
 import Kingfisher
-import Toast
 
 final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     private var aladinBook: [Item] = []
     
-    private lazy var logo = UIBarButtonItem.setLogo(target: self, action: #selector(logoClicked))
+    private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
+                                                             target: self,
+                                                             action: #selector(logoClicked))
     
     //    private let background = UIView().then {
     //        $0.backgroundColor = .green

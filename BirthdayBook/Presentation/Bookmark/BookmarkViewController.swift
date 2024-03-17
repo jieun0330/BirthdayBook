@@ -13,7 +13,9 @@ final class BookmarkViewController: BaseViewController {
     
     private let repository = BookRepository()
     
-    private lazy var logo = UIBarButtonItem.setLogo(target: self, action: #selector(logoClicked))
+    private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
+                                                             target: self,
+                                                             action: #selector(logoClicked))
     
     private lazy var collectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: configureCollectionViewLayout()).then {

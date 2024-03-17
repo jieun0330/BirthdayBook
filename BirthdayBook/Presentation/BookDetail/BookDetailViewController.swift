@@ -18,11 +18,10 @@ final class BookDetailViewController: BaseViewController {
     private let viewModel = BookDetailViewModel()
     var aladinBook: Item!
     
-    private lazy var bookMarkButton = UIBarButtonItem(image: .bookmarkIconInactive.withTintColor(DesignSystemColor.red.color),
-                                                      style: .plain,
-                                                      target: self,
-                                                      action: #selector(bookMarkButtonClicked))
-    
+    private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
+                                                                       target: self,
+                                                                       action: #selector(bookMarkButtonClicked))
+        
     private let bookBackgroundImg = UIImageView().then {
         $0.alpha = 0.1
         $0.contentMode = .scaleAspectFill

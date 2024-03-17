@@ -14,11 +14,11 @@ extension UIView {
 }
 
 extension UIBarButtonItem {
-    static func setLogo(target: Any?, action: Selector) -> UIBarButtonItem {
-        let logo = UIBarButtonItem(image: .logo,
+    static func setBarButtonItem(image: UIImage, target: Any?, action: Selector) -> UIBarButtonItem {
+        let setBarButton = UIBarButtonItem(image: image,
                         style: .plain,
                         target: target,
                         action: action)
-        return logo
+        return setBarButton
     }
 }

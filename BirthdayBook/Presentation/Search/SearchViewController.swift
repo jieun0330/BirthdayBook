@@ -113,5 +113,4 @@ extension SearchViewController: UISearchBarDelegate {
             self.tableView.reloadData()
         }
     }
-    
 }

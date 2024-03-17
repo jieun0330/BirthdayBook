@@ -17,7 +17,6 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     private let bookInfoStackView = UIStackView().then {
-        $0.backgroundColor = .red
         $0.axis = .vertical
         $0.alignment = .leading
     }
