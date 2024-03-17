@@ -53,6 +53,7 @@
 		C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */; };
 		C2B22B072BA694F500D384B9 /* AFError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B062BA694F500D384B9 /* AFError+Extension.swift */; };
 		C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */; };
+		C2B22B102BA6CE6800D384B9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		C2B22B062BA694F500D384B9 /* AFError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AFError+Extension.swift"; sourceTree = "<group>"; };
 		C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultTableViewCell.swift; sourceTree = "<group>"; };
+		C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			children = (
 				C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */,
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
+				C2B22B0E2BA6CE5B00D384B9 /* ViewModel */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -309,6 +312,14 @@
 			isa = PBXGroup;
 			children = (
 				C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C2B22B0E2BA6CE5B00D384B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -425,6 +436,7 @@
 				C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */,
 				C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */,
 				C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */,
+				C2B22B102BA6CE6800D384B9 /* BookmarkViewModel.swift in Sources */,
 				C29546012B99AE76001A391B /* UIViewController+Extension.swift in Sources */,
 				C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */,
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,

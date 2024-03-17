@@ -10,8 +10,8 @@ import SnapKit
 import Then
 
 final class BookmarkViewController: BaseViewController {
-    
-    private let repository = BookRepository()
+        
+    private let viewModel = BookmarkViewModel()
     
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
@@ -72,7 +72,7 @@ final class BookmarkViewController: BaseViewController {
 extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return repository.fetchAllItem().count
+        return viewModel.outputRepositoryCount.value
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,7 +82,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.cornerRadius = 15
         cell.backgroundColor = DesignSystemColor.random.color
         
-        let repoAll = repository.fetchAllItem()
+        let repoAll = viewModel.outputBookRealm.value
         cell.bookTitle.text = repoAll[indexPath.item].title
         cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].imgURL), options: [.transition(.fade(1))])
         
@@ -92,7 +92,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let vc = BookDetailViewController()
-        let repoAll = repository.fetchAllItem()
+        let repoAll = viewModel.outputBookRealm.value
         let bookRealm = repoAll[indexPath.item]
         vc.configure(data: bookRealm)
         navigationController?.pushViewController(vc, animated: true)
