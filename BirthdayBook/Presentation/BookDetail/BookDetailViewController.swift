@@ -135,7 +135,7 @@ final class BookDetailViewController: BaseViewController {
     
     func configure(data: Item) { // Item: aladinBook
         bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
-        bookCoverImg.kf.setImage(with: URL(string: data.cover))
+        bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
         bookTitle.text = data.title
         author.text = data.author
         bookDescription.text = String(htmlEncodedString: data.description)
@@ -169,7 +169,7 @@ final class BookDetailViewController: BaseViewController {
     
     func configure(data: BookRealm) {
         bookBackgroundImg.kf.setImage(with: URL(string: data.imgURL))
-        bookCoverImg.kf.setImage(with: URL(string: data.imgURL))
+        bookCoverImg.kf.setImage(with: URL(string: data.imgURL), options: [.transition(.fade(1))])
         bookTitle.text = data.title
         author.text = data.author
         bookDescription.text = data.bookDescription

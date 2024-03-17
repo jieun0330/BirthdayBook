@@ -76,10 +76,12 @@ final class BookmarkViewController: BaseViewController {
 
 extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return repository.fetchAllItem().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier, for: indexPath) as! BookmarkCollectionViewCell
         
         cell.layer.cornerRadius = 15
@@ -87,7 +89,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         
         let repoAll = repository.fetchAllItem()
         cell.bookTitle.text = repoAll[indexPath.item].title
-        cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].imgURL))
+        cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].imgURL), options: [.transition(.fade(1))])
         
         return cell
     }

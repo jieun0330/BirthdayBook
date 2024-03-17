@@ -53,6 +53,7 @@
 		C2B22AF42BA5B57C00D384B9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */; };
 		C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */; };
 		C2B22B072BA694F500D384B9 /* AFError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B062BA694F500D384B9 /* AFError+Extension.swift */; };
+		C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		C2B22B062BA694F500D384B9 /* AFError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AFError+Extension.swift"; sourceTree = "<group>"; };
+		C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +285,7 @@
 			children = (
 				C2B22AE22BA41D7B00D384B9 /* SearchViewController.swift */,
 				C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */,
+				C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */,
 				C2B22AEA2BA4365B00D384B9 /* ViewModel */,
 			);
 			path = Search;
@@ -418,6 +421,7 @@
 				C29BDAD72B9F1A94007898E3 /* Images.swift in Sources */,
 				C2B22AE52BA4217000D384B9 /* SearchTableViewCell.swift in Sources */,
 				C27A57932B9C73DC00CF956A /* APIManager.swift in Sources */,
+				C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */,
 				C29545D92B998395001A391B /* AppDelegate.swift in Sources */,
 				C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */,
 				C29546092B99BBF9001A391B /* Colors.swift in Sources */,

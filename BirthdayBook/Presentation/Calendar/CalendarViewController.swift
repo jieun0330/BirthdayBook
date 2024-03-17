@@ -24,11 +24,11 @@ final class CalendarViewController: BaseViewController {
         $0.tintColor = DesignSystemColor.red.color
     }
     
-//    private let background = UIView().then {
-//        $0.backgroundColor = .green
-//        $0.layer.borderColor = UIColor.purple.cgColor
-//        $0.layer.borderWidth = 1
-//    }
+    //    private let background = UIView().then {
+    //        $0.backgroundColor = .green
+    //        $0.layer.borderColor = UIColor.purple.cgColor
+    //        $0.layer.borderWidth = 1
+    //    }
     
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
@@ -109,11 +109,11 @@ final class CalendarViewController: BaseViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-//        background.snp.makeConstraints {
-//            $0.bottom.equalToSuperview()
-//            $0.height.equalTo(250)
-//            $0.horizontalEdges.equalToSuperview()
-//        }
+        //        background.snp.makeConstraints {
+        //            $0.bottom.equalToSuperview()
+        //            $0.height.equalTo(250)
+        //            $0.horizontalEdges.equalToSuperview()
+        //        }
         
         //        indicatorView.snp.makeConstraints {
         //            $0.top.equalTo(calendar.snp.bottom)
@@ -242,7 +242,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             let aladinData = self.aladinBook[indexPath.item]
             cell.bookTitle.text = aladinData.title
             cell.author.text = aladinData.author
-            cell.coverImage.kf.setImage(with: URL(string: aladinData.cover))
+            cell.coverImage.kf.setImage(with: URL(string: aladinData.cover), options: [.transition(.fade(1))])
         }
         return cell
     }

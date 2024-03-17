@@ -20,6 +20,7 @@ final class SearchViewController: BaseViewController {
     }
     
     private lazy var tableView = UITableView().then {
+        $0.register(NoResultTableViewCell.self, forCellReuseIdentifier: NoResultTableViewCell.identifier)
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.delegate = self
         $0.dataSource = self
@@ -61,21 +62,30 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //        print("2", aladinAPIResult.count)
+        
+        //        if aladinAPIResult.count == 0 {
+        //            print("여기 왜 안들어오냐고")
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: NoResultTableViewCell.identifier, for: indexPath) as! NoResultTableViewCell
+        //
+        //            cell.backgroundColor = .red
+        //
+        //            return cell
+        //        } else {
+        //            print("여긴 들어올걸?")
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
                                                  for: indexPath) as! SearchTableViewCell
         
         cell.selectionStyle = .none
-        
         let book = aladinAPIResult[indexPath.item]
+        cell.title.text = book.title
+        cell.bookImage.kf.setImage(with: URL(string: book.cover), options: [.transition(.fade(1))])
+        cell.author.text = book.author
+        let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
+        cell.birthdayBookLabel.text = "\(date)에 태어난 책이에요"
         
-        if aladinAPIResult.count > 1 {
-            cell.title.text = book.title
-            cell.bookImage.kf.setImage(with: URL(string: book.cover))
-            cell.author.text = book.author
-            let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
-            cell.birthdayBookLabel.text = "\(date)에 태어난 책이에요"
-        }
         return cell
+        //        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -103,4 +113,5 @@ extension SearchViewController: UISearchBarDelegate {
             self.tableView.reloadData()
         }
     }
+    
 }
