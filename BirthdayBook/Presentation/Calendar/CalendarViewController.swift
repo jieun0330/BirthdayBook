@@ -14,7 +14,6 @@ import Kingfisher
 final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
-    private var aladinBook: [Item] = []
     
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
@@ -59,7 +58,6 @@ final class CalendarViewController: BaseViewController {
         
         viewModel.outputAladinAPIResult.bind { data in
             if data.count > 1 {
-                self.aladinBook = data
                 self.collectionView.reloadData()
             }
         }
@@ -215,14 +213,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return aladinBook.count
+        return viewModel.outputAladinAPIResult.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
         
-        if self.aladinBook.count > 1 {
-            let aladinData = self.aladinBook[indexPath.item]
+        if viewModel.outputAladinAPIResult.value.count > 1 {
+            let aladinData = viewModel.outputAladinAPIResult.value[indexPath.item]
             cell.bookTitle.text = aladinData.title
             cell.author.text = aladinData.author
             cell.coverImage.kf.setImage(with: URL(string: aladinData.cover), options: [.transition(.fade(1))])
@@ -232,8 +230,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = BookDetailViewController()
-        vc.aladinBook = aladinBook[indexPath.item]
-        vc.configure(data: aladinBook[indexPath.item])
+        vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
+        vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }
 }
