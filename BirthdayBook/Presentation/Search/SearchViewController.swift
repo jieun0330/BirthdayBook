@@ -20,7 +20,7 @@ final class SearchViewController: BaseViewController {
     }
     
     private lazy var tableView = UITableView().then {
-        $0.register(NoResultTableViewCell.self, forCellReuseIdentifier: NoResultTableViewCell.identifier)
+//        $0.register(NoResultTableViewCell.self, forCellReuseIdentifier: NoResultTableViewCell.identifier)
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.delegate = self
         $0.dataSource = self

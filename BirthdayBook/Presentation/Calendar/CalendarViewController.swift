@@ -17,12 +17,7 @@ final class CalendarViewController: BaseViewController {
     private let viewModel = CalendarViewModel()
     private var aladinBook: [Item] = []
     
-    private lazy var logo = UIBarButtonItem(image: .logo,
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(leftBarButtonItemClicked)).then {
-        $0.tintColor = DesignSystemColor.red.color
-    }
+    private lazy var logo = UIBarButtonItem.setLogo(target: self, action: #selector(logoClicked))
     
     //    private let background = UIView().then {
     //        $0.backgroundColor = .green
@@ -128,7 +123,7 @@ final class CalendarViewController: BaseViewController {
         navigationItem.leftBarButtonItem = logo
     }
     
-    @objc private func leftBarButtonItemClicked() {
+    @objc private func logoClicked() {
         
     }
     
