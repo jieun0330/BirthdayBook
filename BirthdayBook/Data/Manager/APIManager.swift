@@ -14,51 +14,40 @@ final class APIManager {
     
     private init() { }
     
-    var bookImageArray: [Doc] = []
     var bookISBNArray: [String] = []
     
-    func nationalLibraryCallRequest(api: BookAPI, completionHandler: @escaping ([String]) -> Void) {
+    func nationalLibraryCallRequest(api: BookAPI,
+                                    completionSuccess: @escaping ([String]) -> Void,
+                                    completionFailure: @escaping (AFError) -> Void) {
         
         AF
             .request(api.url)
             .responseDecodable(of: NationalLibrary.self) { response in
                 switch response.result {
                 case .success(let success):
-                    //                    print("success")
-                    
-                    // 이미지가 있을 경우
-                    //                    for image in success.docs {
-                    //                        if image.titleURL.count != 0 {
-                    //                            self.bookImageArray.append(image)
-                    //                        }
-                    //                    }
-                    
-                    //                    completionHandler(self.bookImageArray)
-                    
                     // ISBN만 가져오기
                     for isbn in success.docs {
                         self.bookISBNArray.append(isbn.eaIsbn)
                     }
-                    
-                    completionHandler(self.bookISBNArray)
-                    
+                    completionSuccess(self.bookISBNArray)
                 case .failure(let failure):
-                    print("failure")
+                    completionFailure(failure)
                 }
             }
     }
     
-    func aladinCallRequest(api: BookAPI, completionHandler: @escaping ([Item]) -> Void) {
+    func aladinCallRequest(api: BookAPI,
+                           completionSuccess: @escaping ([Item]) -> Void,
+                           completionFailure: @escaping (AFError) -> Void) {
         
         AF
             .request(api.url)
             .responseDecodable(of: Aladin.self) { response in
                 switch response.result {
                 case .success(let success):
-                    print("success")
-                    completionHandler(success.item)
+                    completionSuccess(success.item)
                 case .failure(let failure):
-                    print("failure")
+                    completionFailure(failure)
                 }
             }
     }

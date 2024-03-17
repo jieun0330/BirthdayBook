@@ -21,8 +21,12 @@ final class CalendarViewModel {
                         for book in data {
                             self.outputAladinAPIResult.value.append(book)
                         }
+                    } completionFailure: { error in
+                        error.handleError(error)
                     }
                 }
+            } completionFailure: { error in
+                error.handleError(error)
             }
         }
     }

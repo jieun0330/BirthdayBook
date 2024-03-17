@@ -10,6 +10,7 @@ import FSCalendar
 import SnapKit
 import Then
 import Kingfisher
+import Toast
 
 final class CalendarViewController: BaseViewController {
     
@@ -45,7 +46,7 @@ final class CalendarViewController: BaseViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: CalendarViewController.createLayout()).then {
-        $0.backgroundColor = DesignSystemColor.pink.color
+        $0.backgroundColor = .orange
         $0.delegate = self
         $0.dataSource = self
         $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
@@ -125,7 +126,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     @objc private func leftBarButtonItemClicked() {
-
+        
     }
     
     private static func createLayout() -> UICollectionViewFlowLayout {
