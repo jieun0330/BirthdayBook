@@ -13,9 +13,14 @@ final class SearchViewController: BaseViewController {
     
     private let viewModel = SearchViewModel()
     
+    private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
+                                                             target: self,
+                                                             action: #selector(logoClicked))
+    
     private lazy var searchBar = UISearchBar().then {
         $0.placeholder = "책 검색"
         $0.delegate = self
+        $0.backgroundImage = UIImage()
     }
     
     private lazy var tableView = UITableView().then {
@@ -54,7 +59,10 @@ final class SearchViewController: BaseViewController {
     
     override func configureView() {
         view.setBackgroundColor()
+        navigationItem.leftBarButtonItem = logo
     }
+    
+    @objc func logoClicked() { }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,6 +96,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                                                      for: indexPath) as! NoResultTableViewCell
             
             cell.selectionStyle = .none
+            tableView.separatorStyle = .none
             tableView.isScrollEnabled = false
             
             return cell
