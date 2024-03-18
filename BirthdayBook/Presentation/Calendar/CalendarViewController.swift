@@ -182,16 +182,16 @@ final class CalendarViewController: BaseViewController {
         // 헤더 정렬 left로 줬는데 많이 안가서 offset 설정
         calendar.appearance.headerTitleOffset = CGPoint(x: -75, y: 0)
         
+        
         // 주간 달력
         calendar.scope = .week
         // 달에 유효하지 않은 날짜 지우기
         calendar.placeholderType = .none
         // Today에 표시되는 선택 전 동그라미 색
         calendar.appearance.todayColor = DesignSystemColor.red.color
-        calendar.appearance.titleTodayColor = .white
         calendar.appearance.borderRadius = 0.5
         // 선택된 날의 동그라미 색
-        calendar.appearance.selectionColor = DesignSystemColor.pink.color
+        calendar.appearance.selectionColor = .none
         calendar.appearance.todaySelectionColor = DesignSystemColor.red.color
         // 요일 UI (평일 검정색)
         calendar.appearance.weekdayTextColor = .black
@@ -235,6 +235,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         
         collectionView.isPagingEnabled = false
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
+        return .black
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderSelectionColorFor date: Date) -> UIColor? {
+        return DesignSystemColor.pink.color
     }
 }
 
