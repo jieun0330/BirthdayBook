@@ -224,8 +224,8 @@
 			children = (
 				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
 				C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */,
-				C2B22AE82BA4362300D384B9 /* ViewModel */,
 				C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */,
+				C2B22AE82BA4362300D384B9 /* ViewModel */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";

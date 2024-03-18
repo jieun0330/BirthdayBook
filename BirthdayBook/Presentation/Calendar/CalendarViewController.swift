@@ -15,6 +15,10 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     
+    private let scrollView = UIScrollView()
+
+    private let contentView = UIView()
+    
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
                                                              action: #selector(logoClicked))
@@ -43,7 +47,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     private lazy var collectionView = UICollectionView(frame: .zero,
-                                                       collectionViewLayout: CalendarViewController.createLayout()).then {
+                                                       collectionViewLayout: createLayout()).then {
         $0.backgroundColor = .orange
         $0.delegate = self
         $0.dataSource = self
@@ -52,6 +56,8 @@ final class CalendarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.isScrollEnabled = false
         
         let today = Date()
         birthdayDate(date: today)
@@ -72,15 +78,33 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
+        
+        [scrollView].forEach {
             view.addSubview($0)
+        }
+        
+        [contentView].forEach {
+            scrollView.addSubview($0)
+        }
+        
+        [calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
+            contentView.addSubview($0)
         }
     }
     
     override func configureConstraints() {
         
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(scrollView)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
+        }
+        
         calendar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(5)
+            $0.top.equalTo(contentView.snp.top)
             $0.horizontalEdges.equalToSuperview().inset(10)
             $0.height.equalTo(300)
         }
@@ -99,7 +123,8 @@ final class CalendarViewController: BaseViewController {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(500)
+            $0.bottom.equalTo(contentView.snp.bottom)
         }
         
         //        background.snp.makeConstraints {
@@ -117,7 +142,7 @@ final class CalendarViewController: BaseViewController {
     
     @objc private func logoClicked() { }
     
-    private static func createLayout() -> UICollectionViewFlowLayout {
+    private func createLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -132,10 +157,12 @@ final class CalendarViewController: BaseViewController {
     }
     
     @objc private func calendarButtonClicked() {
-        if calendar.scope == .month {
+        if calendar.scope == .month { // 월간 -> 주간
             changeCalendar(month: false)
-        } else {
+            scrollView.isScrollEnabled = false
+        } else { // 주간 -> 월간
             changeCalendar(month: true)
+            scrollView.isScrollEnabled = true
         }
     }
     

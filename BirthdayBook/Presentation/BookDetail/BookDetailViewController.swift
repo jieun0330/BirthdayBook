@@ -147,24 +147,24 @@ final class BookDetailViewController: BaseViewController {
     }
 
     @objc private func bookMarkButtonClicked() {
-        let bookRealm = BookRealm(title: aladinBook.title,
-                                  author: aladinBook.author,
-                                  imgURL: aladinBook.cover,
-                                  isbn: aladinBook.isbn,
-                                  bookDescription: bookDescription.text ?? "")
-        let bookInRepository = repository.fetchItemTitle(bookTitle: aladinBook.title)
-                
-        if bookInRepository.contains(where: { data in
-            repository.deleteItem(data)
-            bookMarkButton.image = .bookmarkIconInactive
-            view.makeToast("즐겨찾기에서 삭제되었습니다")
-            return true
-        }) {
-            
-        } else {
-            repository.createRealm(bookRealm)
-            bookMarkButton.image = .bookmarkIcon
-            view.makeToast("즐겨찾기에 저장되었습니다")
-        }
+//        let bookRealm = BookRealm(title: aladinBook.title,
+//                                  author: aladinBook.author,
+//                                  imgURL: aladinBook.cover,
+//                                  isbn: aladinBook.isbn,
+//                                  bookDescription: bookDescription.text ?? "")
+//        let bookInRepository = repository.fetchItemTitle(bookTitle: aladinBook.title)
+//                
+//        if bookInRepository.contains(where: { data in
+//            repository.deleteItem(data)
+//            bookMarkButton.image = .bookmarkIconInactive
+//            view.makeToast("즐겨찾기에서 삭제되었습니다")
+//            return true
+//        }) {
+//            
+//        } else {
+//            repository.createRealm(bookRealm)
+//            bookMarkButton.image = .bookmarkIcon
+//            view.makeToast("즐겨찾기에 저장되었습니다")
+//        }
     }
 }
