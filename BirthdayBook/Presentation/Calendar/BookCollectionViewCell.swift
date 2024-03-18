@@ -45,13 +45,13 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         bookTitle.snp.makeConstraints {
             $0.leading.equalTo(coverImage.snp.leading)
-            $0.top.equalTo(coverImage.snp.bottom).offset(5)
+            $0.top.equalTo(coverImage.snp.bottom).offset(10)
             $0.trailing.equalTo(contentView).offset(-5)
         }
         
         author.snp.makeConstraints {
             $0.leading.equalTo(bookTitle.snp.leading)
-            $0.top.equalTo(bookTitle.snp.bottom).offset(5)
+            $0.top.equalTo(bookTitle.snp.bottom).offset(10)
             $0.trailing.equalTo(contentView).offset(-5)
         }
         

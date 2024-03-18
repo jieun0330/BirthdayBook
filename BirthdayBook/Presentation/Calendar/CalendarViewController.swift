@@ -16,18 +16,18 @@ final class CalendarViewController: BaseViewController {
     private let viewModel = CalendarViewModel()
     
     private let scrollView = UIScrollView()
-
+    
     private let contentView = UIView()
     
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
                                                              action: #selector(logoClicked))
     
-    //    private let background = UIView().then {
-    //        $0.backgroundColor = .green
-    //        $0.layer.borderColor = UIColor.purple.cgColor
-    //        $0.layer.borderWidth = 1
-    //    }
+    private let backgroundView = UIView().then {
+        $0.backgroundColor = DesignSystemColor.pink.color
+        $0.layer.cornerRadius = 50
+        $0.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner)
+    }
     
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
@@ -48,10 +48,12 @@ final class CalendarViewController: BaseViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: createLayout()).then {
-        $0.backgroundColor = .orange
+        $0.backgroundColor = .none
         $0.delegate = self
         $0.dataSource = self
         $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
+        //        $0.layer.borderColor = UIColor.green.cgColor
+        //        $0.layer.borderWidth = 1
     }
     
     override func viewDidLoad() {
@@ -86,8 +88,8 @@ final class CalendarViewController: BaseViewController {
         [contentView].forEach {
             scrollView.addSubview($0)
         }
-        
-        [calendar, calendarButton, birthdayDateLabel, collectionView].forEach {
+
+        [calendar, calendarButton, birthdayDateLabel, backgroundView, collectionView].forEach {
             contentView.addSubview($0)
         }
     }
@@ -116,22 +118,22 @@ final class CalendarViewController: BaseViewController {
         }
         
         birthdayDateLabel.snp.makeConstraints {
-            $0.top.equalTo(calendar.snp.bottom).offset(60)
+            $0.top.equalTo(calendar.snp.bottom).offset(80)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(10)
+            $0.top.equalTo(birthdayDateLabel.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(500)
-            $0.bottom.equalTo(contentView.snp.bottom)
+            $0.height.equalTo(450)
+            $0.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
         
-        //        background.snp.makeConstraints {
-        //            $0.bottom.equalToSuperview()
-        //            $0.height.equalTo(250)
-        //            $0.horizontalEdges.equalToSuperview()
-        //        }
+        backgroundView.snp.makeConstraints {
+            $0.top.equalTo(collectionView).offset(120)
+            $0.bottom.equalToSuperview()
+            $0.horizontalEdges.equalTo(collectionView)
+        }
     }
     
     override func configureView() {
@@ -182,17 +184,16 @@ final class CalendarViewController: BaseViewController {
         // 헤더 정렬 left로 줬는데 많이 안가서 offset 설정
         calendar.appearance.headerTitleOffset = CGPoint(x: -75, y: 0)
         
-        
         // 주간 달력
         calendar.scope = .week
         // 달에 유효하지 않은 날짜 지우기
         calendar.placeholderType = .none
         // Today에 표시되는 선택 전 동그라미 색
-        calendar.appearance.todayColor = DesignSystemColor.red.color
+        calendar.appearance.todayColor = DesignSystemColor.pink.color
         calendar.appearance.borderRadius = 0.5
         // 선택된 날의 동그라미 색
         calendar.appearance.selectionColor = .none
-        calendar.appearance.todaySelectionColor = DesignSystemColor.red.color
+        calendar.appearance.todaySelectionColor = DesignSystemColor.pink.color
         // 요일 UI (평일 검정색)
         calendar.appearance.weekdayTextColor = .black
         // 요일 M, T, W처럼 나오게 하기
