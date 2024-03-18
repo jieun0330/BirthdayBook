@@ -19,7 +19,7 @@ final class SearchViewController: BaseViewController {
     }
     
     private lazy var tableView = UITableView().then {
-//        $0.register(NoResultTableViewCell.self, forCellReuseIdentifier: NoResultTableViewCell.identifier)
+        $0.register(NoResultTableViewCell.self, forCellReuseIdentifier: NoResultTableViewCell.identifier)
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.delegate = self
         $0.dataSource = self
@@ -28,6 +28,9 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.outputAladinAPIResult.bind { _ in
+            self.tableView.reloadData()
+        }
     }
     
     override func configureHierarchy() {
@@ -57,46 +60,57 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.outputAladinAPIResult.value.count
+        
+        if viewModel.outputAladinAPIResult.value.isEmpty {
+            return 1
+        } else {
+            return viewModel.outputAladinAPIResult.value.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        print("2", aladinAPIResult.count)
         
-        //        if aladinAPIResult.count == 0 {
-        //            print("여기 왜 안들어오냐고")
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: NoResultTableViewCell.identifier, for: indexPath) as! NoResultTableViewCell
-        //
-        //            cell.backgroundColor = .red
-        //
-        //            return cell
-        //        } else {
-        //            print("여긴 들어올걸?")
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
-                                                 for: indexPath) as! SearchTableViewCell
-        
-        cell.selectionStyle = .none
-        let book = viewModel.outputAladinAPIResult.value[indexPath.item]
-        cell.title.text = book.title
-        cell.bookImage.kf.setImage(with: URL(string: book.cover), options: [.transition(.fade(1))])
-        cell.author.text = book.author
-        let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
-        cell.birthdayBookLabel.text = "\(date)에 태어난 책이에요"
-        
-        return cell
-        //        }
+        if !viewModel.outputAladinAPIResult.value.isEmpty {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
+                                                     for: indexPath) as! SearchTableViewCell
+            
+            let book = viewModel.outputAladinAPIResult.value[indexPath.item]
+            cell.title.text = book.title
+            cell.bookImage.kf.setImage(with: URL(string: book.cover), options: [.transition(.fade(1))])
+            cell.author.text = book.author
+            let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
+            cell.birthdayBookLabel.text = "\(date)에 태어난 책이에요"
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoResultTableViewCell.identifier,
+                                                     for: indexPath) as! NoResultTableViewCell
+            
+            cell.selectionStyle = .none
+            tableView.isScrollEnabled = false
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        
+        if viewModel.outputAladinAPIResult.value.isEmpty {
+            return 550
+        } else {
+            return 200
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = BookDetailViewController()
-        vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
-        vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
-        navigationController?.pushViewController(vc, animated: true)
+        if viewModel.outputAladinAPIResult.value.count != 0 {
+            let vc = BookDetailViewController()
+            vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
+            vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -106,9 +120,5 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputBookTitle.value = searchBarText
-        
-        viewModel.outputAladinAPIResult.bind { _ in
-            self.tableView.reloadData()
-        }
     }
 }
