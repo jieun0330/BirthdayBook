@@ -22,7 +22,7 @@ enum BookAPI {
         case .titleAladin(let query):
             return URL(string: "https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=\(APIKey.aladinKey)&Output=js&Cover=Big&Query=\(query)&MaxResults=10&Start=1&Version=20131101")!
         case .bestSeller:
-            return URL(string: "https://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=\(APIKey.aladinKey)&Output=js&MaxResults=10&Start=1&QueryType=Bestseller&SearchTarget=Book&Version=20131101")!
+            return URL(string: "https://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=\(APIKey.aladinKey)&Output=js&Cover=Big&MaxResults=10&Start=1&QueryType=Bestseller&SearchTarget=Book&Version=20131101")!
         }
     }
 }

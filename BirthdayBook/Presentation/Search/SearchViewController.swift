@@ -37,7 +37,7 @@ final class SearchViewController: BaseViewController {
             self.tableView.reloadData()
         }
     }
-    
+
     override func configureHierarchy() {
         [searchBar, tableView].forEach {
             view.addSubview($0)
@@ -72,7 +72,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if viewModel.outputAladinAPIResult.value.isEmpty {
             return 1
         } else {
-            print("2", viewModel.outputAladinAPIResult.value.count)
             return viewModel.outputAladinAPIResult.value.count
         }
     }
@@ -85,6 +84,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
                                                      for: indexPath) as! SearchTableViewCell
+            cell.selectionStyle = .none
             
             let book = viewModel.outputAladinAPIResult.value[indexPath.item]
             cell.title.text = book.title

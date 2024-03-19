@@ -15,8 +15,6 @@
 		C27E063D2B9C81D1003EC2D5 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */; };
 		C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E063F2B9C8223003EC2D5 /* Observable.swift */; };
 		C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */; };
-		C27E06462B9C8BBD003EC2D5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C27E06452B9C8BBD003EC2D5 /* Alamofire */; };
-		C27E06482B9C8BBD003EC2D5 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C27E06472B9C8BBD003EC2D5 /* AlamofireDynamic */; };
 		C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C27E064A2B9D55C3003EC2D5 /* Kingfisher */; };
 		C27E06512B9D8273003EC2D5 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */; };
 		C29545D92B998395001A391B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545D82B998395001A391B /* AppDelegate.swift */; };
@@ -27,8 +25,6 @@
 		C29545EF2B999A2D001A391B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545EE2B999A2D001A391B /* CalendarViewController.swift */; };
 		C29545F32B999A5D001A391B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545F22B999A5D001A391B /* BaseViewController.swift */; };
 		C29545F62B999AEB001A391B /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = C29545F52B999AEB001A391B /* Then */; };
-		C29545F92B999B1F001A391B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C29545F82B999B1F001A391B /* SnapKit */; };
-		C29545FB2B999B1F001A391B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C29545FA2B999B1F001A391B /* SnapKit-Dynamic */; };
 		C29545FE2B999C0F001A391B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C29545FD2B999C0F001A391B /* FSCalendar */; };
 		C29546012B99AE76001A391B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546002B99AE76001A391B /* UIViewController+Extension.swift */; };
 		C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29546052B99B86D001A391B /* DateFormatManager.swift */; };
@@ -53,6 +49,9 @@
 		C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */; };
 		C2B22B102BA6CE6800D384B9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */; };
 		C2B22B122BA6D7E500D384B9 /* BookDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */; };
+		C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */; };
+		C2EF798A2BA9B576005F8FFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C2EF79892BA9B576005F8FFA /* SnapKit */; };
+		C2EF798D2BA9B584005F8FFA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C2EF798C2BA9B584005F8FFA /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +93,7 @@
 		C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultTableViewCell.swift; sourceTree = "<group>"; };
 		C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataProtocol.swift; sourceTree = "<group>"; };
+		C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,16 +101,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C27E06462B9C8BBD003EC2D5 /* Alamofire in Frameworks */,
-				C27E06482B9C8BBD003EC2D5 /* AlamofireDynamic in Frameworks */,
 				C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */,
+				C2EF798D2BA9B584005F8FFA /* Alamofire in Frameworks */,
 				C29BDAD22B9F18CF007898E3 /* RealmSwift in Frameworks */,
 				C29545F62B999AEB001A391B /* Then in Frameworks */,
+				C2EF798A2BA9B576005F8FFA /* SnapKit in Frameworks */,
 				C29545FE2B999C0F001A391B /* FSCalendar in Frameworks */,
-				C29545F92B999B1F001A391B /* SnapKit in Frameworks */,
 				C29BDAD02B9F18CF007898E3 /* Realm in Frameworks */,
 				C2B22AF02BA5A9DF00D384B9 /* Toast in Frameworks */,
-				C29545FB2B999B1F001A391B /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +230,7 @@
 			children = (
 				C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */,
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
+				C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */,
 				C2B22B0E2BA6CE5B00D384B9 /* ViewModel */,
 			);
 			path = Bookmark;
@@ -339,15 +338,13 @@
 			name = BirthdayBook;
 			packageProductDependencies = (
 				C29545F52B999AEB001A391B /* Then */,
-				C29545F82B999B1F001A391B /* SnapKit */,
-				C29545FA2B999B1F001A391B /* SnapKit-Dynamic */,
 				C29545FD2B999C0F001A391B /* FSCalendar */,
-				C27E06452B9C8BBD003EC2D5 /* Alamofire */,
-				C27E06472B9C8BBD003EC2D5 /* AlamofireDynamic */,
 				C27E064A2B9D55C3003EC2D5 /* Kingfisher */,
 				C29BDACF2B9F18CF007898E3 /* Realm */,
 				C29BDAD12B9F18CF007898E3 /* RealmSwift */,
 				C2B22AEF2BA5A9DF00D384B9 /* Toast */,
+				C2EF79892BA9B576005F8FFA /* SnapKit */,
+				C2EF798C2BA9B584005F8FFA /* Alamofire */,
 			);
 			productName = BirthdayBook;
 			productReference = C29545D52B998395001A391B /* BirthdayBook.app */;
@@ -379,12 +376,12 @@
 			mainGroup = C29545CC2B998395001A391B;
 			packageReferences = (
 				C29545F42B999AEB001A391B /* XCRemoteSwiftPackageReference "Then" */,
-				C29545F72B999B1F001A391B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C29545FC2B999C0F001A391B /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				C27E06442B9C8BBD003EC2D5 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C27E06492B9D55C3003EC2D5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C29BDACE2B9F18CF007898E3 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				C2EF79882BA9B576005F8FFA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = C29545D62B998395001A391B /* Products */;
 			projectDirPath = "";
@@ -422,6 +419,7 @@
 				C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */,
 				C27E06512B9D8273003EC2D5 /* BaseTableViewCell.swift in Sources */,
 				C29545F32B999A5D001A391B /* BaseViewController.swift in Sources */,
+				C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */,
 				C2B22AE52BA4217000D384B9 /* SearchTableViewCell.swift in Sources */,
 				C27A57932B9C73DC00CF956A /* APIManager.swift in Sources */,
 				C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */,
@@ -668,14 +666,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C27E06442B9C8BBD003EC2D5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.0;
-			};
-		};
 		C27E06492B9D55C3003EC2D5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -690,14 +680,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.0.0;
-			};
-		};
-		C29545F72B999B1F001A391B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
 			};
 		};
 		C29545FC2B999C0F001A391B /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
@@ -724,19 +706,25 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		C2EF79882BA9B576005F8FFA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C27E06452B9C8BBD003EC2D5 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C27E06442B9C8BBD003EC2D5 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		C27E06472B9C8BBD003EC2D5 /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C27E06442B9C8BBD003EC2D5 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
-		};
 		C27E064A2B9D55C3003EC2D5 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C27E06492B9D55C3003EC2D5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -746,16 +734,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C29545F42B999AEB001A391B /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
-		};
-		C29545F82B999B1F001A391B /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C29545F72B999B1F001A391B /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		C29545FA2B999B1F001A391B /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C29545F72B999B1F001A391B /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 		C29545FD2B999C0F001A391B /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -776,6 +754,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		C2EF79892BA9B576005F8FFA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2EF79882BA9B576005F8FFA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C2EF798C2BA9B584005F8FFA /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
