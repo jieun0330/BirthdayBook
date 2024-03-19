@@ -16,6 +16,13 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.clipsToBounds = true
     }
     
+    private let bookImageShadow = UIView().then {
+        $0.backgroundColor = .white
+        $0.layer.shadowOffset = CGSize(width: 2, height: 2)
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.5
+    }
+    
     private let bookInfoStackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .leading
@@ -53,7 +60,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureHierarchy() {
-        [bookImage, bookInfoStackView, birthdayBox, birthdayIcon].forEach {
+        [bookImageShadow, bookImage, bookInfoStackView, birthdayBox, birthdayIcon].forEach {
             contentView.addSubview($0)
         }
         
@@ -75,8 +82,13 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.width.equalTo(80)
         }
         
+        bookImageShadow.snp.makeConstraints {
+            $0.size.equalTo(bookImage)
+            $0.edges.equalTo(bookImage.snp.edges)
+        }
+        
         bookInfoStackView.snp.makeConstraints {
-            $0.leading.equalTo(bookImage.snp.trailing).offset(10)
+            $0.leading.equalTo(bookImage.snp.trailing).offset(15)
             $0.verticalEdges.equalTo(contentView).inset(60)
         }
         

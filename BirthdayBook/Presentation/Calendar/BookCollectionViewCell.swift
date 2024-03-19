@@ -15,6 +15,13 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
+    
+    private let coverBackImage = UIView().then {
+        $0.backgroundColor = .white
+        $0.layer.shadowOffset = CGSize(width: 2, height: 2)
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOpacity = 0.5
+    }
      
     let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.font12.font
@@ -31,7 +38,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureHierarchy() {
-        [coverImage, bookTitle, author].forEach {
+        [coverBackImage, coverImage, bookTitle, author].forEach {
             contentView.addSubview($0)
         }
     }
@@ -41,6 +48,11 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.top.equalTo(contentView).offset(5)
             $0.horizontalEdges.equalTo(contentView).inset(5)
             $0.height.equalTo(345)
+        }
+        
+        coverBackImage.snp.makeConstraints {
+            $0.size.equalTo(coverImage)
+            $0.edges.equalTo(coverImage.snp.edges)
         }
         
         bookTitle.snp.makeConstraints {
