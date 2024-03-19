@@ -98,7 +98,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         birthdayBox.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
             $0.trailing.equalTo(contentView).offset(-20)
-            $0.width.equalTo(130)
+            $0.width.equalTo(60)
             $0.height.equalTo(30)
         }
         
@@ -108,7 +108,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         
         birthdayIcon.snp.makeConstraints {
             $0.bottom.equalTo(birthdayBox.snp.top)
-            $0.trailing.equalTo(birthdayBox.snp.trailing).offset(-10)
+            $0.centerX.equalTo(birthdayBox)
             $0.size.equalTo(20)
         }
     }

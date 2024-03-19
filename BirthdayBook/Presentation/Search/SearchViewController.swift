@@ -90,7 +90,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.bookImage.kf.setImage(with: URL(string: book.cover), options: [.transition(.fade(1))])
             cell.author.text = book.author
             let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
-            cell.birthdayBookLabel.text = "\(date)에 태어난 책이에요"
+            cell.birthdayBookLabel.text = date
             
             return cell
         } else {
