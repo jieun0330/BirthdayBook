@@ -20,7 +20,7 @@ final class BookDetailViewController: BaseViewController {
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
                                                                        action: #selector(bookMarkButtonClicked))
-        
+    
     private let bookBackgroundImg = UIImageView().then {
         $0.alpha = 0.1
         $0.contentMode = .scaleAspectFill
@@ -123,6 +123,7 @@ final class BookDetailViewController: BaseViewController {
     override func configureView() {
         navigationItem.rightBarButtonItem = bookMarkButton
         view.setBackgroundColor()
+        
     }
     
     @objc func purchaseButtonClicked() {
@@ -144,7 +145,7 @@ final class BookDetailViewController: BaseViewController {
         bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
         bookTitle.text = data.title
         author.text = data.author
-        bookDescription.text = data.bookDescription
+        bookDescription.text = String(htmlEncodedString: data.bookDescription)
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
@@ -155,6 +156,7 @@ final class BookDetailViewController: BaseViewController {
     }
 
     @objc private func bookMarkButtonClicked() {
+
         let bookInRepository = repository.fetchItemTitle(bookTitle: bookRealm.title)
                 
         if bookInRepository.contains(where: { data in

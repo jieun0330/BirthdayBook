@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         window?.rootViewController = tabBarController
-        tabBarController.tabBar.barTintColor = DesignSystemColor.red.color
+//        tabBarController.tabBar.barTintColor = DesignSystemColor.red.color
         
         let calendarView = UINavigationController(rootViewController: CalendarViewController())
         let searchView = UINavigationController(rootViewController: SearchViewController())
@@ -31,8 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                selectedImage: UIImage(systemName: "birthday.cake.fill"))
         
         searchView.tabBarItem = UITabBarItem(title: "검색",
-                                             image: UIImage(systemName: "magnifyingglass"),
-                                             selectedImage: UIImage(systemName: "plus.magnifyingglass"))
+                                             image: .search,
+                                             selectedImage: .search)
         
         bookmarkView.tabBarItem = UITabBarItem(title: "북마크",
                                                image: .bookmarkIconInactive,
