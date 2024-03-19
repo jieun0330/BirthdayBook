@@ -10,12 +10,8 @@ import Then
 import SnapKit
 
 final class NoResultTableViewCell: BaseTableViewCell, ReusableProtocol {
-
-//    private let iconBackground = UIView().then {
-//        $0.backgroundColor = DesignSystemColor.pink.color
-//        $0.alpha = 0.3
-//        $0.layer.cornerRadius = 60
-//    }
+    
+    private let viewModel = SearchViewModel()
     
     private let bookIcon = UIImageView().then {
         $0.image = .sleepBook
@@ -28,10 +24,11 @@ final class NoResultTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.font12.font
     }
     
-    private let bestSellerButton = UIButton().then {
+    private lazy var bestSellerButton = UIButton().then {
         $0.setTitle("주간 베스트셀러 구경하기", for: .normal)
         $0.backgroundColor = DesignSystemColor.red.color
         $0.layer.cornerRadius = 20
+        $0.addTarget(self, action: #selector(bestSellerButtonClicked), for: .touchUpInside)
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -45,11 +42,6 @@ final class NoResultTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureConstraints() {
-//        iconBackground.snp.makeConstraints {
-//            $0.centerX.equalToSuperview()
-//            $0.top.equalToSuperview().offset(100)
-//            $0.size.equalTo(200)
-//        }
         
         bookIcon.snp.makeConstraints {
             $0.center.equalToSuperview()
@@ -72,6 +64,10 @@ final class NoResultTableViewCell: BaseTableViewCell, ReusableProtocol {
 //    override func configureView() {
 //        
 //    }
+    
+    @objc private func bestSellerButtonClicked() {
+        
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

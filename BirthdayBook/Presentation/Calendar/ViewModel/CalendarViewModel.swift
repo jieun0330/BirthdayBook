@@ -15,18 +15,25 @@ final class CalendarViewModel {
     
     init() {
         self.inputDate.bind { value in
-            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) { data in
-                data.forEach { isbn in
-                    APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) { data in
-                        for book in data {
-                            self.outputAladinAPIResult.value.append(book)
+            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) { bookISBNArray, error in
+                
+                if let error = error {
+                    print("문제가 있는 상황")
+                } else {
+                    guard let bookISBNArray else { return }
+                    bookISBNArray.forEach({ isbn in
+                        APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) { bookItem, error in
+                            if let error = error {
+                                print("문제가 있는 상황")
+                            } else {
+                                guard let bookItem else { return }
+                                for book in bookItem {
+                                    self.outputAladinAPIResult.value.append(book)
+                                }
+                            }
                         }
-                    } completionFailure: { error in
-                        error.handleError(error)
-                    }
+                    })
                 }
-            } completionFailure: { error in
-                error.handleError(error)
             }
         }
     }

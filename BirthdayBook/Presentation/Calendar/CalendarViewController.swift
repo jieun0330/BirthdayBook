@@ -88,7 +88,7 @@ final class CalendarViewController: BaseViewController {
         [contentView].forEach {
             scrollView.addSubview($0)
         }
-
+        
         [calendar, calendarButton, birthdayDateLabel, backgroundView, collectionView].forEach {
             contentView.addSubview($0)
         }

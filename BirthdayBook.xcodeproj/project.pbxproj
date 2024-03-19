@@ -50,7 +50,6 @@
 		C2B22AF22BA5B2AB00D384B9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */; };
 		C2B22AF42BA5B57C00D384B9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */; };
 		C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */; };
-		C2B22B072BA694F500D384B9 /* AFError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B062BA694F500D384B9 /* AFError+Extension.swift */; };
 		C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */; };
 		C2B22B102BA6CE6800D384B9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */; };
 		C2B22B122BA6D7E500D384B9 /* BookDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */; };
@@ -92,7 +91,6 @@
 		C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
-		C2B22B062BA694F500D384B9 /* AFError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AFError+Extension.swift"; sourceTree = "<group>"; };
 		C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultTableViewCell.swift; sourceTree = "<group>"; };
 		C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataProtocol.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 			children = (
 				C29546002B99AE76001A391B /* UIViewController+Extension.swift */,
 				C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */,
-				C2B22B062BA694F500D384B9 /* AFError+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -418,7 +415,6 @@
 			files = (
 				C29545EF2B999A2D001A391B /* CalendarViewController.swift in Sources */,
 				C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */,
-				C2B22B072BA694F500D384B9 /* AFError+Extension.swift in Sources */,
 				C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */,
 				C27A578E2B9C542A00CF956A /* BaseCollectionViewCell.swift in Sources */,
 				C27E063D2B9C81D1003EC2D5 /* CalendarViewModel.swift in Sources */,

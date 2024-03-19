@@ -16,9 +16,7 @@ final class APIManager {
     
     var bookISBNArray: [String] = []
     
-    func nationalLibraryCallRequest(api: BookAPI,
-                                    completionSuccess: @escaping ([String]) -> Void,
-                                    completionFailure: @escaping (AFError) -> Void) {
+    func nationalLibraryCallRequest(api: BookAPI, completionHandler: @escaping ([String]?, AFError?) -> Void) {
         
         AF
             .request(api.url)
@@ -27,27 +25,29 @@ final class APIManager {
                 case .success(let success):
                     // ISBN만 가져오기
                     for isbn in success.docs {
-                        self.bookISBNArray.append(isbn.eaIsbn)
+                        if !isbn.eaIsbn.isEmpty {
+                            self.bookISBNArray.append(isbn.eaIsbn)
+                        }
                     }
-                    completionSuccess(self.bookISBNArray)
+                    completionHandler(self.bookISBNArray, nil)
                 case .failure(let failure):
-                    completionFailure(failure)
+                    completionHandler(nil, failure)
                 }
             }
     }
     
-    func aladinCallRequest(api: BookAPI,
-                           completionSuccess: @escaping ([Item]) -> Void,
-                           completionFailure: @escaping (AFError) -> Void) {
+    func aladinCallRequest(api: BookAPI, completionHandler: @escaping ([Item]?, AFError?) -> Void) {
         
         AF
             .request(api.url)
             .responseDecodable(of: Aladin.self) { response in
                 switch response.result {
                 case .success(let success):
-                    completionSuccess(success.item)
+                    completionHandler(success.item, nil)
                 case .failure(let failure):
-                    completionFailure(failure)
+                    if !failure.isResponseSerializationError {
+                        completionHandler(nil, failure)
+                    }
                 }
             }
     }

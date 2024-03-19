@@ -14,11 +14,16 @@ final class SearchViewModel {
     var outputAladinAPIResult: Observable<[Item]> = Observable([])
     
     init() {
+        
         self.inputBookTitle.bind { bookTitle in
-            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { data in
-                    self.outputAladinAPIResult.value = data
-            } completionFailure: { error in
-                error.handleError(error)
+            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { bookItem, error in
+                
+                if let error = error {
+                    print("문제가 있는 상황")
+                } else {
+                    guard let bookItem else { return }
+                    self.outputAladinAPIResult.value = bookItem
+                }
             }
         }
     }

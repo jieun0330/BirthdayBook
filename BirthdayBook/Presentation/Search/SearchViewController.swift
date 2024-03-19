@@ -80,6 +80,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         if !viewModel.outputAladinAPIResult.value.isEmpty {
             
+            tableView.isScrollEnabled = true
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
                                                      for: indexPath) as! SearchTableViewCell
             
