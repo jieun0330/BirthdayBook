@@ -10,6 +10,7 @@ import Foundation
 protocol BookDataProtocol {
     var cover: String { get }
     var title: String { get }
+    var isbn: String { get }
     var author: String { get }
     var bookDescription: String { get }
 }

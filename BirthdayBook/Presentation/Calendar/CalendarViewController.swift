@@ -266,7 +266,6 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = BookDetailViewController()
-        vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
         vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }

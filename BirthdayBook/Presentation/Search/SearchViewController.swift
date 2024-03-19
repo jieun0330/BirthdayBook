@@ -118,7 +118,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         if viewModel.outputAladinAPIResult.value.count != 0 {
             let vc = BookDetailViewController()
-            vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
+//            vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
             vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
             navigationController?.pushViewController(vc, animated: true)
         }

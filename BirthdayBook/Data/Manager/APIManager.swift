@@ -25,8 +25,8 @@ final class APIManager {
                 case .success(let success):
                     // ISBN만 가져오기
                     for isbn in success.docs {
-                        if !isbn.eaIsbn.isEmpty {
-                            self.bookISBNArray.append(isbn.eaIsbn)
+                        if !isbn.isbn.isEmpty {
+                            self.bookISBNArray.append(isbn.isbn)
                         }
                     }
                     completionHandler(self.bookISBNArray, nil)

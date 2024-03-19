@@ -15,7 +15,7 @@ import Toast
 final class BookDetailViewController: BaseViewController {
     
     private let repository = BookRepository()
-    var aladinBook: Item!
+    var bookRealm: BookRealm!
     
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
@@ -128,10 +128,18 @@ final class BookDetailViewController: BaseViewController {
     @objc func purchaseButtonClicked() {
         let vc = WebViewController()
         navigationController?.pushViewController(vc, animated: true)
-        vc.aladinBook = aladinBook
     }
 
     func configure<T: BookDataProtocol>(data: T) {
+        
+        let newBookRealm = BookRealm(title: data.title,
+                                     author: data.author,
+                                     imgURL: data.cover,
+                                     isbn: data.isbn,
+                                     bookDescription: data.bookDescription)
+        
+        self.bookRealm = newBookRealm
+        
         bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
         bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
         bookTitle.text = data.title
@@ -147,24 +155,19 @@ final class BookDetailViewController: BaseViewController {
     }
 
     @objc private func bookMarkButtonClicked() {
-//        let bookRealm = BookRealm(title: aladinBook.title,
-//                                  author: aladinBook.author,
-//                                  imgURL: aladinBook.cover,
-//                                  isbn: aladinBook.isbn,
-//                                  bookDescription: bookDescription.text ?? "")
-//        let bookInRepository = repository.fetchItemTitle(bookTitle: aladinBook.title)
-//                
-//        if bookInRepository.contains(where: { data in
-//            repository.deleteItem(data)
-//            bookMarkButton.image = .bookmarkIconInactive
-//            view.makeToast("즐겨찾기에서 삭제되었습니다")
-//            return true
-//        }) {
-//            
-//        } else {
-//            repository.createRealm(bookRealm)
-//            bookMarkButton.image = .bookmarkIcon
-//            view.makeToast("즐겨찾기에 저장되었습니다")
-//        }
+        let bookInRepository = repository.fetchItemTitle(bookTitle: bookRealm.title)
+                
+        if bookInRepository.contains(where: { data in
+            repository.deleteItem(data)
+            bookMarkButton.image = .bookmarkIconInactive
+            view.makeToast("즐겨찾기에서 삭제되었습니다")
+            return true
+        }) {
+            
+        } else {
+            repository.createRealm(bookRealm)
+            bookMarkButton.image = .bookmarkIcon
+            view.makeToast("즐겨찾기에 저장되었습니다")
+        }
     }
 }
