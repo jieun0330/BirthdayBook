@@ -72,6 +72,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if viewModel.outputAladinAPIResult.value.isEmpty {
             return 1
         } else {
+            print("2", viewModel.outputAladinAPIResult.value.count)
             return viewModel.outputAladinAPIResult.value.count
         }
     }
@@ -100,9 +101,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             tableView.separatorStyle = .none
             tableView.isScrollEnabled = false
+            cell.bestSellerButton.addTarget(self, action: #selector(bestSellerButtonClicked), for: .touchUpInside)
             
             return cell
         }
+    }
+    
+    @objc private func bestSellerButtonClicked() {
+        viewModel.inputBestSeller.value = ()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -118,7 +124,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         if viewModel.outputAladinAPIResult.value.count != 0 {
             let vc = BookDetailViewController()
-//            vc.aladinBook = viewModel.outputAladinAPIResult.value[indexPath.item]
             vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
             navigationController?.pushViewController(vc, animated: true)
         }

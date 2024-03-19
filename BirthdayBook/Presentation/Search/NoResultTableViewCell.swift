@@ -24,11 +24,10 @@ final class NoResultTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.font12.font
     }
     
-    private lazy var bestSellerButton = UIButton().then {
+    lazy var bestSellerButton = UIButton().then {
         $0.setTitle("주간 베스트셀러 구경하기", for: .normal)
         $0.backgroundColor = DesignSystemColor.red.color
         $0.layer.cornerRadius = 20
-        $0.addTarget(self, action: #selector(bestSellerButtonClicked), for: .touchUpInside)
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -64,10 +63,6 @@ final class NoResultTableViewCell: BaseTableViewCell, ReusableProtocol {
 //    override func configureView() {
 //        
 //    }
-    
-    @objc private func bestSellerButtonClicked() {
-        
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

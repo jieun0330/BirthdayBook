@@ -18,13 +18,13 @@ final class CalendarViewModel {
             APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) { bookISBNArray, error in
                 
                 if let error = error {
-                    print("문제가 있는 상황")
+                    print(error)
                 } else {
                     guard let bookISBNArray else { return }
                     bookISBNArray.forEach({ isbn in
                         APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) { bookItem, error in
                             if let error = error {
-                                print("문제가 있는 상황")
+                                print(error)
                             } else {
                                 guard let bookItem else { return }
                                 for book in bookItem {
