@@ -13,4 +13,5 @@ protocol BookDataProtocol {
     var isbn: String { get }
     var author: String { get }
     var bookDescription: String { get }
+    var itemId: Int { get }
 }

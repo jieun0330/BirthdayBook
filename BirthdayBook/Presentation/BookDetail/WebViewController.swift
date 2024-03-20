@@ -12,13 +12,13 @@ import SnapKit
 final class WebViewController: BaseViewController {
     
     private let webView = WKWebView()
-    var aladinBook: Item!
     private let viewModel = WebViewModel()
+    var bookISBN = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.inputItemID.value = aladinBook.itemId
+        viewModel.inputItemID.value = self.bookISBN
         
         if let url = viewModel.outputURL.value {
             let request = URLRequest(url: url)

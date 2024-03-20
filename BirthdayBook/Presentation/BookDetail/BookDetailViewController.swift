@@ -15,8 +15,9 @@ import Toast
 final class BookDetailViewController: BaseViewController {
     
     private let repository = BookRepository()
+    private let vc = WebViewController()
     var bookRealm: BookRealm!
-    
+
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
                                                                        action: #selector(bookMarkButtonClicked))
@@ -123,11 +124,10 @@ final class BookDetailViewController: BaseViewController {
     override func configureView() {
         navigationItem.rightBarButtonItem = bookMarkButton
         view.setBackgroundColor()
-        
     }
     
+    // 웹뷰 링크는 ISBN이 아닌 itemID로 들어가야한다
     @objc func purchaseButtonClicked() {
-        let vc = WebViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -137,7 +137,8 @@ final class BookDetailViewController: BaseViewController {
                                      author: data.author,
                                      imgURL: data.cover,
                                      isbn: data.isbn,
-                                     bookDescription: data.bookDescription)
+                                     bookDescription: data.bookDescription,
+                                     itemId: data.itemId)
         
         self.bookRealm = newBookRealm
         
@@ -146,6 +147,8 @@ final class BookDetailViewController: BaseViewController {
         bookTitle.text = data.title
         author.text = data.author
         bookDescription.text = String(htmlEncodedString: data.bookDescription)
+        vc.bookISBN = data.itemId
+        print("1", data.itemId)
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {

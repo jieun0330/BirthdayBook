@@ -136,5 +136,6 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputBookTitle.value = searchBarText
+        view.endEditing(true)
     }
 }

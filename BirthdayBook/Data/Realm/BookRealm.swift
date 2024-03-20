@@ -15,13 +15,15 @@ final class BookRealm: Object, BookDataProtocol {
     @Persisted var cover: String
     @Persisted var isbn: String
     @Persisted var bookDescription: String
+    @Persisted var itemId: Int
     
-    convenience init(title: String, author: String, imgURL: String, isbn: String, bookDescription: String) {
+    convenience init(title: String, author: String, imgURL: String, isbn: String, bookDescription: String, itemId: Int) {
         self.init()
         self.title = title
         self.author = author
         self.cover = imgURL
         self.isbn = isbn
         self.bookDescription = bookDescription
+        self.itemId = itemId
     }
 }
