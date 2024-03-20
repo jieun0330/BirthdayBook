@@ -59,6 +59,8 @@ final class CalendarViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        KingfisherCache.shared.checkCurrentCacheSize()
+
         scrollView.isScrollEnabled = false
         
         let today = Date()
@@ -69,6 +71,13 @@ final class CalendarViewController: BaseViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        KingfisherCache.shared.removeCache()
+        KingfisherCache.shared.checkCurrentCacheSize()
     }
     
     func birthdayDate(date: Date) {
@@ -265,6 +274,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+                        
         let vc = BookDetailViewController()
         vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)

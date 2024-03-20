@@ -148,7 +148,6 @@ final class BookDetailViewController: BaseViewController {
         author.text = data.author
         bookDescription.text = String(htmlEncodedString: data.bookDescription)
         vc.bookISBN = data.itemId
-        print("1", data.itemId)
         
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {

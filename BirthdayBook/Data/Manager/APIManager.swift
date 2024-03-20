@@ -5,7 +5,7 @@
 //  Created by 박지은 on 3/9/24.
 //
 
-import Foundation
+import UIKit
 import Alamofire
 
 final class APIManager {
@@ -32,6 +32,9 @@ final class APIManager {
                     completionHandler(self.bookISBNArray, nil)
                 case .failure(let failure):
                     completionHandler(nil, failure)
+                    let alert = UIAlertController(title: "잠시 후 다시 시도해주세요", message: "?", preferredStyle: .alert)
+                    let okButton = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(okButton)
                 }
             }
     }
