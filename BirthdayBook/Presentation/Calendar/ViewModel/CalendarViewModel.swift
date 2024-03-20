@@ -10,7 +10,9 @@ import Foundation
 final class CalendarViewModel {
     
     var inputDate = Observable("")
+    var inputISBNTrigger: Observable<Void?> = Observable(nil)
     
+    var outputNationalLibraryAPIResult: [String] = []
     var outputAladinAPIResult: Observable<[Item]> = Observable([])
     
     init() {
@@ -21,19 +23,27 @@ final class CalendarViewModel {
                     print(error)
                 } else {
                     guard let bookISBNArray else { return }
-                    bookISBNArray.forEach({ isbn in
-                        APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) { bookItem, error in
-                            if let error = error {
-                                print(error)
-                            } else {
-                                guard let bookItem else { return }
-                                for book in bookItem {
-                                    self.outputAladinAPIResult.value.append(book)
-                                }
-                            }
-                        }
-                    })
+                    self.outputNationalLibraryAPIResult = bookISBNArray
+                    self.inputISBNTrigger.value = ()
                 }
+            }
+        }
+        
+        self.inputISBNTrigger.bind { _ in
+            for i in self.outputNationalLibraryAPIResult.prefix(5) {
+                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) { bookItem, error in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        guard let bookItem else { return }
+                        self.outputAladinAPIResult.value.append(contentsOf: bookItem)
+                    }
+                }
+            }
+            if self.outputNationalLibraryAPIResult.count > 5 {
+                self.outputNationalLibraryAPIResult.removeSubrange(0...4)
+            } else {
+                self.outputNationalLibraryAPIResult.removeAll()
             }
         }
     }

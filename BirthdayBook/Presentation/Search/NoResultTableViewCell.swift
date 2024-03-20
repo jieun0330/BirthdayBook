@@ -10,9 +10,7 @@ import Then
 import SnapKit
 
 final class NoResultTableViewCell: BaseTableViewCell, ReusableProtocol {
-    
-    private let viewModel = SearchViewModel()
-    
+        
     private let bookIcon = UIImageView().then {
         $0.image = .sleepBook
         $0.tintColor = DesignSystemColor.red.color

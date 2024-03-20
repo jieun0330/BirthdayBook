@@ -15,6 +15,7 @@ final class APIManager {
     private init() { }
     
     var bookISBNArray: [String] = []
+    var test: [Item] = []
     
     func nationalLibraryCallRequest(api: BookAPI, completionHandler: @escaping ([String]?, AFError?) -> Void) {
         
@@ -31,10 +32,7 @@ final class APIManager {
                     }
                     completionHandler(self.bookISBNArray, nil)
                 case .failure(let failure):
-                    completionHandler(nil, failure)
-                    let alert = UIAlertController(title: "잠시 후 다시 시도해주세요", message: "?", preferredStyle: .alert)
-                    let okButton = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(okButton)
+                    print(failure)
                 }
             }
     }
@@ -48,9 +46,8 @@ final class APIManager {
                 case .success(let success):
                     completionHandler(success.item, nil)
                 case .failure(let failure):
-                    if !failure.isResponseSerializationError {
-                        completionHandler(nil, failure)
-                    }
+                    completionHandler(nil, failure)
+                    //                    print("failure")
                 }
             }
     }

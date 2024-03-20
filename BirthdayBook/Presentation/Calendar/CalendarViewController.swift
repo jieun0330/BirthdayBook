@@ -19,6 +19,8 @@ final class CalendarViewController: BaseViewController {
     
     private let contentView = UIView()
     
+    private var selectedDate: Date?
+    
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
                                                              action: #selector(logoClicked))
@@ -51,6 +53,7 @@ final class CalendarViewController: BaseViewController {
         $0.backgroundColor = .none
         $0.delegate = self
         $0.dataSource = self
+        $0.prefetchDataSource = self
         $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
         //        $0.layer.borderColor = UIColor.green.cgColor
         //        $0.layer.borderWidth = 1
@@ -59,8 +62,6 @@ final class CalendarViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        KingfisherCache.shared.checkCurrentCacheSize()
-
         scrollView.isScrollEnabled = false
         
         let today = Date()
@@ -237,14 +238,24 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(#function)
         
-        APIManager.shared.bookISBNArray.removeAll()
-        viewModel.outputAladinAPIResult.value.removeAll()
-        
+        selectedDate = date
         birthdayDate(date: date)
         
         collectionView.isPagingEnabled = false
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        print(#function)
+        
+        if date != selectedDate {
+            APIManager.shared.bookISBNArray.removeAll()
+            viewModel.outputAladinAPIResult.value.removeAll()
+        }
+        
+        return true
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
@@ -274,9 +285,18 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                        
         let vc = BookDetailViewController()
         vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension CalendarViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for item in indexPaths {
+            if viewModel.outputAladinAPIResult.value.count - 1 == item.item {
+                viewModel.inputISBNTrigger.value = ()
+            }
+        }
     }
 }
