@@ -238,23 +238,21 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(#function)
         
         selectedDate = date
         birthdayDate(date: date)
-        
-        collectionView.isPagingEnabled = false
-        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        print(#function)
         
         if date != selectedDate {
             APIManager.shared.bookISBNArray.removeAll()
             viewModel.outputAladinAPIResult.value.removeAll()
+            collectionView.isPagingEnabled = false
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        } else {
+            return false
         }
-        
         return true
     }
     
