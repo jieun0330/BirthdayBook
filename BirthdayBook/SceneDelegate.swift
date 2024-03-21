@@ -19,11 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         window?.rootViewController = tabBarController
-//        tabBarController.tabBar.barTintColor = DesignSystemColor.red.color
         
         let calendarView = UINavigationController(rootViewController: CalendarViewController())
         let searchView = UINavigationController(rootViewController: SearchViewController())
         let bookmarkView = UINavigationController(rootViewController: BookmarkViewController())
+//        let settingView = UINavigationController(rootViewController: SettingViewController())
         tabBarController.setViewControllers([calendarView, searchView, bookmarkView], animated: false)
         
         calendarView.tabBarItem = UITabBarItem(title: "홈",

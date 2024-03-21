@@ -17,6 +17,10 @@ final class BookmarkViewController: BaseViewController {
                                                              target: self,
                                                              action: #selector(logoClicked))
     
+    private lazy var setting = UIBarButtonItem.setBarButtonItem(image: .list,
+                                                                target: self,
+                                                                action: #selector(settingClicked))
+    
     private lazy var collectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: configureCollectionViewLayout()).then {
         $0.delegate = self
@@ -52,9 +56,15 @@ final class BookmarkViewController: BaseViewController {
     override func configureView() {
         view.setBackgroundColor()
         navigationItem.leftBarButtonItem = logo
+        navigationItem.rightBarButtonItem = setting
     }
     
     @objc private func logoClicked() { }
+    
+    @objc private func settingClicked() {
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     private func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
