@@ -11,7 +11,9 @@ import SnapKit
 
 final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let bookImage = UIImageView().then {
+    let weekBestSellerText = UILabel()
+    
+    let bookImage = UIImageView().then{
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }

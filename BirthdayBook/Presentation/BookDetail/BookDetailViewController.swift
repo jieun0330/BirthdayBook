@@ -25,6 +25,7 @@ final class BookDetailViewController: BaseViewController {
     private let bookBackgroundImg = UIImageView().then {
         $0.alpha = 0.1
         $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     let bookCoverImg = UIImageView().then {

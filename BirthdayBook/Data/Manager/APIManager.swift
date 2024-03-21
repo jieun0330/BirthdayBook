@@ -17,6 +17,7 @@ final class APIManager {
     var bookISBNArray: [String] = []
     var test: [Item] = []
     
+    // Result<NationalLibrary, AFError> -> Void
     func nationalLibraryCallRequest(api: BookAPI, completionHandler: @escaping ([String]?, AFError?) -> Void) {
         
         AF
@@ -32,7 +33,8 @@ final class APIManager {
                     }
                     completionHandler(self.bookISBNArray, nil)
                 case .failure(let failure):
-                    print(failure)
+//                    print(failure)
+                    completionHandler(nil, failure)
                 }
             }
     }

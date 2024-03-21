@@ -60,6 +60,7 @@ final class BookmarkViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         
+        // Realm에 저장되어있는게 없으면
         if repository.fetchAllItem().isEmpty {
             let width = UIScreen.main.bounds.width
             layout.itemSize = CGSize(width: width / 1.5, height: width / 1.8)
