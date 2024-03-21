@@ -44,7 +44,7 @@
 		C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */; };
 		C2B22AF02BA5A9DF00D384B9 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = C2B22AEF2BA5A9DF00D384B9 /* Toast */; };
 		C2B22AF22BA5B2AB00D384B9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */; };
-		C2B22AF42BA5B57C00D384B9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */; };
+		C2B22AF42BA5B57C00D384B9 /* AladinWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF32BA5B57C00D384B9 /* AladinWebViewController.swift */; };
 		C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */; };
 		C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */; };
 		C2B22B102BA6CE6800D384B9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */; };
@@ -52,6 +52,7 @@
 		C2C6F3192BAC1DDC004CE8AD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */; };
 		C2C6F31B2BAC2214004CE8AD /* SettingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */; };
 		C2C6F31D2BAC41A6004CE8AD /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */; };
+		C2C6F3202BAC4AD8004CE8AD /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31F2BAC4AD8004CE8AD /* SettingViewModel.swift */; };
 		C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */; };
 		C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */; };
 		C2EF798A2BA9B576005F8FFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C2EF79892BA9B576005F8FFA /* SnapKit */; };
@@ -92,7 +93,7 @@
 		C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		C2B22AF32BA5B57C00D384B9 /* AladinWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinWebViewController.swift; sourceTree = "<group>"; };
 		C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultTableViewCell.swift; sourceTree = "<group>"; };
 		C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEnum.swift; sourceTree = "<group>"; };
 		C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		C2C6F31F2BAC4AD8004CE8AD /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherCache.swift; sourceTree = "<group>"; };
 		C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
-				C2B22AF32BA5B57C00D384B9 /* WebViewController.swift */,
+				C2B22AF32BA5B57C00D384B9 /* AladinWebViewController.swift */,
 				C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */,
 				C2B22AE82BA4362300D384B9 /* ViewModel */,
 			);
@@ -336,8 +338,17 @@
 				C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */,
 				C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */,
 				C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */,
+				C2C6F31E2BAC4939004CE8AD /* ViewModel */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		C2C6F31E2BAC4939004CE8AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2C6F31F2BAC4AD8004CE8AD /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C2C9696D2BAAAA17004EA8EB /* Kingfisher */ = {
@@ -454,6 +465,7 @@
 				C2C6F31B2BAC2214004CE8AD /* SettingEnum.swift in Sources */,
 				C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */,
 				C29545D92B998395001A391B /* AppDelegate.swift in Sources */,
+				C2C6F3202BAC4AD8004CE8AD /* SettingViewModel.swift in Sources */,
 				C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */,
 				C29546092B99BBF9001A391B /* Colors.swift in Sources */,
 				C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */,
@@ -473,7 +485,7 @@
 				C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,
-				C2B22AF42BA5B57C00D384B9 /* WebViewController.swift in Sources */,
+				C2B22AF42BA5B57C00D384B9 /* AladinWebViewController.swift in Sources */,
 				C2B22AF22BA5B2AB00D384B9 /* String+Extension.swift in Sources */,
 				C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */,
 			);

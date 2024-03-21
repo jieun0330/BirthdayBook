@@ -15,7 +15,7 @@ import Toast
 final class BookDetailViewController: BaseViewController {
     
     private let repository = BookRepository()
-    private let vc = WebViewController()
+    private let vc = AladinWebViewController()
     var bookRealm: BookRealm!
 
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,

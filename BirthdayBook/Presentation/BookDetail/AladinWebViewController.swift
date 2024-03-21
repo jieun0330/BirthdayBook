@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 import SnapKit
 
-final class WebViewController: BaseViewController {
+final class AladinWebViewController: BaseViewController {
     
     private let webView = WKWebView()
     private let viewModel = WebViewModel()

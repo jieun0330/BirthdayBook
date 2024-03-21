@@ -14,7 +14,7 @@ final class SettingViewController: BaseViewController {
     private lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
-//        $0.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
+        $0.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
     }
 
     override func viewDidLoad() {
@@ -42,14 +42,30 @@ final class SettingViewController: BaseViewController {
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return SettingEnum.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: <#T##String#>, for: <#T##IndexPath#>)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
         
-        
-        
+        cell.settingTitle.text = SettingEnum.allCases[indexPath.row].setting
+
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            print("0")
+//            SettingEnum.question.url
+        case 1:
+            print("1")
+        case 2:
+            print("2")
+        default:
+            print("3")
+        }
+    }
 }
+//
+//https://forms.gle/bG8GikriUHdidgVu6a

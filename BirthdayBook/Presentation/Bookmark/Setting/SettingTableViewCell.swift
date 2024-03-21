@@ -6,24 +6,35 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
-final class SettingTableViewCell: BaseTableViewCell {
+final class SettingTableViewCell: BaseTableViewCell, ReusableProtocol {
+    
+    let settingTitle = UILabel().then {
+        $0.font = DesignSystemFont.font12.font
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     override func configureHierarchy() {
-        <#code#>
+        [settingTitle].forEach {
+            contentView.addSubview($0)
+        }
     }
     
     override func configureConstraints() {
-        <#code#>
+        settingTitle.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(contentView).offset(30)
+        }
     }
     
-    override func configureView() {
-        <#code#>
-    }
+//    override func configureView() {
+//        <#code#>
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
