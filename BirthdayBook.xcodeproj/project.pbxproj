@@ -52,7 +52,7 @@
 		C2C6F3192BAC1DDC004CE8AD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */; };
 		C2C6F31B2BAC2214004CE8AD /* SettingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */; };
 		C2C6F31D2BAC41A6004CE8AD /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */; };
-		C2C6F3202BAC4AD8004CE8AD /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31F2BAC4AD8004CE8AD /* SettingViewModel.swift */; };
+		C2C6F3222BAC4CE2004CE8AD /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */; };
 		C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */; };
 		C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */; };
 		C2EF798A2BA9B576005F8FFA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C2EF79892BA9B576005F8FFA /* SnapKit */; };
@@ -101,7 +101,7 @@
 		C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEnum.swift; sourceTree = "<group>"; };
 		C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		C2C6F31F2BAC4AD8004CE8AD /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
 		C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherCache.swift; sourceTree = "<group>"; };
 		C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -338,17 +338,9 @@
 				C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */,
 				C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */,
 				C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */,
-				C2C6F31E2BAC4939004CE8AD /* ViewModel */,
+				C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		C2C6F31E2BAC4939004CE8AD /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C2C6F31F2BAC4AD8004CE8AD /* SettingViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C2C9696D2BAAAA17004EA8EB /* Kingfisher */ = {
@@ -465,7 +457,6 @@
 				C2C6F31B2BAC2214004CE8AD /* SettingEnum.swift in Sources */,
 				C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */,
 				C29545D92B998395001A391B /* AppDelegate.swift in Sources */,
-				C2C6F3202BAC4AD8004CE8AD /* SettingViewModel.swift in Sources */,
 				C29BDAD92B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift in Sources */,
 				C29546092B99BBF9001A391B /* Colors.swift in Sources */,
 				C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */,
@@ -477,6 +468,7 @@
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
 				C2C6F3192BAC1DDC004CE8AD /* SettingViewController.swift in Sources */,
 				C29546062B99B86D001A391B /* DateFormatManager.swift in Sources */,
+				C2C6F3222BAC4CE2004CE8AD /* SettingWebViewController.swift in Sources */,
 				C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
 				C2B22B122BA6D7E500D384B9 /* BookDataProtocol.swift in Sources */,

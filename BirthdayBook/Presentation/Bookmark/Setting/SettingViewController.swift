@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 final class SettingViewController: BaseViewController {
-    
+        
     private lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
@@ -49,23 +49,21 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
         
         cell.settingTitle.text = SettingEnum.allCases[indexPath.row].setting
+        cell.selectionStyle = .none
+        
+        if indexPath.row == 2 {
+            cell.version.text = "버전 1.0.0"
+        }
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            print("0")
-//            SettingEnum.question.url
-        case 1:
-            print("1")
-        case 2:
-            print("2")
-        default:
-            print("3")
-        }
+        
+        if indexPath.row != 2 {
+            let vc = SettingWebViewController()
+            vc.settingURL = SettingEnum.allCases[indexPath.row].url
+            navigationController?.pushViewController(vc, animated: true)
+        } 
     }
 }
-//
-//https://forms.gle/bG8GikriUHdidgVu6a
