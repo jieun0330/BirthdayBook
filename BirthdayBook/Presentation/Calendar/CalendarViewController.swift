@@ -21,6 +21,13 @@ final class CalendarViewController: BaseViewController {
     
     private var selectedDate: Date?
     
+    private let indicatorView = UIActivityIndicatorView().then {
+        $0.color = .red
+        $0.hidesWhenStopped = true
+        $0.style = .large
+        $0.stopAnimating()
+    }
+    
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
                                                              action: #selector(logoClicked))
@@ -91,7 +98,7 @@ final class CalendarViewController: BaseViewController {
     
     override func configureHierarchy() {
         
-        [scrollView].forEach {
+        [scrollView, indicatorView].forEach {
             view.addSubview($0)
         }
         
@@ -105,9 +112,14 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configureConstraints() {
-        
+                
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        indicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(100)
         }
         
         contentView.snp.makeConstraints {
@@ -150,8 +162,18 @@ final class CalendarViewController: BaseViewController {
         view.setBackgroundColor()
         setCalendarUI()
         navigationItem.leftBarButtonItem = logo
+
+        viewModel.inputIndicatorTrigger.bind { isActivate in
+            if isActivate == true {
+                self.indicatorView.startAnimating()
+                self.calendar.isUserInteractionEnabled = false
+            } else {
+                self.indicatorView.stopAnimating()
+                self.calendar.isUserInteractionEnabled = true
+            }
+        }
     }
-    
+
     @objc private func logoClicked() { }
     
     private func createLayout() -> UICollectionViewFlowLayout {
@@ -238,9 +260,9 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
         selectedDate = date
         birthdayDate(date: date)
+        viewModel.inputIndicatorTrigger.value = true
     }
     
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {

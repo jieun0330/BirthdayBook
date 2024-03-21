@@ -11,13 +11,21 @@ final class CalendarViewModel {
     
     var inputDate = Observable("")
     var inputISBNTrigger: Observable<Void?> = Observable(nil)
+    var inputIndicatorTrigger = Observable(false)
     
     var outputNationalLibraryAPIResult: [String] = []
     var outputAladinAPIResult: Observable<[Item]> = Observable([])
     
     init() {
         self.inputDate.bind { value in
+            
+            // Indicator start animating
+            self.inputIndicatorTrigger.value = true
+            
             APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) { bookISBNArray, error in
+                
+                // Indicator stop animating
+                self.inputIndicatorTrigger.value = false
                 
                 if let error = error {
                     print(error)
