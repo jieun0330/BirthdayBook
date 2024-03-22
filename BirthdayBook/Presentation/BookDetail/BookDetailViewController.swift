@@ -14,10 +14,9 @@ import Toast
 
 final class BookDetailViewController: BaseViewController {
     
-    private let repository = BookRepository()
     private let vc = AladinWebViewController()
-    var bookRealm: BookRealm!
-
+    private var viewModel = BookDetailViewModel()
+    
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
                                                                        action: #selector(bookMarkButtonClicked))
@@ -28,14 +27,14 @@ final class BookDetailViewController: BaseViewController {
         $0.clipsToBounds = true
     }
     
-    let bookCoverImg = UIImageView().then {
+    private let bookCoverImg = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.layer.shadowOffset = CGSize(width: 2, height: 2)
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.5
     }
     
-    let bookTitle = UILabel().then {
+    private let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.font15.font
         $0.textColor = DesignSystemColor.red.color
         $0.textAlignment = .center
@@ -48,15 +47,11 @@ final class BookDetailViewController: BaseViewController {
     
     private let introductionTitle = UILabel().then {
         $0.text = "책 소개"
-        //        $0.layer.borderColor = UIColor.brown.cgColor
-        //        $0.layer.borderWidth = 1
     }
     
-    let bookDescription = UILabel().then {
+    private let bookDescription = UILabel().then {
         $0.numberOfLines = 0
         $0.font = DesignSystemFont.font12.font
-        //        $0.layer.borderColor = UIColor.blue.cgColor
-        //        $0.layer.borderWidth = 1
     }
     
     private lazy var purchaseButton = UIButton().then {
@@ -69,7 +64,7 @@ final class BookDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
@@ -129,20 +124,13 @@ final class BookDetailViewController: BaseViewController {
     }
     
     // 웹뷰 링크는 ISBN이 아닌 itemID로 들어가야한다
-    @objc func purchaseButtonClicked() {
+    @objc private func purchaseButtonClicked() {
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     func configure<T: BookDataProtocol>(data: T) {
         
-        let newBookRealm = BookRealm(title: data.title,
-                                     author: data.author,
-                                     imgURL: data.cover,
-                                     isbn: data.isbn,
-                                     bookDescription: data.bookDescription,
-                                     itemId: data.itemId)
-        
-        self.bookRealm = newBookRealm
+        viewModel.configure(data: data)
         
         bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
         bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
@@ -150,31 +138,26 @@ final class BookDetailViewController: BaseViewController {
         author.text = data.author
         bookDescription.text = String(htmlEncodedString: data.bookDescription)
         vc.bookISBN = data.itemId
-                
+        
         // realm에 있는지 확인
-        if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
-            bookMarkButton.image = .bookmarkIconInactive
-        } else {
+        if viewModel.isBookMarked() {
             bookMarkButton.image = .bookmarkIcon
+        } else {
+            bookMarkButton.image = .bookmarkIconInactive
         }
     }
-
+    
     @objc private func bookMarkButtonClicked() {
-                
-        let bookInRepository = repository.fetchItemTitle(bookTitle: bookRealm.title)
-                        
-        if bookInRepository.contains(where: { data in
-            repository.deleteItem(data)
-            bookMarkButton.image = .bookmarkIconInactive
-            view.makeToast("즐겨찾기에서 삭제되었습니다")
-            
-            return true
-        }) {
-
-        } else {
-            repository.createRealm(bookRealm)
+        
+        viewModel.bookMarkButtonClicked()
+        
+        if viewModel.isBookMarked() {
             bookMarkButton.image = .bookmarkIcon
             view.makeToast("즐겨찾기에 저장되었습니다")
+            
+        } else {
+            bookMarkButton.image = .bookmarkIconInactive
+            view.makeToast("즐겨찾기에서 삭제되었습니다")
         }
     }
 }

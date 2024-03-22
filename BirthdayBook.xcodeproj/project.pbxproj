@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C279092D2BADC0ED00223C71 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */; };
 		C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */; };
 		C27A578E2B9C542A00CF956A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */; };
 		C27A57902B9C557700CF956A /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578F2B9C557700CF956A /* Protocol.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C27A578F2B9C557700CF956A /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */,
+				C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				C2C6F3222BAC4CE2004CE8AD /* SettingWebViewController.swift in Sources */,
 				C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
+				C279092D2BADC0ED00223C71 /* BookDetailViewModel.swift in Sources */,
 				C2B22B122BA6D7E500D384B9 /* BookDataProtocol.swift in Sources */,
 				C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */,
 				C2B22AE32BA41D7B00D384B9 /* SearchViewController.swift in Sources */,
