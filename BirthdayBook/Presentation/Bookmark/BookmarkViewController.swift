@@ -11,7 +11,7 @@ import Then
 
 final class BookmarkViewController: BaseViewController {
     
-    private let repository = BookRepository()
+    private let viewModel = BookMarkViewModel()
     
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
@@ -27,7 +27,8 @@ final class BookmarkViewController: BaseViewController {
         $0.dataSource = self
         $0.register(BookmarkCollectionViewCell.self,
                     forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
-        $0.register(NoBookmarkCollectionViewCell.self, forCellWithReuseIdentifier: NoBookmarkCollectionViewCell.identifier)
+        $0.register(NoBookmarkCollectionViewCell.self,
+                    forCellWithReuseIdentifier: NoBookmarkCollectionViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -71,14 +72,20 @@ final class BookmarkViewController: BaseViewController {
         let spacing: CGFloat = 10
         
         // Realm에 저장되어있는게 없으면
-        if repository.fetchAllItem().isEmpty {
+        if viewModel.repositoryEmpty() {
             let width = UIScreen.main.bounds.width
             layout.itemSize = CGSize(width: width / 1.5, height: width / 1.8)
-            layout.sectionInset = ConstraintInsets(top: 250, left: 15, bottom: spacing, right: 15)
+            layout.sectionInset = ConstraintInsets(top: 250,
+                                                   left: 15,
+                                                   bottom: spacing,
+                                                   right: 15)
         } else {
             let width = UIScreen.main.bounds.width - (spacing * 3)
             layout.itemSize = CGSize(width: width / 2.2, height: width / 1.8)
-            layout.sectionInset = ConstraintInsets(top: spacing, left: 15, bottom: spacing, right: 15)
+            layout.sectionInset = ConstraintInsets(top: spacing,
+                                                   left: 15,
+                                                   bottom: spacing,
+                                                   right: 15)
         }
         
         layout.minimumLineSpacing = spacing
@@ -90,30 +97,32 @@ final class BookmarkViewController: BaseViewController {
 }
 
 extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         
-        if repository.fetchAllItem().isEmpty {
-            return 1
-        } else {
-            return repository.fetchAllItem().count
-        }
+        return viewModel.repositoryEmpty() ? 1 : viewModel.repositoryItemCount()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if repository.fetchAllItem().count == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoBookmarkCollectionViewCell.identifier, for: indexPath)
+        if viewModel.repositoryEmpty() {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoBookmarkCollectionViewCell.identifier,
+                                                          for: indexPath)
             
             return cell
+            
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier, for: indexPath) as! BookmarkCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier,
+                                                          for: indexPath) as! BookmarkCollectionViewCell
             
             cell.layer.cornerRadius = 15
             cell.backgroundColor = DesignSystemColor.random.color
             
-            let repoAll = repository.fetchAllItem()
+            let repoAll = viewModel.repositoryFetch()
             cell.bookTitle.text = repoAll[indexPath.item].title
-            cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].cover), options: [.transition(.fade(1))])
+            cell.bookImage.kf.setImage(with: URL(string: repoAll[indexPath.item].cover),
+                                       options: [.transition(.fade(1))])
             
             return cell
         }
@@ -122,7 +131,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let vc = BookDetailViewController()
-        let repoAll = repository.fetchAllItem()
+        let repoAll = viewModel.repositoryFetch()
         let bookRealm = repoAll[indexPath.item]
         vc.configure(data: bookRealm)
         navigationController?.pushViewController(vc, animated: true)

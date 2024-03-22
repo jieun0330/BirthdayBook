@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C279092D2BADC0ED00223C71 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */; };
+		C27909302BADC48200223C71 /* BookMarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C279092F2BADC48200223C71 /* BookMarkViewModel.swift */; };
 		C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */; };
 		C27A578E2B9C542A00CF956A /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */; };
 		C27A57902B9C557700CF956A /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578F2B9C557700CF956A /* Protocol.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		C279092F2BADC48200223C71 /* BookMarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewModel.swift; sourceTree = "<group>"; };
 		C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C27A578F2B9C557700CF956A /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C279092E2BADC47800223C71 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C279092F2BADC48200223C71 /* BookMarkViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		C27E063E2B9C8215003EC2D5 /* Observable */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +251,7 @@
 				C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */,
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
 				C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */,
+				C279092E2BADC47800223C71 /* ViewModel */,
 				C2C6F3172BAC1DC7004CE8AD /* Setting */,
 			);
 			path = Bookmark;
@@ -437,6 +448,7 @@
 				C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */,
 				C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */,
 				C27A578E2B9C542A00CF956A /* BaseCollectionViewCell.swift in Sources */,
+				C27909302BADC48200223C71 /* BookMarkViewModel.swift in Sources */,
 				C27E063D2B9C81D1003EC2D5 /* CalendarViewModel.swift in Sources */,
 				C29BDAD52B9F19B1007898E3 /* BookmarkViewController.swift in Sources */,
 				C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */,
