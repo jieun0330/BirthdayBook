@@ -14,7 +14,8 @@ final class SettingViewController: BaseViewController {
     private lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
-        $0.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
+        $0.register(SettingTableViewCell.self,
+                    forCellReuseIdentifier: SettingTableViewCell.identifier)
     }
 
     override func viewDidLoad() {
@@ -46,7 +47,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier,
+                                                 for: indexPath) as! SettingTableViewCell
         
         cell.settingTitle.text = SettingEnum.allCases[indexPath.row].setting
         cell.selectionStyle = .none

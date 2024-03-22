@@ -40,13 +40,8 @@ final class SettingTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.trailing.equalTo(contentView).offset(-30)
         }
     }
-    
-//    override func configureView() {
-//        <#code#>
-//    }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

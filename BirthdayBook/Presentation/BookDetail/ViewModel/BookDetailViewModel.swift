@@ -32,6 +32,7 @@ final class BookDetailViewModel {
         guard let bookRealm else { return }
         
         if isBookMarked() {
+//            repository.deleteItem(title)
             repository.deleteItem(bookRealm)
         } else {
             repository.createRealm(bookRealm)
