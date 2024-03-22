@@ -15,7 +15,8 @@ final class WebViewModel {
     
     init() {
         
-        self.inputItemID.bind { id in
+        self.inputItemID.bind { [weak self] id in
+            guard let self else { return }
             let urlString = "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=\(id)&partner=openAPI&start=api"
             self.outputURL.value = URL(string: urlString)
         }

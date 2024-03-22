@@ -16,18 +16,19 @@ final class KingfisherCache {
         ImageCache.default.calculateDiskStorageSize { result in
             switch result {
             case .success(let size):
-                print("disk cache size = \(Double(size) / 1024 / 1024)")
+                print("size")
+//                print("disk cache size = \(Double(size) / 1024 / 1024)")
             case .failure(let error):
-                print(error)
+                print("error")
             }
         }
     }
     
     func removeCache() {
         ImageCache.default.clearMemoryCache()
-        ImageCache.default.clearDiskCache { print("done clearDiskCache") }
+        ImageCache.default.clearDiskCache()
         
         ImageCache.default.cleanExpiredMemoryCache()
-        ImageCache.default.cleanExpiredDiskCache { print("done cleanExpriedDiskCache") }
+        ImageCache.default.cleanExpiredDiskCache()
     }
 }

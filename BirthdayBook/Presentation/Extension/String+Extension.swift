@@ -19,10 +19,11 @@ extension String {
             .characterEncoding: String.Encoding.utf8.rawValue
         ]
         
-        guard let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else {
+        guard let attributedString = try? NSAttributedString(data: data,
+                                                             options: options,
+                                                             documentAttributes: nil) else {
             return nil
         }
-        
         self.init(attributedString.string)
     }
 }

@@ -17,7 +17,8 @@ final class SearchViewModel {
     init() {
         
         self.inputBookTitle.bind { bookTitle in
-            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { bookItem, error in
+            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { [weak self] bookItem, error in
+                guard let self else { return }
                 
                 if let error = error {
                     print(error)
@@ -29,7 +30,8 @@ final class SearchViewModel {
         }
         
         self.inputBestSeller.bind { _ in
-            APIManager.shared.aladinCallRequest(api: .bestSeller) { bestSellerBook, error in
+            APIManager.shared.aladinCallRequest(api: .bestSeller) { [weak self] bestSellerBook, error in
+                guard let self else { return }
                 
                 if let error = error {
                     print(error)

@@ -18,11 +18,14 @@ final class APIManager {
     var test: [Item] = []
     
     // Result<NationalLibrary, AFError> -> Void
-    func nationalLibraryCallRequest(api: BookAPI, completionHandler: @escaping ([String]?, AFError?) -> Void) {
+    func nationalLibraryCallRequest(api: BookAPI,
+                                    completionHandler: @escaping ([String]?, AFError?) -> Void) {
         
         AF
             .request(api.url)
-            .responseDecodable(of: NationalLibrary.self) { response in
+            .responseDecodable(of: NationalLibrary.self) { [weak self] response in
+                guard let self else { return }
+                
                 switch response.result {
                 case .success(let success):
                     // ISBN만 가져오기
@@ -43,7 +46,9 @@ final class APIManager {
         
         AF
             .request(api.url)
-            .responseDecodable(of: Aladin.self) { response in
+            .responseDecodable(of: Aladin.self) { [weak self] response in
+                guard let self else { return }
+                
                 switch response.result {
                 case .success(let success):
                     completionHandler(success.item, nil)

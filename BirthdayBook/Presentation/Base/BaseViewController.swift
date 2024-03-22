@@ -20,4 +20,8 @@ class BaseViewController: UIViewController {
     func configureHierarchy() { }
     func configureConstraints() { }
     func configureView() { }
+    
+    deinit {
+        print(self)
+    }
 }

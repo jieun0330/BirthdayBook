@@ -175,4 +175,7 @@ final class BookDetailViewController: BaseViewController {
             view.makeToast("즐겨찾기에 저장되었습니다")
         }
     }
+    deinit {
+        print(self)
+    }
 }

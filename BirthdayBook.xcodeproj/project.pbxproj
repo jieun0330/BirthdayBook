@@ -47,7 +47,6 @@
 		C2B22AF42BA5B57C00D384B9 /* AladinWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF32BA5B57C00D384B9 /* AladinWebViewController.swift */; };
 		C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */; };
 		C2B22B0D2BA6A5D500D384B9 /* NoResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */; };
-		C2B22B102BA6CE6800D384B9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */; };
 		C2B22B122BA6D7E500D384B9 /* BookDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */; };
 		C2C6F3192BAC1DDC004CE8AD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */; };
 		C2C6F31B2BAC2214004CE8AD /* SettingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */; };
@@ -96,7 +95,6 @@
 		C2B22AF32BA5B57C00D384B9 /* AladinWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinWebViewController.swift; sourceTree = "<group>"; };
 		C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		C2B22B0C2BA6A5D500D384B9 /* NoResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultTableViewCell.swift; sourceTree = "<group>"; };
-		C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataProtocol.swift; sourceTree = "<group>"; };
 		C2C6F3182BAC1DDB004CE8AD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEnum.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */,
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
 				C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */,
-				C2B22B0E2BA6CE5B00D384B9 /* ViewModel */,
 				C2C6F3172BAC1DC7004CE8AD /* Setting */,
 			);
 			path = Bookmark;
@@ -320,14 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C2B22B0E2BA6CE5B00D384B9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C2B22B0F2BA6CE6800D384B9 /* BookmarkViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -462,7 +451,6 @@
 				C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */,
 				C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */,
 				C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */,
-				C2B22B102BA6CE6800D384B9 /* BookmarkViewModel.swift in Sources */,
 				C29546012B99AE76001A391B /* UIViewController+Extension.swift in Sources */,
 				C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */,
 				C27E06402B9C8223003EC2D5 /* Observable.swift in Sources */,
