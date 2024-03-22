@@ -181,7 +181,6 @@
 				C29545E12B998398001A391B /* Assets.xcassets */,
 				C29545E32B998398001A391B /* LaunchScreen.storyboard */,
 				C29545E62B998398001A391B /* Info.plist */,
-				C27A578F2B9C557700CF956A /* Protocol.swift */,
 			);
 			path = BirthdayBook;
 			sourceTree = "<group>";
@@ -292,6 +291,7 @@
 		C2B22AE02BA41D4500D384B9 /* ETC */ = {
 			isa = PBXGroup;
 			children = (
+				C27A578F2B9C557700CF956A /* Protocol.swift */,
 				C2C9696D2BAAAA17004EA8EB /* Kingfisher */,
 				C29546072B99BBF3001A391B /* DesignSystem */,
 				C27E063E2B9C8215003EC2D5 /* Observable */,

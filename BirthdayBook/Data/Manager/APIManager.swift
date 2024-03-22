@@ -36,13 +36,13 @@ final class APIManager {
                     }
                     completionHandler(self.bookISBNArray, nil)
                 case .failure(let failure):
-//                    print(failure)
                     completionHandler(nil, failure)
                 }
             }
     }
     
-    func aladinCallRequest(api: BookAPI, completionHandler: @escaping ([Item]?, AFError?) -> Void) {
+    func aladinCallRequest(api: BookAPI,
+                           completionHandler: @escaping ([Item]?, AFError?) -> Void) {
         
         AF
             .request(api.url)
@@ -54,7 +54,6 @@ final class APIManager {
                     completionHandler(success.item, nil)
                 case .failure(let failure):
                     completionHandler(nil, failure)
-                    //                    print("failure")
                 }
             }
     }
