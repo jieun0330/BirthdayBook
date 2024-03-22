@@ -170,9 +170,11 @@ final class CalendarViewController: BaseViewController {
             if isActivate == true {
                 self.indicatorView.startAnimating()
                 self.calendar.isUserInteractionEnabled = false
+                self.collectionView.isUserInteractionEnabled = false
             } else {
                 self.indicatorView.stopAnimating()
                 self.calendar.isUserInteractionEnabled = true
+                self.collectionView.isUserInteractionEnabled = true
             }
         }
     }

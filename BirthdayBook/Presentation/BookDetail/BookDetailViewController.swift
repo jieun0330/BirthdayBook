@@ -17,7 +17,6 @@ final class BookDetailViewController: BaseViewController {
     private let repository = BookRepository()
     private let vc = AladinWebViewController()
     var bookRealm: BookRealm!
-//    private let viewModel = BookDetailViewModel()
 
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
@@ -74,7 +73,8 @@ final class BookDetailViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [bookBackgroundImg, bookCoverImg, bookTitle, author, introductionTitle, bookDescription, purchaseButton].forEach {
+        [bookBackgroundImg, bookCoverImg, bookTitle, author,
+         introductionTitle, bookDescription, purchaseButton].forEach {
             view.addSubview($0)
         }
     }
@@ -150,7 +150,7 @@ final class BookDetailViewController: BaseViewController {
         author.text = data.author
         bookDescription.text = String(htmlEncodedString: data.bookDescription)
         vc.bookISBN = data.itemId
-        
+                
         // realm에 있는지 확인
         if repository.fetchItemTitle(bookTitle: data.title).isEmpty {
             bookMarkButton.image = .bookmarkIconInactive
@@ -163,8 +163,8 @@ final class BookDetailViewController: BaseViewController {
                 
         let bookInRepository = repository.fetchItemTitle(bookTitle: bookRealm.title)
                         
-        if bookInRepository.contains(where: { _ in
-            repository.deleteItem(bookRealm)
+        if bookInRepository.contains(where: { data in
+            repository.deleteItem(data)
             bookMarkButton.image = .bookmarkIconInactive
             view.makeToast("즐겨찾기에서 삭제되었습니다")
             
