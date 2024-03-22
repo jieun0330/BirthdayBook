@@ -11,8 +11,6 @@ import SnapKit
 
 final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let weekBestSellerText = UILabel()
-    
     let bookImage = UIImageView().then{
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
@@ -126,10 +124,6 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.size.equalTo(20)
         }
     }
-    
-//    override func configureView() {
-//
-//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

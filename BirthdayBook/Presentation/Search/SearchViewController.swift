@@ -24,8 +24,10 @@ final class SearchViewController: BaseViewController {
     }
     
     private lazy var tableView = UITableView().then {
-        $0.register(NoResultTableViewCell.self, forCellReuseIdentifier: NoResultTableViewCell.identifier)
-        $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
+        $0.register(NoResultTableViewCell.self,
+                    forCellReuseIdentifier: NoResultTableViewCell.identifier)
+        $0.register(SearchTableViewCell.self,
+                    forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.delegate = self
         $0.dataSource = self
     }
@@ -33,11 +35,17 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.outputAladinAPIResult.bind { _ in
+        bindData()
+        
+    }
+    
+    private func bindData() {
+        viewModel.outputAladinAPIResult.bind { [weak self] _ in
+            guard let self else { return }
             self.tableView.reloadData()
         }
     }
-
+    
     override func configureHierarchy() {
         [searchBar, tableView].forEach {
             view.addSubview($0)
@@ -62,7 +70,9 @@ final class SearchViewController: BaseViewController {
         navigationItem.leftBarButtonItem = logo
     }
     
-    @objc func logoClicked() { }
+    @objc private func didTapView() { }
+    
+    @objc private func logoClicked() { }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -76,7 +86,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if !viewModel.outputAladinAPIResult.value.isEmpty {
             
@@ -88,7 +99,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             
             let book = viewModel.outputAladinAPIResult.value[indexPath.item]
             cell.title.text = book.title
-            cell.bookImage.kf.setImage(with: URL(string: book.cover), options: [.transition(.fade(1))])
+            cell.bookImage.kf.setImage(with: URL(string: book.cover),
+                                       options: [.transition(.fade(1))])
             cell.author.text = book.author
             let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
             cell.birthdayBookLabel.text = date
@@ -101,7 +113,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             tableView.separatorStyle = .none
             tableView.isScrollEnabled = false
-            cell.bestSellerButton.addTarget(self, action: #selector(bestSellerButtonClicked), for: .touchUpInside)
+            cell.bestSellerButton.addTarget(self,
+                                            action: #selector(bestSellerButtonClicked),
+                                            for: .touchUpInside)
             
             return cell
         }
@@ -137,5 +151,5 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputBookTitle.value = searchBarText
         view.endEditing(true)
-    }    
+    }
 }

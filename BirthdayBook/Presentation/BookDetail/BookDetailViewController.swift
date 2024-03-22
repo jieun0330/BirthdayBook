@@ -17,6 +17,7 @@ final class BookDetailViewController: BaseViewController {
     private let repository = BookRepository()
     private let vc = AladinWebViewController()
     var bookRealm: BookRealm!
+//    private let viewModel = BookDetailViewModel()
 
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
@@ -159,23 +160,21 @@ final class BookDetailViewController: BaseViewController {
     }
 
     @objc private func bookMarkButtonClicked() {
-
-        let bookInRepository = repository.fetchItemTitle(bookTitle: bookRealm.title)
                 
-        if bookInRepository.contains(where: { data in
-            repository.deleteItem(data)
+        let bookInRepository = repository.fetchItemTitle(bookTitle: bookRealm.title)
+                        
+        if bookInRepository.contains(where: { _ in
+            repository.deleteItem(bookRealm)
             bookMarkButton.image = .bookmarkIconInactive
             view.makeToast("즐겨찾기에서 삭제되었습니다")
+            
             return true
         }) {
-            
+
         } else {
             repository.createRealm(bookRealm)
             bookMarkButton.image = .bookmarkIcon
             view.makeToast("즐겨찾기에 저장되었습니다")
         }
-    }
-    deinit {
-        print(self)
     }
 }

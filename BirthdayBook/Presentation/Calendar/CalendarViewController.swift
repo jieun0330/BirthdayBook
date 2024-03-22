@@ -16,9 +16,9 @@ final class CalendarViewController: BaseViewController {
     private let viewModel = CalendarViewModel()
     
     private let scrollView = UIScrollView()
-    
     private let contentView = UIView()
     
+    // 뷰에 보여지는 날짜와 선택한 날짜를 구분
     private var selectedDate: Date?
     
     private let indicatorView = UIActivityIndicatorView().then {
@@ -41,8 +41,6 @@ final class CalendarViewController: BaseViewController {
     private lazy var calendar = FSCalendar().then {
         $0.delegate = self
         $0.dataSource = self
-        //        $0.layer.borderWidth = 1
-        //        $0.layer.borderColor = UIColor.red.cgColor
     }
     
     private lazy var calendarButton = UIButton().then {
@@ -61,9 +59,8 @@ final class CalendarViewController: BaseViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.prefetchDataSource = self
-        $0.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
-        //        $0.layer.borderColor = UIColor.green.cgColor
-        //        $0.layer.borderWidth = 1
+        $0.register(BookCollectionViewCell.self,
+                    forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -74,7 +71,12 @@ final class CalendarViewController: BaseViewController {
         let today = Date()
         birthdayDate(date: today)
         
-        viewModel.outputAladinAPIResult.bind { data in
+        bindData()
+    }
+    
+    private func bindData() {
+        viewModel.outputAladinAPIResult.bind { [weak self] data in
+            guard let self else { return }
             if data.count > 1 {
                 self.collectionView.reloadData()
             }
@@ -88,7 +90,7 @@ final class CalendarViewController: BaseViewController {
         KingfisherCache.shared.checkCurrentCacheSize()
     }
     
-    func birthdayDate(date: Date) {
+    private func birthdayDate(date: Date) {
         let dateString = DateFormatManager.shared.calenderString(date: date)
         viewModel.inputDate.value = dateString
         
@@ -163,7 +165,8 @@ final class CalendarViewController: BaseViewController {
         setCalendarUI()
         navigationItem.leftBarButtonItem = logo
 
-        viewModel.inputIndicatorTrigger.bind { isActivate in
+        viewModel.inputIndicatorTrigger.bind { [weak self] isActivate in
+            guard let self else { return }
             if isActivate == true {
                 self.indicatorView.startAnimating()
                 self.calendar.isUserInteractionEnabled = false
@@ -183,7 +186,10 @@ final class CalendarViewController: BaseViewController {
         let width = UIScreen.main.bounds.width - (spacing * 2)
         layout.itemSize = CGSize(width: width / 1.5, height: width / 1.0)
         layout.minimumLineSpacing = spacing
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing,
+                                           left: spacing,
+                                           bottom: spacing,
+                                           right: spacing)
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .horizontal
         
@@ -191,6 +197,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     @objc private func calendarButtonClicked() {
+        
         if calendar.scope == .month { // 월간 -> 주간
             changeCalendar(month: false)
             scrollView.isScrollEnabled = false
@@ -239,7 +246,9 @@ final class CalendarViewController: BaseViewController {
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+    func calendar(_ calendar: FSCalendar,
+                  appearance: FSCalendarAppearance,
+                  titleDefaultColorFor date: Date) -> UIColor? {
         
         let day = Calendar.current.component(.weekday, from: date) - 1
         
@@ -259,47 +268,61 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         self.view.layoutIfNeeded()
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    func calendar(_ calendar: FSCalendar,
+                  didSelect date: Date,
+                  at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
         birthdayDate(date: date)
         viewModel.inputIndicatorTrigger.value = true
     }
     
-    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+    func calendar(_ calendar: FSCalendar,
+                  shouldSelect date: Date,
+                  at monthPosition: FSCalendarMonthPosition) -> Bool {
         
         if date != selectedDate {
             APIManager.shared.bookISBNArray.removeAll()
             viewModel.outputAladinAPIResult.value.removeAll()
             collectionView.isPagingEnabled = false
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0),
+                                        at: .centeredHorizontally,
+                                        animated: true)
         } else {
             return false
         }
         return true
     }
     
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
+    func calendar(_ calendar: FSCalendar,
+                  appearance: FSCalendarAppearance,
+                  titleSelectionColorFor date: Date) -> UIColor? {
         return .black
     }
     
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderSelectionColorFor date: Date) -> UIColor? {
+    func calendar(_ calendar: FSCalendar,
+                  appearance: FSCalendarAppearance,
+                  borderSelectionColorFor date: Date) -> UIColor? {
         return DesignSystemColor.pink.color
     }
 }
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return viewModel.outputAladinAPIResult.value.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier,
+                                                      for: indexPath) as! BookCollectionViewCell
         
         if viewModel.outputAladinAPIResult.value.count > 1 {
             let aladinData = viewModel.outputAladinAPIResult.value[indexPath.item]
             cell.bookTitle.text = aladinData.title
             cell.author.text = aladinData.author
-            cell.coverImage.kf.setImage(with: URL(string: aladinData.cover), options: [.transition(.fade(1))])
+            cell.coverImage.kf.setImage(with: URL(string: aladinData.cover),
+                                        options: [.transition(.fade(1))])
         }
         return cell
     }

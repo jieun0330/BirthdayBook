@@ -22,7 +22,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.5
     }
-     
+    
     let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.font12.font
         $0.textColor = DesignSystemColor.red.color
@@ -69,12 +69,7 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
     }
     
-//    override func configureView() {
-//        <#code#>
-//    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

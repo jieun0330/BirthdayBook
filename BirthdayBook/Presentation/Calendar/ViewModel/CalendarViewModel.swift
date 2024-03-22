@@ -22,7 +22,8 @@ final class CalendarViewModel {
             // Indicator start animating
             self.inputIndicatorTrigger.value = true
             
-            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) { [weak self] bookISBNArray, error in
+            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) {
+                [weak self] bookISBNArray, error in
                 guard let self else { return }
                 
                 // Indicator stop animating
@@ -41,7 +42,8 @@ final class CalendarViewModel {
         self.inputISBNTrigger.bind { [weak self] _ in
             guard let self else { return }
             for i in self.outputNationalLibraryAPIResult.prefix(5) {
-                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) { [weak self] bookItem, error in
+                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) {
+                    [weak self] bookItem, error in
                     guard let self else { return }
                     if let error = error {
                         print(error)

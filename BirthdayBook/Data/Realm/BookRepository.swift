@@ -38,6 +38,7 @@ final class BookRepository {
     
     // Delete
     func deleteItem(_ data: BookRealm) {
+        
         do {
             try realm.write {
                 realm.delete(data)
