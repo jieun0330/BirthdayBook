@@ -133,7 +133,20 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
         let vc = BookDetailViewController()
         let repoAll = viewModel.repositoryFetch()
         let bookRealm = repoAll[indexPath.item]
-        vc.configure(data: bookRealm)
+        let item = Item(title: bookRealm.title,
+                        link: "",
+                        author: bookRealm.author,
+                        pubDate: "",
+                        bookDescription: bookRealm.bookDescription,
+                        isbn: bookRealm.isbn,
+                        isbn13: bookRealm.isbn,
+                        itemId: bookRealm.itemId,
+                        priceSales: 0,
+                        priceStandard: 0,
+                        cover: bookRealm.cover)
+        vc.configure(data: item)
+        
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
