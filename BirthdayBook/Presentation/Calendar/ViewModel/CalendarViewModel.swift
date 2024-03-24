@@ -15,6 +15,7 @@ final class CalendarViewModel {
     
     var outputNationalLibraryAPIResult: [String] = []
     var outputAladinAPIResult: Observable<[Item]> = Observable([])
+    var outputErrorMessage = Observable("")
     
     init() {
         
@@ -36,7 +37,10 @@ final class CalendarViewModel {
                     }
                     self.inputISBNTrigger.value = ()
                 case .failure(let failure):
-                    print(failure)
+                    
+                    if !failure.isResponseSerializationError {
+                        self.outputErrorMessage.value = "잠시 후 다시 시도해주세요"
+                    }
                 }
             }
         }
@@ -48,7 +52,9 @@ final class CalendarViewModel {
                     case .success(let success):
                         self.outputAladinAPIResult.value.append(contentsOf: success.item)
                     case .failure(let failure):
-                        print(failure)
+                        if !failure.isResponseSerializationError {
+                            self.outputErrorMessage.value = "잠시 후 다시 시도해주세요"
+                        }
                     }
                 }
                 if self.outputNationalLibraryAPIResult.count > 15 {

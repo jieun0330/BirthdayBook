@@ -169,14 +169,20 @@ final class CalendarViewController: BaseViewController {
         viewModel.inputIndicatorTrigger.bind { [weak self] isActivate in
             guard let self else { return }
             if isActivate == true {
+                view.isUserInteractionEnabled = false
+                //                self.calendar.isUserInteractionEnabled = false
+                //                self.collectionView.isUserInteractionEnabled = false
                 self.indicatorView.startAnimating()
-                self.calendar.isUserInteractionEnabled = false
-                self.collectionView.isUserInteractionEnabled = false
             } else {
+                view.isUserInteractionEnabled = true
+                //                self.calendar.isUserInteractionEnabled = true
+                //                self.collectionView.isUserInteractionEnabled = true
                 self.indicatorView.stopAnimating()
-                self.calendar.isUserInteractionEnabled = true
-                self.collectionView.isUserInteractionEnabled = true
             }
+        }
+        
+        viewModel.outputErrorMessage.bind { errorMessage in
+            self.view.makeToast(errorMessage)
         }
     }
     
@@ -203,10 +209,10 @@ final class CalendarViewController: BaseViewController {
         
         if calendar.scope == .month { // 월간 -> 주간
             changeCalendar(month: false)
-            //            scrollView.isScrollEnabled = false
+            scrollView.isScrollEnabled = false
         } else { // 주간 -> 월간
             changeCalendar(month: true)
-            //            scrollView.isScrollEnabled = true
+            scrollView.isScrollEnabled = true
         }
     }
     
@@ -287,11 +293,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             // 네트워크 호출
             APIManager.shared.bookISBNArray.removeAll()
             viewModel.outputAladinAPIResult.value.removeAll()
-            // 뷰 스크롤 맨 앞으로 이동
-            collectionView.isPagingEnabled = false
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0),
-                                        at: .centeredHorizontally,
-                                        animated: true)
         } else {
             // 뷰에 보여지는 날짜와 클릭한 날짜가 같으면 네트워크 구현 방지
             return false
@@ -334,9 +335,12 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = BookDetailViewController()
-        vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
-        navigationController?.pushViewController(vc, animated: true)
+        
+        if viewModel.outputAladinAPIResult.value.count > 1 {
+            let vc = BookDetailViewController()
+            vc.configure(data: viewModel.outputAladinAPIResult.value[indexPath.item])
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
