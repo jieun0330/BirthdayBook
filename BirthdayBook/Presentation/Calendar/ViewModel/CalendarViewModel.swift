@@ -34,7 +34,7 @@ final class CalendarViewModel {
                 } else {
                     guard let bookISBNArray else { return }
                     
-                    print("1", bookISBNArray)
+//                    print("1", bookISBNArray)
                     self.outputNationalLibraryAPIResult = bookISBNArray
                     self.inputISBNTrigger.value = ()
                 }
@@ -43,10 +43,10 @@ final class CalendarViewModel {
         
         self.inputISBNTrigger.bind { [weak self] _ in
             guard let self else { return }
-            for i in self.outputNationalLibraryAPIResult.prefix(5) {
+            for i in self.outputNationalLibraryAPIResult.prefix(7) {
                 APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) {
                     [weak self] bookItem, error in
-                    print("2", i)
+//                    print("2", i)
                     guard let self else { return }
                     if let error = error {
                         print(error)

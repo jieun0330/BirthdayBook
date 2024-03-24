@@ -276,6 +276,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func calendar(_ calendar: FSCalendar,
                   didSelect date: Date,
                   at monthPosition: FSCalendarMonthPosition) {
+        print(#function)
+        print("1", date)
         selectedDate = date
         birthdayDate(date: date)
         viewModel.inputIndicatorTrigger.value = true
@@ -284,6 +286,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func calendar(_ calendar: FSCalendar,
                   shouldSelect date: Date,
                   at monthPosition: FSCalendarMonthPosition) -> Bool {
+        print(#function)
+        print("2", date)
         
         if date != selectedDate {
             // 네트워크 호출
