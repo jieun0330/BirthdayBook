@@ -43,7 +43,7 @@ final class CalendarViewModel {
         
         self.inputISBNTrigger.bind { [weak self] _ in
             guard let self else { return }
-            for i in self.outputNationalLibraryAPIResult.prefix(7) {
+            for i in self.outputNationalLibraryAPIResult.prefix(15) {
                 APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) {
                     [weak self] bookItem, error in
 //                    print("2", i)
@@ -56,8 +56,8 @@ final class CalendarViewModel {
                     }
                 }
             }
-            if self.outputNationalLibraryAPIResult.count > 5 {
-                self.outputNationalLibraryAPIResult.removeSubrange(0...4)
+            if self.outputNationalLibraryAPIResult.count > 15 {
+                self.outputNationalLibraryAPIResult.removeSubrange(0...14)
             } else {
                 self.outputNationalLibraryAPIResult.removeAll()
             }
