@@ -13,6 +13,8 @@ final class SearchViewController: BaseViewController {
     
     private let viewModel = SearchViewModel()
     
+    private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+    
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
                                                              action: #selector(logoClicked))
@@ -30,13 +32,14 @@ final class SearchViewController: BaseViewController {
                     forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.delegate = self
         $0.dataSource = self
+        $0.addGestureRecognizer(tapGesture)
+        $0.keyboardDismissMode = .onDrag
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bindData()
-        
     }
     
     private func bindData() {
@@ -70,7 +73,9 @@ final class SearchViewController: BaseViewController {
         navigationItem.leftBarButtonItem = logo
     }
     
-    @objc private func didTapView() { }
+    @objc private func didTapView() {
+        view.endEditing(true)
+    }
     
     @objc private func logoClicked() { }
 }
