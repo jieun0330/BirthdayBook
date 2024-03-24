@@ -17,27 +17,23 @@ final class SearchViewModel {
     init() {
         
         self.inputBookTitle.bind { bookTitle in
-            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { [weak self] bookItem, error in
-                guard let self else { return }
-                
-                if let error = error {
-                    print(error)
-                } else {
-                    guard let bookItem else { return }
-                    self.outputAladinAPIResult.value = bookItem
+            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { result in
+                switch result {
+                case .success(let success):
+                    self.outputAladinAPIResult.value = success.item
+                case .failure(let failure):
+                    print("failure")
                 }
             }
         }
         
         self.inputBestSeller.bind { _ in
-            APIManager.shared.aladinCallRequest(api: .bestSeller) { [weak self] bestSellerBook, error in
-                guard let self else { return }
-                
-                if let error = error {
-                    print(error)
-                } else {
-                    guard let bestSellerBook else { return }
-                    self.outputAladinAPIResult.value = bestSellerBook
+            APIManager.shared.aladinCallRequest(api: .bestSeller) { result in
+                switch result {
+                case .success(let success):
+                    self.outputAladinAPIResult.value = success.item
+                case .failure(let failure):
+                    print("failure")
                 }
             }
         }

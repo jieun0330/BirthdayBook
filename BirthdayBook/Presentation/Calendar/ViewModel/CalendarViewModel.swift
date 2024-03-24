@@ -17,49 +17,45 @@ final class CalendarViewModel {
     var outputAladinAPIResult: Observable<[Item]> = Observable([])
     
     init() {
-        self.inputDate.bind { value in
-            
-            // Indicator start animating
+        
+        self.inputDate.bind { bookDate in
+            // Indicator Start animating
             self.inputIndicatorTrigger.value = true
             
-            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: value)) {
-                [weak self] bookISBNArray, error in
-                guard let self else { return }
+            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: bookDate)) { result in
                 
                 // Indicator stop animating
                 self.inputIndicatorTrigger.value = false
                 
-                if let error = error {
-                    print(error)
-                } else {
-                    guard let bookISBNArray else { return }
-                    
-//                    print("1", bookISBNArray)
-                    self.outputNationalLibraryAPIResult = bookISBNArray
+                switch result {
+                case .success(let success):
+                    for isbn in success.docs {
+                        if !isbn.isbn.isEmpty {
+                            self.outputNationalLibraryAPIResult.append(isbn.isbn)
+                        }
+                    }
                     self.inputISBNTrigger.value = ()
+                case .failure(let failure):
+                    print(failure)
                 }
             }
         }
         
-        self.inputISBNTrigger.bind { [weak self] _ in
-            guard let self else { return }
+        self.inputISBNTrigger.bind { _ in
             for i in self.outputNationalLibraryAPIResult.prefix(15) {
-                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) {
-                    [weak self] bookItem, error in
-//                    print("2", i)
-                    guard let self else { return }
-                    if let error = error {
-                        print(error)
-                    } else {
-                        guard let bookItem else { return }
-                        self.outputAladinAPIResult.value.append(contentsOf: bookItem)
+                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) { result in
+                    switch result {
+                    case .success(let success):
+                        self.outputAladinAPIResult.value.append(contentsOf: success.item)
+                    case .failure(let failure):
+                        print(failure)
                     }
                 }
-            }
-            if self.outputNationalLibraryAPIResult.count > 15 {
-                self.outputNationalLibraryAPIResult.removeSubrange(0...14)
-            } else {
-                self.outputNationalLibraryAPIResult.removeAll()
+                if self.outputNationalLibraryAPIResult.count > 15 {
+                    self.outputNationalLibraryAPIResult.removeSubrange(0...14)
+                } else {
+                    self.outputNationalLibraryAPIResult.removeAll()
+                }
             }
         }
     }

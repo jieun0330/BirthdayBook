@@ -69,8 +69,6 @@ final class CalendarViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        scrollView.isScrollEnabled = false
-        
         let today = Date()
         birthdayDate(date: today)
         
@@ -117,7 +115,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configureConstraints() {
-                
+        
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -167,7 +165,7 @@ final class CalendarViewController: BaseViewController {
         view.setBackgroundColor()
         setCalendarUI()
         navigationItem.leftBarButtonItem = logo
-
+        
         viewModel.inputIndicatorTrigger.bind { [weak self] isActivate in
             guard let self else { return }
             if isActivate == true {
@@ -181,7 +179,7 @@ final class CalendarViewController: BaseViewController {
             }
         }
     }
-
+    
     @objc private func logoClicked() { }
     
     private func createLayout() -> UICollectionViewFlowLayout {
@@ -205,10 +203,10 @@ final class CalendarViewController: BaseViewController {
         
         if calendar.scope == .month { // 월간 -> 주간
             changeCalendar(month: false)
-//            scrollView.isScrollEnabled = false
+            //            scrollView.isScrollEnabled = false
         } else { // 주간 -> 월간
             changeCalendar(month: true)
-//            scrollView.isScrollEnabled = true
+            //            scrollView.isScrollEnabled = true
         }
     }
     
@@ -276,8 +274,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func calendar(_ calendar: FSCalendar,
                   didSelect date: Date,
                   at monthPosition: FSCalendarMonthPosition) {
-        print(#function)
-        print("1", date)
         selectedDate = date
         birthdayDate(date: date)
         viewModel.inputIndicatorTrigger.value = true
@@ -286,8 +282,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     func calendar(_ calendar: FSCalendar,
                   shouldSelect date: Date,
                   at monthPosition: FSCalendarMonthPosition) -> Bool {
-        print(#function)
-        print("2", date)
         
         if date != selectedDate {
             // 네트워크 호출
@@ -302,7 +296,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             // 뷰에 보여지는 날짜와 클릭한 날짜가 같으면 네트워크 구현 방지
             return false
         }
-        
         return true
     }
     
