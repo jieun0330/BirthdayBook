@@ -10,7 +10,6 @@ import Foundation
 final class BookDetailViewModel {
     
     private let repository = BookRepository()
-//    private var bookRealm: BookRealm?
     var test: String?
     var data: BookDataProtocol?
     
@@ -81,7 +80,7 @@ final class BookDetailViewModel {
             
             
             guard let data else { return }
-            print("1", data)
+//            print("1", data)
             repository.createRealm(BookRealm(title: data.title,
                                              author: data.author,
                                              imgURL: data.cover,

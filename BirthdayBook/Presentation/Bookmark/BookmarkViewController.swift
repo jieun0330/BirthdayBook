@@ -27,8 +27,21 @@ final class BookmarkViewController: BaseViewController {
         $0.dataSource = self
         $0.register(BookmarkCollectionViewCell.self,
                     forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
-        $0.register(NoBookmarkCollectionViewCell.self,
-                    forCellWithReuseIdentifier: NoBookmarkCollectionViewCell.identifier)
+//        $0.register(NoBookmarkCollectionViewCell.self,
+//                    forCellWithReuseIdentifier: NoBookmarkCollectionViewCell.identifier)
+    }
+    
+    private let noBookmarkView = UIView()
+    
+    private let noBookmarkIcon = UIImageView().then {
+        $0.image = .sleepBook
+        $0.tintColor = DesignSystemColor.red.color
+    }
+
+    private let noBookmarkText = UILabel().then {
+        $0.text = "저장된 책이 없어요"
+        $0.textColor = .systemGray
+        $0.font = DesignSystemFont.font12.font
     }
     
     override func viewDidLoad() {
@@ -38,13 +51,26 @@ final class BookmarkViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        print("test22", viewModel.repositoryItemCount())
+
         
+        if viewModel.repositoryEmpty() {
+            noBookmarkView.isHidden = false
+        } else {
+            noBookmarkView.isHidden = true
+        }
         collectionView.reloadData()
+        
+        
     }
     
     override func configureHierarchy() {
-        [collectionView].forEach {
+        [collectionView, noBookmarkView].forEach {
             view.addSubview($0)
+        }
+        
+        [noBookmarkIcon, noBookmarkText].forEach {
+            noBookmarkView.addSubview($0)
         }
     }
     
@@ -52,9 +78,29 @@ final class BookmarkViewController: BaseViewController {
         collectionView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        noBookmarkView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        
+        noBookmarkIcon.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.equalTo(100)
+        }
+        
+        noBookmarkText.snp.makeConstraints {
+            $0.top.equalTo(noBookmarkIcon.snp.bottom).offset(20)
+            $0.centerX.equalTo(noBookmarkIcon)
+        }
+        
     }
     
     override func configureView() {
+        noBookmarkView.isHidden = true
+        
+        print("test", viewModel.repositoryItemCount())
+        
         view.setBackgroundColor()
         navigationItem.leftBarButtonItem = logo
         navigationItem.rightBarButtonItem = setting
@@ -68,31 +114,52 @@ final class BookmarkViewController: BaseViewController {
     }
     
     private func configureCollectionViewLayout() -> UICollectionViewLayout {
+        
         let layout = UICollectionViewFlowLayout()
+        
         let spacing: CGFloat = 10
         
-        // Realm에 저장되어있는게 없으면
-        if viewModel.repositoryEmpty() {
-            let width = UIScreen.main.bounds.width
-            layout.itemSize = CGSize(width: width / 1.5, height: width / 1.8)
-            layout.sectionInset = ConstraintInsets(top: 250,
-                                                   left: 15,
-                                                   bottom: spacing,
-                                                   right: 15)
-        } else {
-            let width = UIScreen.main.bounds.width - (spacing * 3)
-            layout.itemSize = CGSize(width: width / 2.2, height: width / 1.8)
-            layout.sectionInset = ConstraintInsets(top: spacing,
-                                                   left: 15,
-                                                   bottom: spacing,
-                                                   right: 15)
-        }
-        
+        let width = UIScreen.main.bounds.width - (spacing * 3)
+        layout.itemSize = CGSize(width: width / 2.2, height: width / 1.8)
+        layout.sectionInset = ConstraintInsets(top: spacing,
+                                               left: 15,
+                                               bottom: spacing,
+                                               right: 15)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .vertical
+
         
+
+        // Realm에 저장되어있는게 없으면
+//        if !viewModel.repositoryEmpty() {
+            
+            
+//            noBookmarkView.isHidden = true
+            
+            
+
+//            let width = UIScreen.main.bounds.width
+//            layout.itemSize = CGSize(width: width / 1.5, height: width / 1.8)
+//            layout.sectionInset = ConstraintInsets(top: 250,
+//                                                   left: 15,
+//                                                   bottom: spacing,
+//                                                   right: 15)
+//        } else {
+//            noBookmarkView.isHidden = false
+//        }
         return layout
+
+//        else {
+//            collectionView.isHidden = true
+//            noBookmarkView.isHidden = false
+//        }
+//            else {
+            
+
+
+//        }
+        
     }
 }
 
@@ -100,19 +167,19 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         
-        return viewModel.repositoryEmpty() ? 1 : viewModel.repositoryItemCount()
+        return viewModel.repositoryItemCount()
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if viewModel.repositoryEmpty() {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoBookmarkCollectionViewCell.identifier,
-                                                          for: indexPath)
+//        if viewModel.repositoryEmpty() {
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoBookmarkCollectionViewCell.identifier,
+//                                                          for: indexPath)
+//            
+//            return cell
             
-            return cell
-            
-        } else {
+//        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookmarkCollectionViewCell.identifier,
                                                           for: indexPath) as! BookmarkCollectionViewCell
             
@@ -125,7 +192,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
                                        options: [.transition(.fade(1))])
             
             return cell
-        }
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -144,7 +211,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
                         priceSales: 0,
                         priceStandard: 0,
                         cover: bookRealm.cover)
-        vc.configure(data: item)
+        vc.configure(data: bookRealm)
         
         
         navigationController?.pushViewController(vc, animated: true)

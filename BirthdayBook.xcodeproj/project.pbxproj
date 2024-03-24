@@ -41,6 +41,7 @@
 		C29BDADE2B9F297B007898E3 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDADD2B9F297B007898E3 /* BookRepository.swift */; };
 		C29BDAE72BA07DDA007898E3 /* Aladin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAE62BA07DDA007898E3 /* Aladin.swift */; };
 		C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BDAEF2BA1AFE1007898E3 /* API.swift */; };
+		C2A736B32BAFE05900FEA6BA /* NoBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A736B22BAFE05900FEA6BA /* NoBookmarkViewController.swift */; };
 		C2B22AE32BA41D7B00D384B9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE22BA41D7B00D384B9 /* SearchViewController.swift */; };
 		C2B22AE52BA4217000D384B9 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */; };
 		C2B22AE72BA4355400D384B9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */; };
@@ -92,6 +93,7 @@
 		C29BDADD2B9F297B007898E3 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
 		C29BDAE62BA07DDA007898E3 /* Aladin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aladin.swift; sourceTree = "<group>"; };
 		C29BDAEF2BA1AFE1007898E3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C2A736B22BAFE05900FEA6BA /* NoBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookmarkViewController.swift; sourceTree = "<group>"; };
 		C2B22AE22BA41D7B00D384B9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C2B22AE42BA4217000D384B9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		C2B22AE62BA4355400D384B9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				C29BDAD42B9F19B1007898E3 /* BookmarkViewController.swift */,
 				C29BDAD82B9F1FD4007898E3 /* BookmarkCollectionViewCell.swift */,
+				C2A736B22BAFE05900FEA6BA /* NoBookmarkViewController.swift */,
 				C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */,
 				C279092E2BADC47800223C71 /* ViewModel */,
 				C2C6F3172BAC1DC7004CE8AD /* Setting */,
@@ -454,6 +457,7 @@
 				C29BDAF02BA1AFE1007898E3 /* API.swift in Sources */,
 				C27E06512B9D8273003EC2D5 /* BaseTableViewCell.swift in Sources */,
 				C29545F32B999A5D001A391B /* BaseViewController.swift in Sources */,
+				C2A736B32BAFE05900FEA6BA /* NoBookmarkViewController.swift in Sources */,
 				C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */,
 				C2B22AE52BA4217000D384B9 /* SearchTableViewCell.swift in Sources */,
 				C27A57932B9C73DC00CF956A /* APIManager.swift in Sources */,
