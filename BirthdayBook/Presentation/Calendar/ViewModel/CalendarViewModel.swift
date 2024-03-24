@@ -33,6 +33,8 @@ final class CalendarViewModel {
                     print(error)
                 } else {
                     guard let bookISBNArray else { return }
+                    
+                    print("1", bookISBNArray)
                     self.outputNationalLibraryAPIResult = bookISBNArray
                     self.inputISBNTrigger.value = ()
                 }
@@ -44,6 +46,7 @@ final class CalendarViewModel {
             for i in self.outputNationalLibraryAPIResult.prefix(5) {
                 APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) {
                     [weak self] bookItem, error in
+                    print("2", i)
                     guard let self else { return }
                     if let error = error {
                         print(error)

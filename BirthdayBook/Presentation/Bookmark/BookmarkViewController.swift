@@ -211,7 +211,7 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
                         priceSales: 0,
                         priceStandard: 0,
                         cover: bookRealm.cover)
-        vc.configure(data: bookRealm)
+        vc.configure(data: item)
         
         
         navigationController?.pushViewController(vc, animated: true)

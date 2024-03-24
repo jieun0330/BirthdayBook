@@ -15,7 +15,9 @@ final class CalendarViewController: BaseViewController {
     
     private let viewModel = CalendarViewModel()
     
-    private let scrollView = UIScrollView()
+    private let scrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
     private let contentView = UIView()
     
     // 뷰에 보여지는 날짜와 선택한 날짜를 구분
@@ -61,12 +63,13 @@ final class CalendarViewController: BaseViewController {
         $0.prefetchDataSource = self
         $0.register(BookCollectionViewCell.self,
                     forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
+        $0.showsHorizontalScrollIndicator = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.isScrollEnabled = false
+//        scrollView.isScrollEnabled = false
         
         let today = Date()
         birthdayDate(date: today)
@@ -202,10 +205,10 @@ final class CalendarViewController: BaseViewController {
         
         if calendar.scope == .month { // 월간 -> 주간
             changeCalendar(month: false)
-            scrollView.isScrollEnabled = false
+//            scrollView.isScrollEnabled = false
         } else { // 주간 -> 월간
             changeCalendar(month: true)
-            scrollView.isScrollEnabled = true
+//            scrollView.isScrollEnabled = true
         }
     }
     
@@ -283,15 +286,19 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
                   at monthPosition: FSCalendarMonthPosition) -> Bool {
         
         if date != selectedDate {
+            // 네트워크 호출
             APIManager.shared.bookISBNArray.removeAll()
             viewModel.outputAladinAPIResult.value.removeAll()
+            // 뷰 스크롤 맨 앞으로 이동
             collectionView.isPagingEnabled = false
             collectionView.scrollToItem(at: IndexPath(item: 0, section: 0),
                                         at: .centeredHorizontally,
                                         animated: true)
         } else {
+            // 뷰에 보여지는 날짜와 클릭한 날짜가 같으면 네트워크 구현 방지
             return false
         }
+        
         return true
     }
     
