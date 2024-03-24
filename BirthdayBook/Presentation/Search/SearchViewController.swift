@@ -13,7 +13,7 @@ final class SearchViewController: BaseViewController {
     
     private let viewModel = SearchViewModel()
     
-    private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+//    private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView))
     
     private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
                                                              target: self,
@@ -32,7 +32,7 @@ final class SearchViewController: BaseViewController {
                     forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.delegate = self
         $0.dataSource = self
-        $0.addGestureRecognizer(tapGesture)
+//        $0.addGestureRecognizer(tapGesture)
         $0.keyboardDismissMode = .onDrag
     }
     
