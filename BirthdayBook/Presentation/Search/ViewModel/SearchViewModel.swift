@@ -18,7 +18,8 @@ final class SearchViewModel {
         
         self.inputBookTitle.bind { [weak self] bookTitle in
             guard let self else { return }
-            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) { [weak self] result in
+            APIManager.shared.aladinCallRequest(api: .titleAladin(query: bookTitle)) {
+                [weak self] result in
                 guard let self else { return }
                 switch result {
                 case .success(let success):

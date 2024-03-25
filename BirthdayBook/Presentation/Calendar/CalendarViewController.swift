@@ -253,7 +253,9 @@ final class CalendarViewController: BaseViewController {
     }
 }
 
-extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension CalendarViewController: FSCalendarDelegate,
+                                  FSCalendarDataSource,
+                                  FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar,
                   appearance: FSCalendarAppearance,
@@ -345,7 +347,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 extension CalendarViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    func collectionView(_ collectionView: UICollectionView,
+                        prefetchItemsAt indexPaths: [IndexPath]) {
         for item in indexPaths {
             if viewModel.outputAladinAPIResult.value.count - 1 == item.item {
                 viewModel.inputISBNTrigger.value = ()

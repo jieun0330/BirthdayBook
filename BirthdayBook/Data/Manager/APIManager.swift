@@ -12,6 +12,8 @@ final class APIManager {
     
     static let shared = APIManager()
     
+    var bookISBNArray: [String] = []
+    
     private init() { }
     
     func nationalLibraryCallRequest(api: BookAPI,
