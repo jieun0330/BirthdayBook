@@ -14,17 +14,12 @@ final class APIManager {
     
     private init() { }
     
-    var bookISBNArray: [String] = []
-    var test: [Item] = []
-    
     func nationalLibraryCallRequest(api: BookAPI,
                                     completionHandler: @escaping (Result<NationalLibrary, AFError>) -> Void) {
         
         AF
             .request(api.url)
-            .responseDecodable(of: NationalLibrary.self) { [weak self] response in
-                guard let self else { return }
-                
+            .responseDecodable(of: NationalLibrary.self) { response in
                 completionHandler(response.result)
             }
     }
@@ -34,9 +29,7 @@ final class APIManager {
         
         AF
             .request(api.url)
-            .responseDecodable(of: Aladin.self) { [weak self] response in
-                guard let self else { return }
-                
+            .responseDecodable(of: Aladin.self) { response in
                 completionHandler(response.result)
             }
     }

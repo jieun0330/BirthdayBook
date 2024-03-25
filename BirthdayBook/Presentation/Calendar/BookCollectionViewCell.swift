@@ -66,7 +66,6 @@ final class BookCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.top.equalTo(bookTitle.snp.bottom).offset(10)
             $0.trailing.equalTo(contentView).offset(-5)
         }
-        
     }
     
     required init?(coder: NSCoder) {

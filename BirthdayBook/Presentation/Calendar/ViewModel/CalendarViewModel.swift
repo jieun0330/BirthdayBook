@@ -19,11 +19,14 @@ final class CalendarViewModel {
     
     init() {
         
-        self.inputDate.bind { bookDate in
+        self.inputDate.bind { [weak self] bookDate in
+            guard let self else { return }
+            
             // Indicator Start animating
             self.inputIndicatorTrigger.value = true
             
-            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: bookDate)) { result in
+            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: bookDate)) { [weak self] result in
+                guard let self else { return }
                 
                 // Indicator stop animating
                 self.inputIndicatorTrigger.value = false
@@ -45,9 +48,13 @@ final class CalendarViewModel {
             }
         }
         
-        self.inputISBNTrigger.bind { _ in
+        self.inputISBNTrigger.bind { [weak self] _ in
+            guard let self else { return }
+            
             for i in self.outputNationalLibraryAPIResult.prefix(15) {
-                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) { result in
+                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) { [weak self] result in
+                    guard let self else { return }
+                    
                     switch result {
                     case .success(let success):
                         self.outputAladinAPIResult.value.append(contentsOf: success.item)
@@ -64,8 +71,5 @@ final class CalendarViewModel {
                 }
             }
         }
-    }
-    deinit {
-        print(self)
     }
 }

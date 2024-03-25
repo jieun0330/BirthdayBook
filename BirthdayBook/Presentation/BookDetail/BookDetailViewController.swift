@@ -69,8 +69,6 @@ final class BookDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        
     
         // realm에 있는지 확인
         if viewModel.isBookMarked() {
