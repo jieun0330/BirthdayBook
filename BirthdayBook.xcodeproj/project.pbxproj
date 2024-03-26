@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C219023E2BB2BBC500007F25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C219023D2BB2BBC500007F25 /* GoogleService-Info.plist */; };
+		C21902412BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C21902402BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		C21902432BB2BED100007F25 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C21902422BB2BED100007F25 /* FirebaseCrashlytics */; };
+		C21902452BB2BED100007F25 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C21902442BB2BED100007F25 /* FirebaseMessaging */; };
 		C279092D2BADC0ED00223C71 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */; };
 		C27909302BADC48200223C71 /* BookMarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C279092F2BADC48200223C71 /* BookMarkViewModel.swift */; };
 		C27A578C2B9C542100CF956A /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */; };
@@ -62,6 +66,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C219023D2BB2BBC500007F25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		C279092F2BADC48200223C71 /* BookMarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewModel.swift; sourceTree = "<group>"; };
 		C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -122,6 +127,9 @@
 				C2EF798A2BA9B576005F8FFA /* SnapKit in Frameworks */,
 				C29545FE2B999C0F001A391B /* FSCalendar in Frameworks */,
 				C29BDAD02B9F18CF007898E3 /* Realm in Frameworks */,
+				C21902432BB2BED100007F25 /* FirebaseCrashlytics in Frameworks */,
+				C21902412BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				C21902452BB2BED100007F25 /* FirebaseMessaging in Frameworks */,
 				C2B22AF02BA5A9DF00D384B9 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +191,7 @@
 				C29545E12B998398001A391B /* Assets.xcassets */,
 				C29545E32B998398001A391B /* LaunchScreen.storyboard */,
 				C29545E62B998398001A391B /* Info.plist */,
+				C219023D2BB2BBC500007F25 /* GoogleService-Info.plist */,
 			);
 			path = BirthdayBook;
 			sourceTree = "<group>";
@@ -382,6 +391,9 @@
 				C2B22AEF2BA5A9DF00D384B9 /* Toast */,
 				C2EF79892BA9B576005F8FFA /* SnapKit */,
 				C2EF798C2BA9B584005F8FFA /* Alamofire */,
+				C21902402BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				C21902422BB2BED100007F25 /* FirebaseCrashlytics */,
+				C21902442BB2BED100007F25 /* FirebaseMessaging */,
 			);
 			productName = BirthdayBook;
 			productReference = C29545D52B998395001A391B /* BirthdayBook.app */;
@@ -419,6 +431,7 @@
 				C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				C2EF79882BA9B576005F8FFA /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C29545D62B998395001A391B /* Products */;
 			projectDirPath = "";
@@ -435,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29545ED2B998606001A391B /* .gitignore in Resources */,
+				C219023E2BB2BBC500007F25 /* GoogleService-Info.plist in Resources */,
 				C29545E52B998398001A391B /* LaunchScreen.storyboard in Resources */,
 				C29545E22B998398001A391B /* Assets.xcassets in Resources */,
 			);
@@ -710,6 +724,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.0;
+			};
+		};
 		C27E06492B9D55C3003EC2D5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -769,6 +791,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C21902402BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		C21902422BB2BED100007F25 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		C21902442BB2BED100007F25 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		C27E064A2B9D55C3003EC2D5 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C27E06492B9D55C3003EC2D5 /* XCRemoteSwiftPackageReference "Kingfisher" */;

@@ -17,6 +17,11 @@ final class BookDetailViewController: BaseViewController {
     private let vc = AladinWebViewController()
     private var viewModel = BookDetailViewModel()
     
+    // test
+    var users: Results<BookRealm>?
+    var notification: NotificationToken?
+    private let realm = try! Realm()
+    
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
                                                                        action: #selector(bookMarkButtonClicked))
@@ -65,6 +70,28 @@ final class BookDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        print("test", viewModel.notification)
+        // test
+        users = realm.objects(BookRealm.self)
+//        users = viewModel.notificationTest1()
+//        
+        // unowned self, weak self -> 주소가 남느냐의 차이
+        notification = users?.observe { [unowned self] changes in
+            switch changes {
+            case .initial(let users):
+                print("Initial count:", users.count)
+            case .update(let users, let deletions, let insertions, let modifications):
+                print("Update count:", users.count)
+                print("Delete count", deletions.count)
+                if insertions.count > 0 {
+                    
+                }
+                print("Insert count", insertions.count)
+                print("Modify count", modifications.count)
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
