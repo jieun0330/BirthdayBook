@@ -8,6 +8,8 @@
 
 나와 생일이 같은 책들을 확인하고, 특별하고 의미있는 생일을 책으로 축하해줄 수 있습니다
 
+Appstore: https://apps.apple.com/kr/app/id6479728983
+
 |![Frame 517167433](https://github.com/jieun0330/BirthdayBook/assets/42729069/f1aa4c40-57d9-404e-94e1-90496e3e8b0a)|![Frame 517167434](https://github.com/jieun0330/BirthdayBook/assets/42729069/de7db9b7-dd95-4334-bf4a-86e53624e171)|![Frame 517167437](https://github.com/jieun0330/BirthdayBook/assets/42729069/863875f1-2efe-4e0a-b8b6-a5fd29d420b5)
 |---|---|---|
 
