@@ -24,10 +24,6 @@ final class BookRepository {
         }
     }
     
-//    func notificationTest2() -> Results<BookRealm> {
-//        return realm.objects(BookRealm.self)
-//    }
-    
     // Read
     func fetchAllItem() -> [BookRealm] {
         let result = realm.objects(BookRealm.self)

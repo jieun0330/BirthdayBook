@@ -78,18 +78,18 @@ final class CalendarViewController: BaseViewController {
     private func bindData() {
         viewModel.outputAladinAPIResult.bind { [weak self] data in
             guard let self else { return }
-            if data.count > 1 {
+            if data.count > 0 {
                 self.collectionView.reloadData()
             }
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        KingfisherCache.shared.removeCache()
-        KingfisherCache.shared.checkCurrentCacheSize()
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(true)
+//        
+//        KingfisherCache.shared.removeCache()
+//        KingfisherCache.shared.checkCurrentCacheSize()
+//    }
     
     private func birthdayDate(date: Date) {
         let dateString = DateFormatManager.shared.calenderString(date: date)
@@ -292,6 +292,7 @@ extension CalendarViewController: FSCalendarDelegate,
                   at monthPosition: FSCalendarMonthPosition) -> Bool {
         
         if date != selectedDate {
+            collectionView.scrollsToTop = true
             // 네트워크 호출
             APIManager.shared.bookISBNArray.removeAll()
             viewModel.outputAladinAPIResult.value.removeAll()
