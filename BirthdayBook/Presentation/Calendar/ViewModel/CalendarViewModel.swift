@@ -40,7 +40,6 @@ final class CalendarViewModel {
                         }
                     }
                     self.inputISBNTrigger.value = ()
-                    // print("ISBN 갯수 : \(self.outputNationalLibraryAPIResult.count)")
                 case .failure(let failure):
                     
                     if !failure.isResponseSerializationError {
@@ -54,8 +53,6 @@ final class CalendarViewModel {
             guard let self else { return }
             
             let isbnSlice = self.outputNationalLibraryAPIResult.prefix(15)
-            // 2번 문제
-            // 메모리 공부하기
             var aladinSuccessItem: [Item] = []
             var failureCount = 0
             
@@ -70,9 +67,6 @@ final class CalendarViewModel {
                         aladinSuccessItem.append(contentsOf: success.item)
                         
                         if aladinSuccessItem.count + failureCount == isbnSlice.count {
-                            // 1번 문제
-                            // outputAladinAPIResult가 처음 15개 API결과가 들어온 후에
-                            // 그 다음 네트워크 결과가 덮어씌워지지 않고 추가될 수 있도록 append한다
                             self.outputAladinAPIResult.value.append(contentsOf: aladinSuccessItem)
                         }
                         
@@ -83,7 +77,6 @@ final class CalendarViewModel {
                         }
                         print(failure)
                     }
-                    // print("성공 : \(aladinSuccessItem.count) 실패 : \(failureCount)")
                 }
             }
             if self.outputNationalLibraryAPIResult.count > 15 {
