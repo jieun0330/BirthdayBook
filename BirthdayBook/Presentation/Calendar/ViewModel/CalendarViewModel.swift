@@ -56,8 +56,8 @@ final class CalendarViewModel {
             var aladinSuccessItem: [Item] = []
             var failureCount = 0
             
-            for i in isbnSlice {
-                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: i)) {
+            for isbn in isbnSlice {
+                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) {
                     [weak self] result in
                     guard let self else { return }
                     

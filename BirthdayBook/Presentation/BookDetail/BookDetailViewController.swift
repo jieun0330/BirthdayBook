@@ -168,7 +168,6 @@ final class BookDetailViewController: BaseViewController {
     
     func configure<T: BookDataProtocol>(data: T) {
         
-        
         viewModel.configure(data: data)
         viewModel.configure(dataID: data.title)
         
