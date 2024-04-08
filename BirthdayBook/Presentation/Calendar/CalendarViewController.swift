@@ -153,7 +153,6 @@ final class CalendarViewController: BaseViewController {
     }
     
     override func configureView() {
-        view.setBackgroundColor()
         setCalendarUI()
         navigationItem.leftBarButtonItem = logo
         

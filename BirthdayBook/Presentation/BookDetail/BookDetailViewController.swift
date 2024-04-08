@@ -158,7 +158,6 @@ final class BookDetailViewController: BaseViewController {
     
     override func configureView() {
         navigationItem.rightBarButtonItem = bookMarkButton
-        view.setBackgroundColor()
     }
     
     // 웹뷰 링크는 ISBN이 아닌 itemID로 들어가야한다

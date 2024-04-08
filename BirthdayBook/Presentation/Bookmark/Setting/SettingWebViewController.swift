@@ -35,8 +35,4 @@ final class SettingWebViewController: BaseViewController {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    override func configureView() {
-        view.setBackgroundColor()
-    }
 }

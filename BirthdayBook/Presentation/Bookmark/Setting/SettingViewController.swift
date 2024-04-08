@@ -37,7 +37,6 @@ final class SettingViewController: BaseViewController {
     
     override func configureView() {
         navigationItem.title = "설정"
-        view.setBackgroundColor()
     }
 }
 

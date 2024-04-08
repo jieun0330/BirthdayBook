@@ -37,8 +37,4 @@ final class AladinWebViewController: BaseViewController {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    override func configureView() {
-        view.setBackgroundColor()
-    }
 }

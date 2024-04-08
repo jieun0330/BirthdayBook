@@ -90,7 +90,6 @@ final class BookmarkViewController: BaseViewController {
     
     override func configureView() {
         noBookmarkView.isHidden = true
-        view.setBackgroundColor()
         navigationItem.leftBarButtonItem = logo
         navigationItem.rightBarButtonItem = setting
     }

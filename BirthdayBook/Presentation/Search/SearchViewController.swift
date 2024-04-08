@@ -39,6 +39,7 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        hideKeyboard()
     }
 
     override func configureHierarchy() {
