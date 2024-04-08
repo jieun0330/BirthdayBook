@@ -152,4 +152,10 @@ extension SearchViewController: UISearchBarDelegate {
         viewModel.inputBookTitle.value = searchBarText
         view.endEditing(true)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(#function)
+        viewModel.outputAladinAPIResult.value.removeAll()
+        tableView.reloadData()
+    }
 }
