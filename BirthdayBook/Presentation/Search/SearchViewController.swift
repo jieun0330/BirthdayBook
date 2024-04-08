@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Then
 import SnapKit
 
 final class SearchViewController: BaseViewController {
@@ -17,35 +16,31 @@ final class SearchViewController: BaseViewController {
                                                              target: self,
                                                              action: #selector(logoClicked))
     
-    private lazy var searchBar = UISearchBar().then {
-        $0.placeholder = "책 검색"
-        $0.delegate = self
-        $0.backgroundImage = UIImage()
-    }
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "책 검색"
+        searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
+        return searchBar
+    }()
     
-    private lazy var tableView = UITableView().then {
-        $0.register(NoResultTableViewCell.self,
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(NoResultTableViewCell.self,
                     forCellReuseIdentifier: NoResultTableViewCell.identifier)
-        $0.register(SearchTableViewCell.self,
+        tableView.register(SearchTableViewCell.self,
                     forCellReuseIdentifier: SearchTableViewCell.identifier)
-        $0.delegate = self
-        $0.dataSource = self
-        $0.keyboardDismissMode = .onDrag
-    }
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.keyboardDismissMode = .onDrag
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        bindData()
+
     }
-    
-    private func bindData() {
-        viewModel.outputAladinAPIResult.bind { [weak self] _ in
-            guard let self else { return }
-            self.tableView.reloadData()
-        }
-    }
-    
+
     override func configureHierarchy() {
         [searchBar, tableView].forEach {
             view.addSubview($0)
@@ -66,12 +61,14 @@ final class SearchViewController: BaseViewController {
     }
     
     override func configureView() {
-        view.setBackgroundColor()
         navigationItem.leftBarButtonItem = logo
     }
     
-    @objc private func didTapView() {
-        view.endEditing(true)
+    override func bind() {
+        viewModel.outputAladinAPIResult.bind { [weak self] _ in
+            guard let self else { return }
+            self.tableView.reloadData()
+        }
     }
     
     @objc private func logoClicked() { }

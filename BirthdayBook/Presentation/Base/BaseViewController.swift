@@ -15,11 +15,14 @@ class BaseViewController: UIViewController {
         configureHierarchy()
         configureConstraints()
         configureView()
+        bind()
+        view.backgroundColor = .white
     }
     
     func configureHierarchy() { }
     func configureConstraints() { }
     func configureView() { }
+    func bind() { }
     
     deinit {
         print(self)

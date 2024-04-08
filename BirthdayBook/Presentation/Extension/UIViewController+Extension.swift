@@ -7,12 +7,6 @@
 
 import UIKit
 
-extension UIView {
-    func setBackgroundColor() {
-        self.backgroundColor = .white
-    }
-}
-
 extension UIBarButtonItem {
     static func setBarButtonItem(image: UIImage,
                                  target: Any?,
