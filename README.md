@@ -14,12 +14,6 @@ Appstore: https://apps.apple.com/kr/app/id6479728983
 |<picture>![KakaoTalk_Photo_2024-04-13-14-03-56](https://github.com/jieun0330/BirthdayBook/assets/42729069/6be2cafc-db64-4252-8109-4ff7eb24dc94)</picture>|<picture>![665x1440_2](https://github.com/jieun0330/BirthdayBook/assets/42729069/2f5306c9-d904-4aa5-ab69-475587bfb7d1)</picture>|<picture>![665x1440_1](https://github.com/jieun0330/BirthdayBook/assets/42729069/1a4f50f8-96d2-40db-bcce-308e8f3a1e0a)</picture>|<picture>![665x1440_3](https://github.com/jieun0330/BirthdayBook/assets/42729069/b0b87414-4665-41a1-bc0a-ab34f1203f29)</picture>
 |---|---|---|---|
 
-
-
-
-
-
-
 <br/>
 
 ## 🔨핵심기능
@@ -55,7 +49,6 @@ Appstore: https://apps.apple.com/kr/app/id6479728983
 * `Singleton` 
 * `Custom Observable`
 * `Repository`
-
 
 <br/>
 
@@ -160,9 +153,7 @@ final class CalendarViewModel {
 ```
 </details>
 
-
 <br/>
-
 
 ### **2️⃣ API 결과물과 Realm 저장 결과물 통합**
 
@@ -200,7 +191,6 @@ func configure<T: BookDataProtocol>(data: T) {
 
 <br/>
 
-
 <details>
 
 <summary>프로젝트 후기</summary>
@@ -209,7 +199,6 @@ func configure<T: BookDataProtocol>(data: T) {
 
 국립중앙도서관 API의 한계를 극복하기 위해, 날짜를 클릭 시 국립중앙도서관 API에서 ISBN만을 추출하여 이를 알라딘 API에서 재검색하는 방식으로 전환했고, 알라딘 API로 책 제목, 저자, 이미지 등 풍부한 정보로 인해 더 만족스러운 검색 결과를 구현할 수 있었다. API에 대해 정보를 더 갖고있었다면 시간이 단축될 수 있을거라고 생각한다.
 </details>
-
 
 #### 업데이트 사항
 
