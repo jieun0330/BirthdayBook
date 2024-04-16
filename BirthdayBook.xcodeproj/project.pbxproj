@@ -26,6 +26,7 @@
 		C27E06432B9C861A003EC2D5 /* NationalLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */; };
 		C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C27E064A2B9D55C3003EC2D5 /* Kingfisher */; };
 		C27E06512B9D8273003EC2D5 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */; };
+		C27E533B2BCE64FA0037E1A5 /* NumberFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E533A2BCE64FA0037E1A5 /* NumberFormatManager.swift */; };
 		C29545D92B998395001A391B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545D82B998395001A391B /* AppDelegate.swift */; };
 		C29545DB2B998395001A391B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29545DA2B998395001A391B /* SceneDelegate.swift */; };
 		C29545E22B998398001A391B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29545E12B998398001A391B /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		C27E063F2B9C8223003EC2D5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalLibrary.swift; sourceTree = "<group>"; };
 		C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		C27E533A2BCE64FA0037E1A5 /* NumberFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatManager.swift; sourceTree = "<group>"; };
 		C29545D52B998395001A391B /* BirthdayBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirthdayBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29545D82B998395001A391B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C29545DA2B998395001A391B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				C29546052B99B86D001A391B /* DateFormatManager.swift */,
+				C27E533A2BCE64FA0037E1A5 /* NumberFormatManager.swift */,
 				C27A57922B9C73DC00CF956A /* APIManager.swift */,
 				C29BDAEF2BA1AFE1007898E3 /* API.swift */,
 			);
@@ -519,6 +522,7 @@
 				C2B22AE32BA41D7B00D384B9 /* SearchViewController.swift in Sources */,
 				C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,
+				C27E533B2BCE64FA0037E1A5 /* NumberFormatManager.swift in Sources */,
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,
 				C2B22AF42BA5B57C00D384B9 /* AladinWebViewController.swift in Sources */,
 				C2B22AF22BA5B2AB00D384B9 /* String+Extension.swift in Sources */,
@@ -678,7 +682,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyndi.BirthdayBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -710,7 +714,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyndi.BirthdayBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";

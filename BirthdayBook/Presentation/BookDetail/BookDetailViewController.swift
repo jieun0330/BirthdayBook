@@ -142,7 +142,7 @@ final class BookDetailViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview().inset(30)
             $0.height.equalTo(20)
         }
-        
+         
         bookDescription.snp.makeConstraints {
             $0.top.equalTo(introductionTitle.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(30)

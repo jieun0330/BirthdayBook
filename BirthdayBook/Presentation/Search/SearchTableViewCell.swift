@@ -36,7 +36,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.font10.font
     }
     
-    private let price = UILabel().then {
+    let price = UILabel().then {
         $0.text = "가격 미정"
         $0.font = DesignSystemFont.font12.font
     }

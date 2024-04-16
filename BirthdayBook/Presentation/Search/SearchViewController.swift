@@ -104,6 +104,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.author.text = book.author
             let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
             cell.birthdayBookLabel.text = date
+            let price = NumberFormatManager.shared.numberFormat(number: book.priceSales)
+            cell.price.text = "\(price)원"
             
             return cell
         } else {
