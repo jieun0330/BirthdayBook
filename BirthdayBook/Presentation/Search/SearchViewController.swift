@@ -38,8 +38,6 @@ final class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        hideKeyboard()
     }
 
     override func configureHierarchy() {
@@ -137,7 +135,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function)
+        
+        view.endEditing(true)
         
         if viewModel.outputAladinAPIResult.value.count != 0 {
             let vc = BookDetailViewController()
