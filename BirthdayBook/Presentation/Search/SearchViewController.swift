@@ -137,6 +137,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
         
         if viewModel.outputAladinAPIResult.value.count != 0 {
             let vc = BookDetailViewController()
