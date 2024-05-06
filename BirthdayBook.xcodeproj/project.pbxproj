@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C203CAF62BB4131B00906E33 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C203CAF52BB4131B00906E33 /* Realm */; };
-		C203CAF82BB4131B00906E33 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C203CAF72BB4131B00906E33 /* RealmSwift */; };
 		C219023E2BB2BBC500007F25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C219023D2BB2BBC500007F25 /* GoogleService-Info.plist */; };
 		C21902412BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C21902402BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		C21902432BB2BED100007F25 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C21902422BB2BED100007F25 /* FirebaseCrashlytics */; };
@@ -62,6 +60,9 @@
 		C2C6F31D2BAC41A6004CE8AD /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */; };
 		C2C6F3222BAC4CE2004CE8AD /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */; };
 		C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */; };
+		C2EE1C862BE8D5A4005DB588 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EE1C852BE8D5A4005DB588 /* BookDetailView.swift */; };
+		C2EE1C882BE8D5CD005DB588 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EE1C872BE8D5CD005DB588 /* BaseView.swift */; };
+		C2EE1C902BE8DA27005DB588 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2EE1C8F2BE8DA27005DB588 /* RealmSwift */; };
 		C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */; };
 		C2EF798D2BA9B584005F8FFA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C2EF798C2BA9B584005F8FFA /* Alamofire */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,8 @@
 		C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
 		C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherCache.swift; sourceTree = "<group>"; };
+		C2EE1C852BE8D5A4005DB588 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		C2EE1C872BE8D5CD005DB588 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,13 +128,12 @@
 				C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */,
 				C2EF798D2BA9B584005F8FFA /* Alamofire in Frameworks */,
 				C29545F62B999AEB001A391B /* Then in Frameworks */,
-				C203CAF62BB4131B00906E33 /* Realm in Frameworks */,
 				C29545FE2B999C0F001A391B /* FSCalendar in Frameworks */,
 				C21902432BB2BED100007F25 /* FirebaseCrashlytics in Frameworks */,
 				C21902412BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				C203CAF82BB4131B00906E33 /* RealmSwift in Frameworks */,
 				C21902452BB2BED100007F25 /* FirebaseMessaging in Frameworks */,
 				C2B22AF02BA5A9DF00D384B9 /* Toast in Frameworks */,
+				C2EE1C902BE8DA27005DB588 /* RealmSwift in Frameworks */,
 				C266CB372BC3E2B100908A4D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +187,7 @@
 		C29545D72B998395001A391B /* BirthdayBook */ = {
 			isa = PBXGroup;
 			children = (
+				C29545F12B999A56001A391B /* Base */,
 				C2B22ADC2BA3D0A100D384B9 /* Presentation */,
 				C2B22ADD2BA3D0AA00D384B9 /* Data */,
 				C2B22AE02BA41D4500D384B9 /* ETC */,
@@ -214,6 +217,7 @@
 				C29545F22B999A5D001A391B /* BaseViewController.swift */,
 				C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */,
 				C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */,
+				C2EE1C872BE8D5CD005DB588 /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -250,6 +254,7 @@
 		C29BDAC92B9F0AA8007898E3 /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C2EE1C852BE8D5A4005DB588 /* BookDetailView.swift */,
 				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
 				C2B22AF32BA5B57C00D384B9 /* AladinWebViewController.swift */,
 				C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */,
@@ -287,7 +292,6 @@
 				C29BDAC92B9F0AA8007898E3 /* BookDetail */,
 				C2B22AE12BA41D6300D384B9 /* Search */,
 				C29BDAD32B9F190A007898E3 /* Bookmark */,
-				C29545F12B999A56001A391B /* Base */,
 				C29545FF2B99AE66001A391B /* Extension */,
 			);
 			path = Presentation;
@@ -395,9 +399,8 @@
 				C21902402BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				C21902422BB2BED100007F25 /* FirebaseCrashlytics */,
 				C21902442BB2BED100007F25 /* FirebaseMessaging */,
-				C203CAF52BB4131B00906E33 /* Realm */,
-				C203CAF72BB4131B00906E33 /* RealmSwift */,
 				C266CB362BC3E2B100908A4D /* SnapKit */,
+				C2EE1C8F2BE8DA27005DB588 /* RealmSwift */,
 			);
 			productName = BirthdayBook;
 			productReference = C29545D52B998395001A391B /* BirthdayBook.app */;
@@ -434,8 +437,8 @@
 				C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				C203CAF42BB4131B00906E33 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C266CB352BC3E2B100908A4D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C2EE1C8E2BE8DA27005DB588 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = C29545D62B998395001A391B /* Products */;
 			projectDirPath = "";
@@ -516,6 +519,7 @@
 				C2C6F3222BAC4CE2004CE8AD /* SettingWebViewController.swift in Sources */,
 				C2B22AF62BA5D5A500D384B9 /* WebViewModel.swift in Sources */,
 				C27E063B2B9C75FD003EC2D5 /* APIKey.swift in Sources */,
+				C2EE1C882BE8D5CD005DB588 /* BaseView.swift in Sources */,
 				C279092D2BADC0ED00223C71 /* BookDetailViewModel.swift in Sources */,
 				C2B22B122BA6D7E500D384B9 /* BookDataProtocol.swift in Sources */,
 				C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */,
@@ -526,6 +530,7 @@
 				C29BDACD2B9F135B007898E3 /* Fonts.swift in Sources */,
 				C2B22AF42BA5B57C00D384B9 /* AladinWebViewController.swift in Sources */,
 				C2B22AF22BA5B2AB00D384B9 /* String+Extension.swift in Sources */,
+				C2EE1C862BE8D5A4005DB588 /* BookDetailView.swift in Sources */,
 				C29BDADC2B9F28E9007898E3 /* BookRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,7 +687,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyndi.BirthdayBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -714,7 +719,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyndi.BirthdayBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -752,14 +757,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C203CAF42BB4131B00906E33 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -808,6 +805,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		C2EE1C8E2BE8DA27005DB588 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -819,16 +824,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C203CAF52BB4131B00906E33 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C203CAF42BB4131B00906E33 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		C203CAF72BB4131B00906E33 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C203CAF42BB4131B00906E33 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		C21902402BB2BED100007F25 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C219023F2BB2BED100007F25 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -868,6 +863,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		C2EE1C8F2BE8DA27005DB588 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2EE1C8E2BE8DA27005DB588 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		C2EF798C2BA9B584005F8FFA /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -71,8 +71,8 @@ final class CalendarViewController: BaseViewController {
         
         let today = Date()
         birthdayDate(date: today)
-        
         bindData()
+        navigationItem.backButtonTitle = ""
     }
     
     private func bindData() {

@@ -17,7 +17,6 @@ final class BookDetailViewController: BaseViewController {
     private let vc = AladinWebViewController()
     private var viewModel = BookDetailViewModel()
     
-    // test
     var users: Results<BookRealm>?
     var notification: NotificationToken?
     private let realm = try! Realm()
@@ -70,12 +69,8 @@ final class BookDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print("test", viewModel.notification)
-        // test
         users = realm.objects(BookRealm.self)
-//        users = viewModel.notificationTest1()
-//        
-        // unowned self, weak self -> 주소가 남느냐의 차이
+
         notification = users?.observe { [unowned self] changes in
             switch changes {
             case .initial(let users):
