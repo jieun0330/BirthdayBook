@@ -10,6 +10,8 @@ import SnapKit
 import Then
 
 final class SettingViewController: BaseViewController {
+    
+    private let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.1"
         
     private lazy var tableView = UITableView().then {
         $0.delegate = self
@@ -53,7 +55,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         
         if indexPath.row == 2 {
-            cell.version.text = "버전 1.0.0"
+            cell.version.text = "버전 \(version)"
         }
 
         return cell
