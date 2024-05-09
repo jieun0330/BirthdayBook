@@ -23,10 +23,10 @@
 <br/>
 
 ## 🛠️ 사용기술 및 라이브러리
-* `UIKit(Code Base)`, `MVVM`, `Custom Observable`, `SnapKit`, `FlowLayout` 
-* `FSCalendar`, `Kingfisher`
-* `Alamofire`, `Codable`, `Router`, `Singleton`
-* `Realm`, `Repository`, `Access Control`
+* `UIKit(Code Base)` `MVVM` `Custom Observable` `SnapKit` `FlowLayout` 
+* `FSCalendar` `Kingfisher`
+* `Alamofire` `Codable` `Router` `Singleton`
+* `Realm` `Repository` `Access Control`
 
 <br/>
 
