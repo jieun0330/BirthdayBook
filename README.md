@@ -3,7 +3,7 @@
 <picture>![App Icon_125](https://github.com/jieun0330/BirthdayBook/assets/42729069/202ac6f4-f096-49ef-8bb6-1b6f3b79c651)</picture>
 
 2024년 3월 7일 ~ 24일 (`2주`)
-> 최신 버전 : 1.0.3 - 2024년 4월 9일 (업데이트 진행중)
+> 최신 버전 : 1.0.5 - 2024년 5월 9일 (업데이트 진행중)
 
 내 생일에, 내가 사랑하는 사람의 생일에는 어떤 책이 태어났을까요?
 
@@ -31,21 +31,21 @@ Appstore: https://apps.apple.com/kr/app/id6479728983
 * `FlowLayout` 
 
 **Library**
-* `FSCalendar` 메인 화면의 주된 기능을 활용하기 위해 사용
-* `Kingfisher` 책 이미지를 다운로드 하기 위해 이미지 캐싱을 손쉽게 해주는 라이브러리 사용
+* `FSCalendar`
+* `Kingfisher`
 
 **Network**
-* `Codable` Decodable 프로토콜을 통해 Json 응답값 처리
-* `Alamofire` Router 패턴을 통한 API 호출
+* `Codable`
+* `Alamofire`
 
 **DataBase**
-* `Realm` 책 제목, 저자, 이미지 테이블 구성 및 CRUD 구현
+* `Realm`
 
 **Design Pattern**
-* `MVVM` 비즈니스 로직과 UI 로직을 구분
-* `Router` 네트워크 통신을 위한 로직 추상화
-* `DesignSystem` 열거형을 활용하여 디자인 시스템 요소 정리
-* `Access Control` 접근제어자를 통해 컴파일 타임 활용
+* `MVVM`
+* `Router`
+* `DesignSystem`
+* `Access Control`
 * `Singleton` 
 * `Custom Observable`
 * `Repository`
@@ -200,7 +200,7 @@ func configure<T: BookDataProtocol>(data: T) {
 국립중앙도서관 API의 한계를 극복하기 위해, 날짜를 클릭 시 국립중앙도서관 API에서 ISBN만을 추출하여 이를 알라딘 API에서 재검색하는 방식으로 전환했고, 알라딘 API로 책 제목, 저자, 이미지 등 풍부한 정보로 인해 더 만족스러운 검색 결과를 구현할 수 있었다. API에 대해 정보를 더 갖고있었다면 시간이 단축될 수 있을거라고 생각한다.
 </details>
 
-#### 업데이트 사항
+#### 추후 업데이트 사항
 
 - [ ]  Realm Notification Token
 - [ ]  Network StatusCode Error Handling
