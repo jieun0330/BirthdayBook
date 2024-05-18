@@ -41,7 +41,6 @@ final class CalendarViewModel {
                     }
                     self.inputISBNTrigger.value = ()
                 case .failure(let failure):
-                    
                     if !failure.isResponseSerializationError {
                         self.outputErrorMessage.value = "잠시 후 다시 시도해주세요"
                     }
