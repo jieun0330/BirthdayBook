@@ -78,21 +78,9 @@ final class BookDetailViewController: BaseViewController {
     
     func configure<T: BookDataProtocol>(data: T) {
         
+        mainView.setData(data)
         viewModel.configure(data: data)
-        
-        mainView.bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
-        mainView.bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
-        mainView.bookTitle.text = data.title
-        mainView.author.text = data.author
-        mainView.bookDescription.text = String(htmlEncodedString: data.bookDescription)
         vc.bookISBN = data.itemId
-        
-        // realm에 있는지 확인
-        if viewModel.isBookMarked() {
-            bookMarkButton.image = .bookmarkIcon
-        } else {
-            bookMarkButton.image = .bookmarkIconInactive
-        }
     }
     
     @objc private func bookMarkButtonClicked() {

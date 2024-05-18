@@ -10,35 +10,35 @@ import Then
 
 final class BookDetailView: BaseView {
     
-    let bookBackgroundImg = UIImageView().then {
+    private let bookBackgroundImg = UIImageView().then {
         $0.alpha = 0.1
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     
-    let bookCoverImg = UIImageView().then {
+    private let bookCoverImg = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.layer.shadowOffset = CGSize(width: 2, height: 2)
         $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowOpacity = 0.5
     }
     
-    let bookTitle = UILabel().then {
+    private let bookTitle = UILabel().then {
         $0.font = DesignSystemFont.font15.font
         $0.textColor = DesignSystemColor.red.color
         $0.textAlignment = .center
     }
     
-    let author = UILabel().then {
+    private let author = UILabel().then {
         $0.font = DesignSystemFont.font12.font
         $0.textColor = DesignSystemColor.red.color
     }
     
-    let introductionTitle = UILabel().then {
+    private let introductionTitle = UILabel().then {
         $0.text = "책 소개"
     }
     
-    let bookDescription = UILabel().then {
+    private let bookDescription = UILabel().then {
         $0.numberOfLines = 0
         $0.font = DesignSystemFont.font12.font
     }
@@ -103,6 +103,14 @@ final class BookDetailView: BaseView {
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(10)
             $0.height.equalTo(50)
         }
+    }
+    
+    func setData<T: BookDataProtocol>(_ data: T) {
+        bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
+        bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
+        bookTitle.text = data.title
+        author.text = data.author
+        bookDescription.text = String(htmlEncodedString: data.bookDescription)
     }
     
     required init?(coder: NSCoder) {
