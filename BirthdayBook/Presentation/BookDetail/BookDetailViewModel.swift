@@ -15,10 +15,7 @@ final class BookDetailViewModel {
     
     func configure(data: BookDataProtocol) {
         self.data = data
-    }
-    
-    func configure(dataID: String) {
-        self.bookTitle = dataID
+        self.bookTitle = data.title
     }
     
     func isBookMarked() -> Bool {

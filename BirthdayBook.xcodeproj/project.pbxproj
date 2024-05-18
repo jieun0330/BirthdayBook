@@ -10,6 +10,8 @@
 		C219023E2BB2BBC500007F25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C219023D2BB2BBC500007F25 /* GoogleService-Info.plist */; };
 		C230772B2BF88A2F00FF732E /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C230772A2BF88A2F00FF732E /* BookDetailView.swift */; };
 		C230772D2BF88A3500FF732E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C230772C2BF88A3500FF732E /* BaseView.swift */; };
+		C23077332BF890A400FF732E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C23077322BF890A400FF732E /* Realm */; };
+		C23077352BF890A400FF732E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C23077342BF890A400FF732E /* RealmSwift */; };
 		C266CB372BC3E2B100908A4D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C266CB362BC3E2B100908A4D /* SnapKit */; };
 		C279092D2BADC0ED00223C71 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */; };
 		C27909302BADC48200223C71 /* BookMarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C279092F2BADC48200223C71 /* BookMarkViewModel.swift */; };
@@ -59,8 +61,6 @@
 		C2C6F31D2BAC41A6004CE8AD /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */; };
 		C2C6F3222BAC4CE2004CE8AD /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */; };
 		C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */; };
-		C2EE1CA02BEA160D005DB588 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2EE1C9F2BEA160D005DB588 /* Realm */; };
-		C2EE1CA22BEA160D005DB588 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2EE1CA12BEA160D005DB588 /* RealmSwift */; };
 		C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */; };
 		C2EF798D2BA9B584005F8FFA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C2EF798C2BA9B584005F8FFA /* Alamofire */; };
 /* End PBXBuildFile section */
@@ -123,8 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2EE1CA22BEA160D005DB588 /* RealmSwift in Frameworks */,
-				C2EE1CA02BEA160D005DB588 /* Realm in Frameworks */,
+				C23077352BF890A400FF732E /* RealmSwift in Frameworks */,
+				C23077332BF890A400FF732E /* Realm in Frameworks */,
 				C27E064B2B9D55C3003EC2D5 /* Kingfisher in Frameworks */,
 				C2EF798D2BA9B584005F8FFA /* Alamofire in Frameworks */,
 				C29545F62B999AEB001A391B /* Then in Frameworks */,
@@ -250,11 +250,12 @@
 		C29BDAC92B9F0AA8007898E3 /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C230772A2BF88A2F00FF732E /* BookDetailView.swift */,
 				C29BDACA2B9F0AB2007898E3 /* BookDetailViewController.swift */,
+				C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */,
 				C2B22AF32BA5B57C00D384B9 /* AladinWebViewController.swift */,
 				C2B22B112BA6D7E500D384B9 /* BookDataProtocol.swift */,
 				C2B22AE82BA4362300D384B9 /* ViewModel */,
-				C230772A2BF88A2F00FF732E /* BookDetailView.swift */,
 			);
 			path = BookDetail;
 			sourceTree = "<group>";
@@ -329,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				C2B22AF52BA5D5A500D384B9 /* WebViewModel.swift */,
-				C279092C2BADC0ED00223C71 /* BookDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -393,8 +393,8 @@
 				C2B22AEF2BA5A9DF00D384B9 /* Toast */,
 				C2EF798C2BA9B584005F8FFA /* Alamofire */,
 				C266CB362BC3E2B100908A4D /* SnapKit */,
-				C2EE1C9F2BEA160D005DB588 /* Realm */,
-				C2EE1CA12BEA160D005DB588 /* RealmSwift */,
+				C23077322BF890A400FF732E /* Realm */,
+				C23077342BF890A400FF732E /* RealmSwift */,
 			);
 			productName = BirthdayBook;
 			productReference = C29545D52B998395001A391B /* BirthdayBook.app */;
@@ -431,7 +431,7 @@
 				C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C266CB352BC3E2B100908A4D /* XCRemoteSwiftPackageReference "SnapKit" */,
-				C2EE1C9E2BEA160D005DB588 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				C23077312BF890A400FF732E /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = C29545D62B998395001A391B /* Products */;
 			projectDirPath = "";
@@ -750,6 +750,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C23077312BF890A400FF732E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 10.48.0;
+			};
+		};
 		C266CB352BC3E2B100908A4D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -790,14 +798,6 @@
 				minimumVersion = 5.1.0;
 			};
 		};
-		C2EE1C9E2BEA160D005DB588 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				kind = exactVersion;
-				version = 10.48.0;
-			};
-		};
 		C2EF798B2BA9B584005F8FFA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -809,6 +809,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C23077322BF890A400FF732E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C23077312BF890A400FF732E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C23077342BF890A400FF732E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C23077312BF890A400FF732E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		C266CB362BC3E2B100908A4D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C266CB352BC3E2B100908A4D /* XCRemoteSwiftPackageReference "SnapKit" */;
@@ -833,16 +843,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C2B22AEE2BA5A9DF00D384B9 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
-		};
-		C2EE1C9F2BEA160D005DB588 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2EE1C9E2BEA160D005DB588 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		C2EE1CA12BEA160D005DB588 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2EE1C9E2BEA160D005DB588 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		C2EF798C2BA9B584005F8FFA /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
