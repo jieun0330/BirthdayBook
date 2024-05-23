@@ -60,7 +60,6 @@
 		C2C6F31B2BAC2214004CE8AD /* SettingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */; };
 		C2C6F31D2BAC41A6004CE8AD /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */; };
 		C2C6F3222BAC4CE2004CE8AD /* SettingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */; };
-		C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */; };
 		C2EF79872BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */; };
 		C2EF798D2BA9B584005F8FFA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C2EF798C2BA9B584005F8FFA /* Alamofire */; };
 /* End PBXBuildFile section */
@@ -114,7 +113,6 @@
 		C2C6F31A2BAC2214004CE8AD /* SettingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEnum.swift; sourceTree = "<group>"; };
 		C2C6F31C2BAC41A6004CE8AD /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
-		C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherCache.swift; sourceTree = "<group>"; };
 		C2EF79862BA9AF4C005F8FFA /* NoBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,8 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				C29545EE2B999A2D001A391B /* CalendarViewController.swift */,
+				C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */,
 				C27A578B2B9C542100CF956A /* BookCollectionViewCell.swift */,
-				C2B22AE92BA4365100D384B9 /* ViewModel */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -308,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				C27A578F2B9C557700CF956A /* Protocol.swift */,
-				C2C9696D2BAAAA17004EA8EB /* Kingfisher */,
 				C29546072B99BBF3001A391B /* DesignSystem */,
 				C27E063E2B9C8215003EC2D5 /* Observable */,
 			);
@@ -334,14 +331,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		C2B22AE92BA4365100D384B9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C27E063C2B9C81D1003EC2D5 /* CalendarViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		C2B22AEA2BA4365B00D384B9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,14 +348,6 @@
 				C2C6F3212BAC4CE2004CE8AD /* SettingWebViewController.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		C2C9696D2BAAAA17004EA8EB /* Kingfisher */ = {
-			isa = PBXGroup;
-			children = (
-				C2C9696E2BAAAA23004EA8EB /* KingfisherCache.swift */,
-			);
-			path = Kingfisher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,7 +496,6 @@
 				C230772D2BF88A3500FF732E /* BaseView.swift in Sources */,
 				C279092D2BADC0ED00223C71 /* BookDetailViewModel.swift in Sources */,
 				C2B22B122BA6D7E500D384B9 /* BookDataProtocol.swift in Sources */,
-				C2C9696F2BAAAA23004EA8EB /* KingfisherCache.swift in Sources */,
 				C2B22AE32BA41D7B00D384B9 /* SearchViewController.swift in Sources */,
 				C29BDACB2B9F0AB2007898E3 /* BookDetailViewController.swift in Sources */,
 				C27A57902B9C557700CF956A /* Protocol.swift in Sources */,

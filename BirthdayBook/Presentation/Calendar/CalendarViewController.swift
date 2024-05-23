@@ -280,7 +280,6 @@ extension CalendarViewController: FSCalendarDelegate,
     func calendar(_ calendar: FSCalendar,
                   shouldSelect date: Date,
                   at monthPosition: FSCalendarMonthPosition) -> Bool {
-        
         if date != selectedDate {
             collectionView.scrollsToTop = true
             // 네트워크 호출
