@@ -3,12 +3,19 @@
 <picture>![App Icon_125](https://github.com/jieun0330/BirthdayBook/assets/42729069/202ac6f4-f096-49ef-8bb6-1b6f3b79c651)</picture>
 
 ### 나와 생일이 같은 책들을 확인할 수 있는 앱 '생일책'
-* `도서 검색` 날짜로 해당 날짜에 발행된 도서 검색 (국립중앙도서관 API)
-* `도서 검색` 알라딘 API를 통한 도서 검색 및 베스트셀러 제공
-* `북마크` 소장하고싶거나 읽고싶은 책에 대한 북마크 저장/삭제 기능
-* `구매 기능` 구매할 수 있는 알라딘 링크로 연결
+* 국립중앙도서관 API를 활용한 발행일 기반 도서 검색
+  * 사용자가 입력한 날짜를 기반으로 국립중앙도서관 API를 호출하여 해당 날짜에 발행된 도서 정보 검색
+  * 검색된 도서 정보(제목, 작가, 출판일 등)를 사용자에게 제공
+* 알라딘 API를 통한 도서 검색 및 베스트셀러 제공
+  * 사용자가 입력한 검색어에 관련된 도서 목록 제공
+  * 실시간으로 업데이트되는 알라딘 베스트셀러 목록 제공
+* Realm 데이터베이스를 활용한 북마크 기능 구현
+  * 사용자가 소장하고 싶거나 읽고 싶은 책에 대한 북마크 정보를 Realm 데이터베이스에 영구적으로 저장
+  * 사용자의 편의를 위해 간단하고 직관적인 방법으로 북마크 저장/삭제 기능 제공
 
-  
+<br/>
+
+### 앱스토어([링크](https://apps.apple.com/kr/app/id6479728983))
 |<picture>![KakaoTalk_Photo_2024-04-13-14-03-56](https://github.com/jieun0330/BirthdayBook/assets/42729069/6be2cafc-db64-4252-8109-4ff7eb24dc94)</picture>|<picture>![665x1440_2](https://github.com/jieun0330/BirthdayBook/assets/42729069/2f5306c9-d904-4aa5-ab69-475587bfb7d1)</picture>|<picture>![665x1440_1](https://github.com/jieun0330/BirthdayBook/assets/42729069/1a4f50f8-96d2-40db-bcce-308e8f3a1e0a)</picture>|<picture>![665x1440_3](https://github.com/jieun0330/BirthdayBook/assets/42729069/b0b87414-4665-41a1-bc0a-ab34f1203f29)</picture>
 |---|---|---|---|
 
@@ -16,159 +23,124 @@
 
 ## 🔨 개발기간
 2024년 3월 7일 ~ 24일 (약 2주, 업데이트 진행중)
-> 최신 버전 : 1.0.5 - 2024년 5월 9일
+> 최신 버전 : 1.0.5 - 2024년 5월 7일
 
-[앱스토어 링크](https://apps.apple.com/kr/app/id6479728983)
+
 
 <br/>
 
 ## 🛠️ 사용기술 및 라이브러리
-* `UIKit(Code Base)` `MVVM` `Custom Observable` `SnapKit` `FlowLayout` 
-* `FSCalendar` `Kingfisher`
-* `Alamofire` `Codable` `Router` `Singleton`
-* `Realm` `Repository` `Access Control`
+`UIKit(Code Base)` `MVVM` `Custom Observable` `FlowLayout` `FSCalendar` `Kingfisher` `Alamofire` `Realm` `국립중앙도서관 API` `알라딘 API`
+  
+<br/>
 
+## 🔧 구현 고려사항
+- `final` 클래스로 상속 및 재정의 방지
+- `private` 변수를 선언하여 객체의 캡슐화 강화
+- 클로저 내부의 약한 참조를 통한 메모리 누수 방지
+- 중복된 API 호출을 방지로 네트워크 자원 효율적 사용
+- 공통 로직 메서드 분리를 통한 API 호출 코드 중복 최소화
+
+
+  
 <br/>
 
 ## ⛏️ Trouble Shooting
 
-### **1️⃣ API 연쇄 호출로 인한 Reload 횟수 과다 실행**
-
-**❌ 문제 상황**: 알라딘 API 호출시 호출 횟수만큼 Reload 실행
+**❌ 문제 상황**
+<br/>
+국립중앙도서관 API에서 제공하는 책 이미지 데이터가 부족하여, 책 이미지 범위가 제한되는 문제가 발생
 
 **⭕️ 해결 방법**
-1. ViewModel 안에서 네트워크 결과를 받아온 후 보여지는 방식으로 reload 횟수를 줄이게끔 해결
-2. 성공 케이스와 실패 케이스를 더해서 갯수를 파악하고 보여지는 식으로 수정
-3. 첫번째 API 호출(국립중앙도서관)에서 얻은 결과값을 두번째 API 호출(알라딘)의 Trigger로 활용
-
-<details>
-<summary>Code</summary>
+- 국립중앙도서관 API에서 책 정보를 검색할 때 ISBN 정보만 추출
+- 추출한 ISBN 정보를 알라딘 API에서 재검색
+- 이를 통해 책 제목, 저자, 이미지 등 풍부한 정보로 인해 검색 결과 구현 
 
 ```swift
-import Foundation 
-
-final class CalendarViewModel {
+self.inputDate.bind { [weak self] bookDate in
+    guard let self else { return }
     
-    var inputDate = Observable("")
-    var inputISBNTrigger: Observable<Void?> = Observable(nil)
-    var inputIndicatorTrigger = Observable(false)
+    // Indicator Start animating
+    self.inputIndicatorTrigger.value = true
     
-    var outputNationalLibraryAPIResult: [String] = []
-    var outputAladinAPIResult: Observable<[Item]> = Observable([])
-    var outputErrorMessage = Observable("")
-    
-    init() {
+    APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: bookDate)) {
+        [weak self] result in
+        guard let self else { return }
         
-        self.inputDate.bind { [weak self] bookDate in
-            guard let self else { return }
-            
-            // Indicator Start animating
-            self.inputIndicatorTrigger.value = true
-            
-            APIManager.shared.nationalLibraryCallRequest(api: .dateLibrary(date: bookDate)) {
-                [weak self] result in
-                guard let self else { return }
-                
-                // Indicator stop animating
-                self.inputIndicatorTrigger.value = false
-                
-                switch result {
-                case .success(let success):
-                    for isbn in success.docs {
-                        if !isbn.isbn.isEmpty {
-                            self.outputNationalLibraryAPIResult.append(isbn.isbn)
-                        }
-                    }
-                    self.inputISBNTrigger.value = ()
-                case .failure(let failure):
-                    
-                    if !failure.isResponseSerializationError {
-                        self.outputErrorMessage.value = "잠시 후 다시 시도해주세요"
-                    }
+        // Indicator stop animating
+        self.inputIndicatorTrigger.value = false
+        
+        switch result {
+        case .success(let success):
+            for isbn in success.docs {
+                if !isbn.isbn.isEmpty {
+                    self.outputNationalLibraryAPIResult.append(isbn.isbn)
                 }
             }
-        }
-        
-        self.inputISBNTrigger.bind { [weak self] _ in
-            guard let self else { return }
-            
-            let isbnSlice = self.outputNationalLibraryAPIResult.prefix(15)
-            var aladinSuccessItem: [Item] = []
-            var failureCount = 0
-            
-            for isbn in isbnSlice {
-                APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) {
-                    [weak self] result in
-                    guard let self else { return }
-                    
-                    switch result {
-                    case .success(let success):
-                        
-                        aladinSuccessItem.append(contentsOf: success.item)
-                        
-                        if aladinSuccessItem.count + failureCount == isbnSlice.count {
-                            self.outputAladinAPIResult.value.append(contentsOf: aladinSuccessItem)
-                        }
-                        
-                    case .failure(let failure):
-                        failureCount += 1
-                        if !failure.isResponseSerializationError {
-                            self.outputErrorMessage.value = "잠시 후 다시 시도해주세요"
-                        }
-                        print(failure)
-                    }
-                }
-            }
-            if self.outputNationalLibraryAPIResult.count > 15 {
-                self.outputNationalLibraryAPIResult.removeSubrange(0...14)
-            } else {
-                self.outputNationalLibraryAPIResult.removeAll()
+            self.inputISBNTrigger.value = ()
+        case .failure(let failure):
+            if !failure.isResponseSerializationError {
+                self.outputErrorMessage.value = "잠시 후 다시 시도해주세요"
             }
         }
     }
 }
 
+self.inputISBNTrigger.bind { [weak self] _ in
+    guard let self else { return }
+    
+    let isbnSlice = self.outputNationalLibraryAPIResult.prefix(15)
+    var aladinSuccessItem: [Item] = []
+    var failureCount = 0
+    
+    for isbn in isbnSlice {
+        APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) {
+            [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let success):
+                
+                aladinSuccessItem.append(contentsOf: success.item)
+                
+                if aladinSuccessItem.count + failureCount == isbnSlice.count {
+                    self.outputAladinAPIResult.value.append(contentsOf: aladinSuccessItem)
+                }
 ```
-</details>
-
 <br/>
 
-### **2️⃣ API 결과물과 Realm 저장 결과물 통합**
-
-**❌ 문제 상황**: 두 데이터의 로딩 방식
+**❌ 문제 상황**
+<br/>
+뷰에 보여지는 날짜와 클릭한 날짜가 같을 경우 네트워크 중복 호출이 발생하는 문제
 
 **⭕️ 해결 방법**
-- 동일한 정보를 제공하는 두 데이터 소스를 서로 다른 방식으로 로딩하기 위해 오버로딩 구현
-- 두개의 메서드를 제네릭으로 전환하여 하나의 함수로 통합
-
-<details>
-<summary>Code</summary>
+<br/>
+`didSelect`와 `shouldSelect` 메소드를 활용하여 문제 해결
+- `didSelect`: 날짜가 선택될 때 선택된 날짜를 저장
+- `shouldSelect`: 다른 날짜를 선택할 때 기존 날짜를 초기화하고, 같은 날짜를 선택할 경우 선택 방지
 
 ```swift
-func configure<T: BookDataProtocol>(data: T) {
+func calendar(_ calendar: FSCalendar,
+              didSelect date: Date,
+              at monthPosition: FSCalendarMonthPosition) {
+    selectedDate = date
+    birthdayDate(date: date)
+    viewModel.inputIndicatorTrigger.value = true
+}
 
-    viewModel.configure(data: data)
-    viewModel.configure(dataID: data.title)
-
-    bookBackgroundImg.kf.setImage(with: URL(string: data.cover))
-    bookCoverImg.kf.setImage(with: URL(string: data.cover), options: [.transition(.fade(1))])
-    bookTitle.text = data.title
-    author.text = data.author
-    bookDescription.text = String(htmlEncodedString: data.bookDescription)
-    vc.bookISBN = data.itemId
-
-    // realm에 있는지 확인
-    if viewModel.isBookMarked() {
-        bookMarkButton.image = .bookmarkIcon
+func calendar(_ calendar: FSCalendar,
+              shouldSelect date: Date,
+              at monthPosition: FSCalendarMonthPosition) -> Bool {
+    if date != selectedDate {
+        collectionView.scrollsToTop = true
+        APIManager.shared.bookISBNArray.removeAll()
+        viewModel.outputAladinAPIResult.value.removeAll()
     } else {
-        bookMarkButton.image = .bookmarkIconInactive
+        return false
     }
+    return true
 }
 ```
-</details>
-
-<br/>
-
 
 ## 🔧 추후 업데이트 사항
 
@@ -182,10 +154,10 @@ func configure<T: BookDataProtocol>(data: T) {
 
 <br/>
 
-## 👏🏻 프로젝트 후기
+## 👏🏻 회고
 
 프로젝트를 시작하기 전 API 사전 조사의 중요성을 깨달았다. 날짜를 기준으로 책 정보를 검색할 수 있는 API는 국립중앙도서관이 유일했기 때문에 이를 통해 프로젝트를 시작했다. 하지만 국립중앙도서관 API를 사용하면서 책 이미지 데이터의 부족함을 느꼈고, 이로 인해 사용자에게 보여줄 수 있는 책 이미지 범위가 제한되는 문제를 직면했다. 국립중앙도서관 API에서 제공하는 책 정보 중 책 이미지 URL을 포함하고 있는 데이터가 많지 않았기 때문이다. 이로 인해 이미지가 있는 책들만 배열에 넣고 보여주는 방식으로 진행했지만 검색화면(SearchView)을 구현하는 과정 중에 데이터의 양이 크게 제한되는 결과를 초래했다.
 
-국립중앙도서관 API의 한계를 극복하기 위해, 날짜를 클릭 시 국립중앙도서관 API에서 ISBN만을 추출하여 이를 알라딘 API에서 재검색하는 방식으로 전환했고, 알라딘 API로 책 제목, 저자, 이미지 등 풍부한 정보로 인해 더 만족스러운 검색 결과를 구현할 수 있었다. API에 대해 정보를 더 갖고있었다면 시간이 단축될 수 있을거라고 생각한다.
+국립중앙도서관 API의 한계를 극복하기 위해, 날짜를 클릭 시 국립중앙도서관 API에서 ISBN만을 추출하여 이를 알라딘 API에서 재검색하는 방식으로 전환했고, 알라딘 API로 책 제목, 저자, 이미지 등 풍부한 정보로 인해 더 만족스러운 검색 결과를 구현할 수 있었다. 
 
 
