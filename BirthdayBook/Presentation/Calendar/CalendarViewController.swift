@@ -71,13 +71,14 @@ final class CalendarViewController: BaseViewController {
         
         let today = Date()
         birthdayDate(date: today)
+        
         bindData()
         navigationItem.backButtonTitle = ""
     }
     
     private func bindData() {
         
-        viewModel.outputAladinAPIResult.bind { _ in
+        viewModel.outputAladinAPIResult.bind { value in
             self.collectionView.reloadData()
         }
     }
@@ -87,7 +88,13 @@ final class CalendarViewController: BaseViewController {
         viewModel.inputDate.value = dateString
         
         let birthdayLabel = DateFormatManager.shared.birthdayLabel(date: date)
-        birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+        
+        let calendar = Calendar.current
+        if calendar.isDateInToday(date) {
+            birthdayDateLabel.text = "오늘 태어난 책이에요"
+        } else {
+            birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
+        }
     }
     
     override func configureHierarchy() {
