@@ -30,9 +30,17 @@ final class CalendarViewController: BaseViewController {
         $0.stopAnimating()
     }
     
-    private lazy var logo = UIBarButtonItem.setBarButtonItem(image: .logo,
-                                                             target: self,
-                                                             action: #selector(logoClicked))
+    private lazy var logoButton = {
+        let button = UIButton(type: .system)
+        button.setImage(.logo, for: .normal)
+        return button
+    }()
+    
+    private lazy var logo = {
+        let item = UIBarButtonItem(customView: logoButton)
+        item.customView?.isUserInteractionEnabled = false
+        return item
+    }()
     
     private let backgroundView = UIView().then {
         $0.backgroundColor = DesignSystemColor.pink.color
@@ -72,6 +80,8 @@ final class CalendarViewController: BaseViewController {
         let today = Date()
         birthdayDate(date: today)
         
+        navigationItem.leftBarButtonItem = logo
+
         bindData()
         navigationItem.backButtonTitle = ""
     }
@@ -161,7 +171,7 @@ final class CalendarViewController: BaseViewController {
     
     override func configureView() {
         setCalendarUI()
-        navigationItem.leftBarButtonItem = logo
+//        navigationItem.leftBarButtonItem = logo
         
         viewModel.inputIndicatorTrigger.bind { [weak self] isActivate in
             guard let self else { return }
@@ -183,7 +193,7 @@ final class CalendarViewController: BaseViewController {
         }
     }
     
-    @objc private func logoClicked() { }
+//    @objc private func logoClicked() { }
     
     private func createLayout() -> UICollectionViewFlowLayout {
         

@@ -208,10 +208,10 @@
 		C29545F12B999A56001A391B /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				C29545F22B999A5D001A391B /* BaseViewController.swift */,
-				C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */,
-				C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */,
 				C230772C2BF88A3500FF732E /* BaseView.swift */,
+				C29545F22B999A5D001A391B /* BaseViewController.swift */,
+				C27E06502B9D8273003EC2D5 /* BaseTableViewCell.swift */,
+				C27A578D2B9C542A00CF956A /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
