@@ -21,7 +21,7 @@ final class SettingWebViewController: BaseViewController {
         if let url = settingURL {
             let request = URLRequest(url: url)
             webView.load(request)
-        }
+        }        
     }
     
     override func configureHierarchy() {

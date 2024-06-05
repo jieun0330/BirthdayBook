@@ -23,6 +23,7 @@ final class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.backButtonTitle = ""
     }
     
     override func configureHierarchy() {

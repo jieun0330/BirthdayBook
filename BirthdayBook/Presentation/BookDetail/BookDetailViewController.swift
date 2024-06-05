@@ -35,6 +35,8 @@ final class BookDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.backButtonTitle = ""
+        
         users = realm.objects(BookRealm.self)
 
         notification = users?.observe { changes in
