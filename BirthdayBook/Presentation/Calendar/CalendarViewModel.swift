@@ -49,7 +49,6 @@ final class CalendarViewModel {
         
         self.inputISBNTrigger.bind { [weak self] _ in
             guard let self else { return }
-            
             let isbnSlice = self.outputNationalLibraryAPIResult.prefix(20)
             var aladinSuccessItem: [Item] = []
             var failureCount = 0
@@ -58,13 +57,11 @@ final class CalendarViewModel {
                 APIManager.shared.aladinCallRequest(api: .isbnAladin(isbn: isbn)) {
                     [weak self] result in
                     guard let self else { return }
-                    
-                    print("여기가 안들어오나?", result)
 
                     switch result {
                     case .success(let success):
                         aladinSuccessItem.append(contentsOf: success.item)
-                        
+
                         if aladinSuccessItem.count + failureCount == isbnSlice.count {
                             self.outputAladinAPIResult.value.append(contentsOf: aladinSuccessItem)
                             print("self.outputAladinAPIResult.value.count", self.outputAladinAPIResult.value.count)

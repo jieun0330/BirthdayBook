@@ -154,6 +154,8 @@
 		C27E06412B9C860D003EC2D5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C29BDAEF2BA1AFE1007898E3 /* API.swift */,
+				C27A57922B9C73DC00CF956A /* APIManager.swift */,
 				C27E06422B9C861A003EC2D5 /* NationalLibrary.swift */,
 				C29BDAE62BA07DDA007898E3 /* Aladin.swift */,
 			);
@@ -181,10 +183,14 @@
 		C29545D72B998395001A391B /* BirthdayBook */ = {
 			isa = PBXGroup;
 			children = (
+				C29BDADA2B9F28E1007898E3 /* Realm */,
+				C27E06412B9C860D003EC2D5 /* Network */,
+				C29546042B99B7FE001A391B /* Manager */,
+				C29545FF2B99AE66001A391B /* Extension */,
 				C29545F12B999A56001A391B /* Base */,
 				C2B22ADC2BA3D0A100D384B9 /* Presentation */,
-				C2B22ADD2BA3D0AA00D384B9 /* Data */,
-				C2B22AE02BA41D4500D384B9 /* ETC */,
+				C27E063E2B9C8215003EC2D5 /* Observable */,
+				C2B22AE02BA41D4500D384B9 /* Protocol */,
 				C29545D82B998395001A391B /* AppDelegate.swift */,
 				C29545DA2B998395001A391B /* SceneDelegate.swift */,
 				C29545E12B998398001A391B /* Assets.xcassets */,
@@ -221,8 +227,11 @@
 			children = (
 				C29546002B99AE76001A391B /* UIViewController+Extension.swift */,
 				C2B22AF12BA5B2AB00D384B9 /* String+Extension.swift */,
+				C29546082B99BBF9001A391B /* Colors.swift */,
+				C29BDACC2B9F135B007898E3 /* Fonts.swift */,
 			);
-			path = Extension;
+			name = Extension;
+			path = Presentation/Extension;
 			sourceTree = "<group>";
 		};
 		C29546042B99B7FE001A391B /* Manager */ = {
@@ -230,19 +239,8 @@
 			children = (
 				C29546052B99B86D001A391B /* DateFormatManager.swift */,
 				C27E533A2BCE64FA0037E1A5 /* NumberFormatManager.swift */,
-				C27A57922B9C73DC00CF956A /* APIManager.swift */,
-				C29BDAEF2BA1AFE1007898E3 /* API.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		C29546072B99BBF3001A391B /* DesignSystem */ = {
-			isa = PBXGroup;
-			children = (
-				C29546082B99BBF9001A391B /* Colors.swift */,
-				C29BDACC2B9F135B007898E3 /* Fonts.swift */,
-			);
-			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 		C29BDAC92B9F0AA8007898E3 /* BookDetail */ = {
@@ -287,29 +285,16 @@
 				C29BDAC92B9F0AA8007898E3 /* BookDetail */,
 				C2B22AE12BA41D6300D384B9 /* Search */,
 				C29BDAD32B9F190A007898E3 /* Bookmark */,
-				C29545FF2B99AE66001A391B /* Extension */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		C2B22ADD2BA3D0AA00D384B9 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				C29546042B99B7FE001A391B /* Manager */,
-				C27E06412B9C860D003EC2D5 /* Network */,
-				C29BDADA2B9F28E1007898E3 /* Realm */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		C2B22AE02BA41D4500D384B9 /* ETC */ = {
+		C2B22AE02BA41D4500D384B9 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				C27A578F2B9C557700CF956A /* Protocol.swift */,
-				C29546072B99BBF3001A391B /* DesignSystem */,
-				C27E063E2B9C8215003EC2D5 /* Observable */,
 			);
-			path = ETC;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		C2B22AE12BA41D6300D384B9 /* Search */ = {

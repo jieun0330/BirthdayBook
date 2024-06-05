@@ -101,7 +101,7 @@ final class CalendarViewController: BaseViewController {
         
         let calendar = Calendar.current
         if calendar.isDateInToday(date) {
-            birthdayDateLabel.text = "오늘 태어난 책이에요"
+            birthdayDateLabel.text = "오늘 날짜에 태어난 책이에요"
         } else {
             birthdayDateLabel.text = "\(birthdayLabel)과 생일이 똑같은 책이에요"
         }
@@ -171,8 +171,7 @@ final class CalendarViewController: BaseViewController {
     
     override func configureView() {
         setCalendarUI()
-//        navigationItem.leftBarButtonItem = logo
-        
+
         viewModel.inputIndicatorTrigger.bind { [weak self] isActivate in
             guard let self else { return }
             if isActivate == true {
@@ -192,8 +191,6 @@ final class CalendarViewController: BaseViewController {
             self.view.makeToast(errorMessage)
         }
     }
-    
-//    @objc private func logoClicked() { }
     
     private func createLayout() -> UICollectionViewFlowLayout {
         
@@ -216,7 +213,7 @@ final class CalendarViewController: BaseViewController {
         
         if calendar.scope == .month { // 월간 -> 주간
             changeCalendar(month: false)
-            scrollView.isScrollEnabled = false
+//            scrollView.isScrollEnabled = false
         } else { // 주간 -> 월간
             changeCalendar(month: true)
             scrollView.isScrollEnabled = true
