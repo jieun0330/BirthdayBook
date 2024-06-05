@@ -30,7 +30,9 @@
 <br/>
 
 ## 🛠️ 사용기술 및 라이브러리
-`UIKit(Code Base)` `MVVM` `Custom Observable` `FlowLayout` `FSCalendar` `Kingfisher` `Alamofire` `Realm` `국립중앙도서관 API` `알라딘 API`
+`UIKit(Code Base)` `MVVM` `Custom Observable` `FlowLayout` `FSCalendar` `Kingfisher` `Alamofire` `Realm` `Then`
+<br/>
+`국립중앙도서관 API` `알라딘 API`
   
 <br/>
 
