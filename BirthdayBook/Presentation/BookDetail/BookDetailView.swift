@@ -32,6 +32,8 @@ final class BookDetailView: BaseView {
     private let author = UILabel().then {
         $0.font = DesignSystemFont.font12.font
         $0.textColor = DesignSystemColor.red.color
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
     }
     
     private let introductionTitle = UILabel().then {
@@ -84,6 +86,7 @@ final class BookDetailView: BaseView {
         author.snp.makeConstraints {
             $0.top.equalTo(bookTitle.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
         introductionTitle.snp.makeConstraints {
