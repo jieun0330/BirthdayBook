@@ -40,9 +40,10 @@ final class BookDetailView: BaseView {
         $0.text = "책 소개"
     }
     
-    private let bookDescription = UILabel().then {
-        $0.numberOfLines = 0
+    private let bookDescription = UITextView().then {
         $0.font = DesignSystemFont.font12.font
+        $0.sizeToFit()
+        $0.isEditable = false
     }
     
     lazy var purchaseButton = UIButton().then {
@@ -67,12 +68,11 @@ final class BookDetailView: BaseView {
         bookBackgroundImg.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(550)
+            $0.height.equalToSuperview().multipliedBy(0.6)
         }
         
         bookCoverImg.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(60)
-            $0.centerX.equalToSuperview()
+            $0.center.equalTo(bookBackgroundImg)
             $0.width.equalTo(152)
             $0.height.equalTo(255)
         }
@@ -84,13 +84,13 @@ final class BookDetailView: BaseView {
         }
         
         author.snp.makeConstraints {
-            $0.top.equalTo(bookTitle.snp.bottom).offset(10)
+            $0.top.equalTo(bookTitle.snp.bottom).offset(5)
             $0.centerX.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
         introductionTitle.snp.makeConstraints {
-            $0.top.equalTo(bookBackgroundImg.snp.bottom).offset(30)
+            $0.top.equalTo(bookBackgroundImg.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(30)
             $0.height.equalTo(20)
         }
@@ -98,7 +98,7 @@ final class BookDetailView: BaseView {
         bookDescription.snp.makeConstraints {
             $0.top.equalTo(introductionTitle.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(30)
-            $0.bottom.equalTo(purchaseButton.snp.top).offset(-10)
+            $0.bottom.greaterThanOrEqualTo(purchaseButton.snp.top).offset(-10)
         }
         
         purchaseButton.snp.makeConstraints {
