@@ -151,9 +151,10 @@ func calendar(_ calendar: FSCalendar,
 - [ ]  Network StatusCode Error Handling
 - [ ]  DTO 적용
 - [ ]  Memory Leak 확인
-- [ ]  Launch Screen
+- [ ]  Launch Screen 설정
 - [ ]  본인 생일 입력 → Push Notification
 - [ ]  Realm PK Key 수정
+- [ ]  adult 연령의 책 제한
 
 <br/>
 
