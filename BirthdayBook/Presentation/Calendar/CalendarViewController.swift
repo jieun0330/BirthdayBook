@@ -18,8 +18,9 @@ final class CalendarViewController: BaseViewController {
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
     }
-    private let contentView = UIView()
     
+    private let contentView = UIView()
+
     // 뷰에 보여지는 날짜와 선택한 날짜를 구분
     private var selectedDate: Date?
     
@@ -151,20 +152,20 @@ final class CalendarViewController: BaseViewController {
         }
         
         birthdayDateLabel.snp.makeConstraints {
-            $0.top.equalTo(calendar.snp.bottom).offset(80)
+            $0.top.equalTo(calendar.snp.bottom).offset(50)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(birthdayDateLabel.snp.bottom)
+            $0.top.equalTo(birthdayDateLabel.snp.bottom).offset(5)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(450)
-            $0.bottom.equalTo(contentView.snp.bottom).offset(-10)
+            $0.height.equalTo(540)
+            $0.bottom.equalToSuperview()
         }
         
         backgroundView.snp.makeConstraints {
-            $0.top.equalTo(collectionView).offset(120)
-            $0.bottom.equalToSuperview()
+            $0.top.equalTo(collectionView).offset(150)
+            $0.bottom.equalTo(collectionView)
             $0.horizontalEdges.equalTo(collectionView)
         }
     }
