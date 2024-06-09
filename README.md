@@ -16,8 +16,8 @@
 <br/>
 
 ### 앱스토어([링크](https://apps.apple.com/kr/app/id6479728983))
-|<picture>![KakaoTalk_Photo_2024-04-13-14-03-56](https://github.com/jieun0330/BirthdayBook/assets/42729069/6be2cafc-db64-4252-8109-4ff7eb24dc94)</picture>|<picture>![665x1440_2](https://github.com/jieun0330/BirthdayBook/assets/42729069/2f5306c9-d904-4aa5-ab69-475587bfb7d1)</picture>|<picture>![665x1440_1](https://github.com/jieun0330/BirthdayBook/assets/42729069/1a4f50f8-96d2-40db-bcce-308e8f3a1e0a)</picture>|<picture>![665x1440_3](https://github.com/jieun0330/BirthdayBook/assets/42729069/b0b87414-4665-41a1-bc0a-ab34f1203f29)</picture>
-|---|---|---|---|
+![Group 517167394](https://github.com/jieun0330/BirthdayBook/assets/42729069/f48fb790-f979-4f0a-a6e7-aa48b8586ec8)
+
 
 <br/>
 
