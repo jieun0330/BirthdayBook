@@ -3,28 +3,27 @@
 <picture>![App Icon_125](https://github.com/jieun0330/BirthdayBook/assets/42729069/202ac6f4-f096-49ef-8bb6-1b6f3b79c651)</picture>
 
 ### 나와 생일이 같은 책들을 확인할 수 있는 앱 '생일책'
-* 국립중앙도서관 API를 활용한 발행일 기반 도서 검색
-  * 사용자가 입력한 날짜를 기반으로 국립중앙도서관 API를 호출하여 해당 날짜에 발행된 도서 정보 검색
-  * 검색된 도서 정보(제목, 작가, 출판일 등) 제공
-* 알라딘 API를 통한 도서 검색 및 베스트셀러 제공
-  * 검색어에 관련된 도서 목록 제공
-  * 실시간으로 업데이트되는 알라딘 베스트셀러 목록 제공
-* Realm 데이터베이스를 활용한 북마크 기능 구현
-  * 소장하고 싶거나 읽고 싶은 책에 대한 북마크 정보를 Realm 데이터베이스에 영구적으로 저장
-  * 사용자의 편의를 위해 간단하고 직관적인 방법으로 북마크 저장/삭제 기능 제공
+* 국립중앙도서관 API를 활용한 발행일 기반 `도서 검색`
+* 알라딘 API를 통한 도서 검색 및 `베스트셀러 제공`
+* Realm 데이터베이스를 활용한 `북마크 기능` 구현
 
 <br/>
 
 ### 앱스토어([링크](https://apps.apple.com/kr/app/id6479728983))
-|<picture>![KakaoTalk_Photo_2024-04-13-14-03-56](https://github.com/jieun0330/BirthdayBook/assets/42729069/6be2cafc-db64-4252-8109-4ff7eb24dc94)</picture>|<picture>![665x1440_2](https://github.com/jieun0330/BirthdayBook/assets/42729069/2f5306c9-d904-4aa5-ab69-475587bfb7d1)</picture>|<picture>![665x1440_1](https://github.com/jieun0330/BirthdayBook/assets/42729069/1a4f50f8-96d2-40db-bcce-308e8f3a1e0a)</picture>|<picture>![665x1440_3](https://github.com/jieun0330/BirthdayBook/assets/42729069/b0b87414-4665-41a1-bc0a-ab34f1203f29)</picture>
-|---|---|---|---|
+![Group 517167394](https://github.com/jieun0330/BirthdayBook/assets/42729069/f48fb790-f979-4f0a-a6e7-aa48b8586ec8)
+
 
 <br/>
 
 ## 🔨 개발기간
 2024년 3월 7일 ~ 24일 (약 2주, 업데이트 진행중)
-> 최신 버전 : 1.0.6 - 2024년 5월 23일
+> 최신 버전 : 1.0.7 - 2024년 6월 7일
 
+<br/>
+
+## ⚙️ 앱 개발 환경
+- 최소 버전: iOS 17.2
+- iPhone SE ~ iPhone 15 Pro Max 기기 대응
 
 
 <br/>
@@ -37,15 +36,13 @@
 <br/>
 
 ## 🔧 구현 고려사항
-- `final` 클래스로 상속 및 재정의 방지
-- `private` 변수를 선언하여 객체의 캡슐화 강화
-- ViewModel을 통해 UI로직과 비즈니스 로직 분리
-- Input/Output 패턴을 통해 데이터의 흐름을 명확하게 구현
-- 클로저 내부의 약한 참조를 통한 메모리 누수 방지
-- Trigger에 바인딩된 Indicator를 사용하여 비동기 작업에 맞춰 로딩상태 표시
-- 중복된 API 호출을 방지로 네트워크 자원 효율적 사용
-- 공통 로직 메서드 분리를 통한 API 호출 코드 중복 최소화
-
+- 클로저 내부에 약한 참조와 캡쳐 리스트를 활용한 메모리 누수 방지 및 안전성 강화
+- ViewModel을 통해 MVVM 패턴을 적용하여 UI 로직과 비즈니스 로직의 명확한 분리 및 유지보수성 향상
+- 공통 로직 메서드 분리를 통한 API 호출 코드 중복 최소화 및 재사용성 강화
+- 네트워크 요청 캐싱 전략을 통해 중복된 API 호출 방지 및 네트워크 자원 효율성 개선
+- Input/Output 패턴 설계로 데이터의 흐름 명확성 증대
+- 접근 제어자를 활용한 객체 캡슐화 강화 및 데이터 은닉화
+- final 클래스로 상속 및 재정의 방지 및 Static Dispatch를 통한 앱 성능 최적화
 
   
 <br/>
