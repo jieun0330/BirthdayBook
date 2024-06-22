@@ -10,7 +10,7 @@
 <br/>
 
 ### 앱스토어([링크](https://apps.apple.com/kr/app/id6479728983))
-![Group 517167394](https://github.com/jieun0330/BirthdayBook/assets/42729069/f48fb790-f979-4f0a-a6e7-aa48b8586ec8)
+<picture>![Group 517167394](https://github.com/jieun0330/BirthdayBook/assets/42729069/f48fb790-f979-4f0a-a6e7-aa48b8586ec8)</picture>
 
 
 <br/>
