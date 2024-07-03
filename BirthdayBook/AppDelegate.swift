@@ -12,6 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 스플레시 딜레이
+        Thread.sleep(forTimeInterval: 3.0)
+        
         // Xcode Project - Firebase 연결
 //        FirebaseApp.configure()
         return true

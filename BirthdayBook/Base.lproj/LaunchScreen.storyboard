@@ -1,8 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TB4-ao-jcm">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ZzG-Bu-znT">
+            <objects>
+                <viewController id="TB4-ao-jcm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tJs-o6-6UC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-R7-ZCZ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="OIS-Py-rhF">
+                                        <rect key="frame" x="146.66666666666666" y="354.66666666666669" width="100" height="143"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="SR3-Ic-01x"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.75686274509803919" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="OIS-Py-rhF" firstAttribute="centerX" secondItem="p0j-R7-ZCZ" secondAttribute="centerX" id="0g7-Qc-5q5"/>
+                                    <constraint firstItem="OIS-Py-rhF" firstAttribute="centerY" secondItem="p0j-R7-ZCZ" secondAttribute="centerY" id="nlA-OF-Zcv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T98-pd-o7h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p0j-R7-ZCZ" firstAttribute="leading" secondItem="T98-pd-o7h" secondAttribute="leading" id="0zt-ce-e2I"/>
+                            <constraint firstAttribute="bottom" secondItem="p0j-R7-ZCZ" secondAttribute="bottom" id="JiA-es-LB6"/>
+                            <constraint firstItem="T98-pd-o7h" firstAttribute="trailing" secondItem="p0j-R7-ZCZ" secondAttribute="trailing" id="nC1-LA-tTb"/>
+                            <constraint firstItem="p0j-R7-ZCZ" firstAttribute="top" secondItem="tJs-o6-6UC" secondAttribute="top" id="zeY-u3-MWJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbS-6J-PqA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4380.9160305343512" y="1179.5774647887324"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="splashLogo" width="301" height="143"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
