@@ -98,14 +98,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             
             let book = viewModel.outputAladinAPIResult.value[indexPath.item]
-            cell.title.text = book.title
-            cell.bookImage.kf.setImage(with: URL(string: book.cover),
-                                       options: [.transition(.fade(1))])
-            cell.author.text = book.author
-            let date = DateFormatManager.shared.stringToDate(date: book.pubDate)
-            cell.birthdayBookLabel.text = date
-            let price = NumberFormatManager.shared.numberFormat(number: book.priceSales)
-            cell.price.text = "\(price)원"
+            cell.setData(book)
             
             return cell
         } else {

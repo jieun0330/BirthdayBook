@@ -11,7 +11,7 @@ import SnapKit
 
 final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let bookImage = UIImageView().then{
+    private let bookImage = UIImageView().then{
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
@@ -28,15 +28,15 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.alignment = .leading
     }
     
-    let title = UILabel().then {
+    private let title = UILabel().then {
         $0.font = DesignSystemFont.font12.font
     }
     
-    let author = UILabel().then {
+    private let author = UILabel().then {
         $0.font = DesignSystemFont.font10.font
     }
     
-    let price = UILabel().then {
+    private let price = UILabel().then {
         $0.text = "가격 미정"
         $0.font = DesignSystemFont.font12.font
     }
@@ -46,7 +46,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.layer.cornerRadius = 15
     }
     
-    let birthdayBookLabel = UILabel().then {
+    private let birthdayBookLabel = UILabel().then {
         $0.font = DesignSystemFont.font10.font
         $0.textColor = DesignSystemColor.red.color
     }
@@ -123,6 +123,17 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.centerX.equalTo(birthdayBox)
             $0.size.equalTo(20)
         }
+    }
+    
+    func setData(_ data: Item) {
+        title.text = data.title
+        bookImage.kf.setImage(with: URL(string: data.cover),
+                                   options: [.transition(.fade(1))])
+        author.text = data.author
+        let date = DateFormatManager.shared.stringToDate(date: data.pubDate)
+        birthdayBookLabel.text = date
+        let salesPrice = NumberFormatManager.shared.numberFormat(number: data.priceSales)
+        price.text = "\(salesPrice)원"
     }
     
     required init?(coder: NSCoder) {

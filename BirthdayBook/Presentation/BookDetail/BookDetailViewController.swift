@@ -17,14 +17,13 @@ final class BookDetailViewController: BaseViewController {
     private let mainView = BookDetailView()
     private let vc = AladinWebViewController()
     private var viewModel = BookDetailViewModel()
-    
-    var users: Results<BookRealm>?
-    var notification: NotificationToken?
     private let realm = try! Realm()
-    
     private lazy var bookMarkButton = UIBarButtonItem.setBarButtonItem(image: .bookmarkIconInactive,
                                                                        target: self,
                                                                        action: #selector(bookMarkButtonClicked))
+    
+    var users: Results<BookRealm>?
+    var notification: NotificationToken?
     
     override func loadView() {
         super.loadView()
