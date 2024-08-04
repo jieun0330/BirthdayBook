@@ -39,7 +39,8 @@ final class BookDetailViewController: BaseViewController {
         
         users = realm.objects(BookRealm.self)
 
-        notification = users?.observe { changes in
+        notification = users?.observe { [weak self] changes in
+            guard let self else { return }
             switch changes {
             case .initial(let users):
                 print("Initial count:", users.count)

@@ -21,7 +21,8 @@ final class APIManager {
         
         AF
             .request(api.url)
-            .responseDecodable(of: NationalLibrary.self) { response in
+            .responseDecodable(of: NationalLibrary.self) { [weak self] response in
+                guard let self else { return }
                 completionHandler(response.result)
             }
     }
@@ -31,7 +32,8 @@ final class APIManager {
         
         AF
             .request(api.url)
-            .responseDecodable(of: Aladin.self) { response in
+            .responseDecodable(of: Aladin.self) { [weak self] response in
+                guard let self else { return }
                 completionHandler(response.result)
             }
     }

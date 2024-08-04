@@ -89,7 +89,8 @@ final class CalendarViewController: BaseViewController {
     
     private func bindData() {
         
-        viewModel.outputAladinAPIResult.bind { value in
+        viewModel.outputAladinAPIResult.bind { [weak self] value in
+            guard let self else { return }
             self.collectionView.reloadData()
         }
     }
@@ -188,7 +189,8 @@ final class CalendarViewController: BaseViewController {
             }
         }
         
-        viewModel.outputErrorMessage.bind { errorMessage in
+        viewModel.outputErrorMessage.bind { [weak self] errorMessage in
+            guard let self else { return }
             self.view.makeToast(errorMessage)
         }
     }
